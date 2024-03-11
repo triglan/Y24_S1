@@ -343,3 +343,794 @@ int main()
 	cout << endl << endl << "가장 큰 수 : " << big << endl;
 	save("STL.cpp");
 }
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:34:22
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		cout << format("{:8}", num);
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:37:28
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:37:45
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	//for (int num : a)
+	//	print("{:8}", num);	//c++이상에선 이렇게 출력
+	for (int num : a)
+		print("", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:37:55
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	//for (int num : a)
+	//	print("{:8}", num);	//c++이상에선 이렇게 출력
+	for (int num : a)
+		print("{:}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:38:04
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	//for (int num : a)
+	//	print("{:8}", num);	//c++이상에선 이렇게 출력
+	for (int num : a)
+		print("{:1}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:38:12
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	//for (int num : a)
+	//	print("{:8}", num);	//c++이상에선 이렇게 출력
+	for (int num : a)
+		print("{:2}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:38:20
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	//for (int num : a)
+	//	print("{:8}", num);	//c++이상에선 이렇게 출력
+	for (int num : a)
+		print("{:5}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:38:31
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	//for (int num : a)
+	//	print("{:8}", num);	//c++이상에선 이렇게 출력
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:40:47
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+	// 제일 큰 값을 찾아 화면에 출력해라
+	int maxValue = numeric_limits<int>::min();
+	for (int i = 0; i < 100; ++i)
+		if (maxValue < a[i])
+			maxValue = a[i];
+
+	cout << endl;
+	cout << "최댓값 : " << maxValue << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:51:35
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <minmax.h>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl;
+
+	// 제일 큰 값을 찾아 화면에 출력해라
+	max_element(begin(a), end(a));
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:51:48
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <minmax.h>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl << endl;
+
+	// 제일 큰 값을 찾아 화면에 출력해라
+	max_element(begin(a), end(a));
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 5:52:34
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <random>
+#include <iostream>
+#include <minmax.h>
+#include <print>
+#include "save.h"
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	int a[100];	//마지막으로 사용한다.
+	
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl << endl;
+
+	// 제일 큰 값을 찾아 화면에 출력해라
+	auto pos = max_element(begin(a), end(a));
+	cout << "최댓값 : " << *pos << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 6:06:07
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+#include <array>
+#include <random>
+#include <minmax.h>
+#include <print>
+using namespace std;
+
+//문제 : 임의의 int 100개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	array<int, 100> a;// 배열 대신 이걸 사용한다.
+	
+	cout << "메모리를 더 사용하지도 않는다. - " << sizeof(a) << endl;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl << endl;
+
+	// 제일 큰 값을 찾아 화면에 출력해라
+	auto pos = max_element(begin(a), end(a));
+	cout << "최댓값 : " << *pos << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 6:08:05
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+#include <array>
+#include <random>
+#include <minmax.h>
+#include <print>
+using namespace std;
+
+//문제 : 임의의 int 1'000개가 있다.
+//가장 큰 값을 찾아 화면에 출력하라.
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	array<int, 100> a;// 배열 대신 이걸 사용한다.
+	
+	cout << "메모리를 더 사용하지도 않는다. - " << sizeof(a) << endl;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	for (int num : a)
+		print("{:8}", num);	//c++이상에선 이렇게 출력
+	cout << endl << endl;
+
+	// 제일 큰 값을 찾아 화면에 출력해라
+	auto pos = max_element(begin(a), end(a));
+	cout << "최댓값 : " << *pos << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 6:14:13
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+#include <array>
+#include <random>
+#include <minmax.h>
+#include <print>
+#include <fstream>
+using namespace std;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	array<int, 100> a;// 배열 대신 이걸 사용한다.
+	
+	cout << "메모리를 더 사용하지도 않는다. - " << sizeof(a) << endl;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//문제 : a에 있는 모든 int 값을 파일 "int값들.txt에 기록"
+	std::ofstream out{ "int값들.txt", std::ios::app };
+	for (int num : a)
+		out << num << endl;
+
+	//for (int num : a)
+	//	print("{:8}", num);	//c++이상에선 이렇게 출력
+	//cout << endl << endl;
+
+	//// 제일 큰 값을 찾아 화면에 출력해라
+	//auto pos = max_element(begin(a), end(a));
+	//cout << "최댓값 : " << *pos << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 6:19:15
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+#include <array>
+#include <random>
+#include <minmax.h>
+#include <print>
+#include <fstream>
+using namespace std;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 0, 99999 };
+
+int main()
+{
+	array<int, 100> a;// 배열 대신 이걸 사용한다.
+	
+	cout << "메모리를 더 사용하지도 않는다. - " << sizeof(a) << endl;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//문제 : a에 있는 모든 int 값을 파일 "int값들.txt에 기록"
+	ofstream out{ "int값들.txt" }; // RAII
+	for (int num : a)
+		out << num << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 6:38:39
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+#include <string_view>
+#include <fstream>
+using namespace std;
+
+
+int main()
+{
+	//문제 : 파일 int값들.txt에는 몇개인지 모르는 int가 저장되어 있다.
+	//모두 몇개인지 출력하고 그 중에 가장 큰 값도 화면에 출력하시오
+	ifstream in{ "int값들.txt" };
+	if (not in)
+		exit(0);
+	
+	int num;
+	int cnt{};
+	while (in >> num)
+		++cnt;
+	cout << "모두 " << cnt << "개의 int를 읽었다." << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 6:42:25
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+#include <string_view>
+#include <fstream>
+using namespace std;
+
+
+int main()
+{
+	//문제 : 파일 int값들.txt에는 몇개인지 모르는 int가 저장되어 있다.
+	//모두 몇개인지 출력하고 그 중에 가장 큰 값도 화면에 출력하시오
+	ifstream in{ "int값들.txt" };
+	if (not in)
+		exit(0);
+	
+	int maxValue = numeric_limits<int>::min();
+	int num;
+	while (in >> num) {
+		if (num > maxValue)
+			maxValue = num;
+	}
+	cout << "최대값은" << maxValue << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-11 월요일 오후 6:48:53
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시								(1-1)
+//
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+
+#include <string_view>
+#include <fstream>
+#include <algorithm>
+using namespace std;
+
+
+int main()
+{
+	//문제 : 파일 int값들.txt에는 몇개인지 모르는 int가 저장되어 있다.
+	//모두 몇개인지 출력하고 그 중에 가장 큰 값도 화면에 출력하시오
+
+	//파일 읽어오는건 이런 방식을 쓸 수 밖에 없네
+	ifstream in{ "int값들.txt" };
+	if (not in)
+		exit(0);
+	
+	cout << *max_element(istream_iterator<int>{in}, {});
+	
+
+	save("STL.cpp");
+}
