@@ -6,6 +6,7 @@
 #include "save.h"
 #include <random>
 #include <array>
+#include <fstream>
 using namespace std;
 
 default_random_engine dre;
@@ -33,6 +34,23 @@ int main()
 
 	//문제 : dogs를 binary mode/write로 파일에 기록해라.
 	//기록된 파일을 읽어서 num값이 가장 큰 dog를 찾아 화면에 출력
+
+	cout << sizeof dogs << endl;
+	cout << typeid(dogs).name() << endl;
+
+	ofstream out{ "dogsData.txt", ios::binary };
+	out.write((const char*)dogs.data(), dogs.size() * sizeof(int) * 2);
+
+	ifstream in("dogsData.txt", ios::binary);
+	if (not in)
+		exit(0);
+	
+	array<Dog, 100> indogs{};
+
+	in.read((char*)indogs.data(), dogs.size() * sizeof(int) * 2);
+
+	cout << *max_element(istream_iterator<int>{in}, {});// 최대값 출력중
+
 
 	save("STL.cpp");
 }
