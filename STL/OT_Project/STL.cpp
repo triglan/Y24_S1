@@ -4,32 +4,35 @@
 
 #include <iostream>
 #include "save.h"
-#include <fstream>
+#include <random>
 #include <array>
-
-
-
 using namespace std;
 
-// 문제 : "int100개를메모리그대로저장.txt"에
-// int값 100개가 write 함수를 사용하여 기록되어 있다.
-// 파일은 binary 모드로 열어 기록되었다. 
-// 파일에 기록된 int값 100개를 메모리로 읽어온 후
-// 화면에 그 값을 출력하라.
+default_random_engine dre;
+uniform_int_distribution<int> uidChar{ 'a','z' };
+uniform_int_distribution uidNum{ 1, 99999 };
+
+class Dog {
+	char c{ (char)uidChar(dre) };
+	int num{ uidNum(dre) };
+
+public:
+	Dog() {
+		cout << "디폴트 생성" << endl;
+	}
+	friend ostream& operator<<(ostream& os, const Dog& dog) {
+		return os << "글자 : " << dog.c << ", 숫자 : " << dog.num;
+	}
+};
 
 int main()
 {
-	ifstream in("int100개를메모리그대로저장.txt", ios::binary );
-	if (not in)
-		exit(0);
+	array<Dog, 100> dogs{};
+	for (const Dog& dog : dogs)
+		cout << dog << endl;
 
-	array<int, 100>a;
-
-	in.read((char*)a.data(), 400);
-
-	for (int num : a)
-		cout << num << "\t";
-	cout << endl;
+	//문제 : dogs를 binary mode/write로 파일에 기록해라.
+	//기록된 파일을 읽어서 num값이 가장 큰 dog를 찾아 화면에 출력
 
 	save("STL.cpp");
 }
