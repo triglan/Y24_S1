@@ -1,9 +1,3 @@
-km = 14
-minute = 45.5
+pound = eval(input('파운드 값을 입력하세요 : '))
 
-mile = km * 1.6
-hour = minute / 60
-
-milePerHour = mile/hour
-
-print('시속(마일) : ', milePerHour)
+print(pound, "파운드는 : ", pound*0.454, "킬로그램입니다.")

@@ -1,9 +1,5 @@
-km = 14
-minute = 45.5
-
-mile = km * 1.6
-hour = minute / 60
-
-milePerHour = mile/hour
-
-print('시속(마일) : ', milePerHour)
+num = eval(input("0과 1000사이의 숫자 입력 : "))
+one = num % 10
+ten = (num // 10) % 10
+hund = (num // 100)
+print("자릿수의 합 : ", one + ten + hund)
