@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa80014d-c816-41dc-82e0-3361ea4f51f9" name="Changes" comment="" />
+    <list default="true" id="aa80014d-c816-41dc-82e0-3361ea4f51f9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lecture1/main.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LectureData/숙제1 - 프로그래밍 기초 입출력.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_LectureData/숙제2 - 수학함수 리스트 다중리스트 튜플 세트 딕셔너리.pdf" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -27,7 +32,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "main",
     "last_opened_file_path": "C:/GitHub/Y24_S1/Script/Lecture1/main.py",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PythonContentEntriesConfigurable"
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
 }]]></component>
   <component name="RunManager">
