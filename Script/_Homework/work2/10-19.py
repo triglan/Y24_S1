@@ -1,14 +1,24 @@
-#lst = 1 2 3 4 5 -> True
-#lst = 1 3 2 4 5 -> False
-def isSorted(lst): #오름차순 정렬되어 있으면 True 반환
-    for i in range(len(lst)-1):
-        if lst[i] > lst[i+1]:
-            return False
-    return True
+import random
+nOfBalls = eval(input('공의 개수 : '))
+nOfSlots = eval(input('슬롯의 개수 : '))
+slots = [0] * nOfSlots # 0으로 초기화
 
-sList = input('정수를 입력 : ').split()
-iList = [eval(s) for s in sList]
-if isSorted(iList):
-    print('정렬되어 있음')
-else:
-    print('정렬되어 있지 않음')
+for i in range(nOfBalls):#공의 개수만큼 반복
+    count = 0 #R의 개수를 샌다
+    for j in range(nOfSlots-1): #슬롯개수 - 1 만큼 반복
+        if random.random() > 0.5:
+            print('R', end = '') # 강제로 한줄 띄는 것을 방지
+            count += 1
+        else:
+            print('L', end = '')
+    print()
+    slots[count] += 1 # 해당 슬롯에 공 1개 추가
+print(slots) # 디버깅
+Max = max(slots) # 최댓값
+for h in range(Max, 0, -1): # h=M, M-1, ..., 1
+    for i in slots:
+        if i >= h:
+            print(' o ', end = '')
+        else:
+            print('   ', end = '')
+    print()
