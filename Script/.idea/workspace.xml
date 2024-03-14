@@ -5,17 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa80014d-c816-41dc-82e0-3361ea4f51f9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture1/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture1/.idea/Lecture1.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture1/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture1/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture1/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture1/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Lecture1/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work2/10-19.py" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/work2/10-19.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/숙제1 - 프로그래밍 기초 입출력.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/숙제2 - 수학함수 리스트 다중리스트 튜플 세트 딕셔너리.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.name" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Script.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
