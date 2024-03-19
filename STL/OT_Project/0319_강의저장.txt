@@ -1,0 +1,554 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:33:06
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include "save.h"
+using namespace std;
+
+
+int main()
+{
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:38:02
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+
+int main()
+{
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:38:41
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+
+int main()
+{
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:45:27
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+void f() {
+	int num{ 123 };
+	cout << "나는 함수 f입니다." << endl;
+	cout << "f()의 변수 num - " << addressof(num) << endl;
+}
+
+int main()
+{ 
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:45:58
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+void f() {
+	int num{ 123 };
+	cout << "나는 함수 f입니다." << endl;
+	cout << "f()의 변수 num - " << addressof(num) << endl;
+}
+
+int main()
+{ 
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	f();
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:51:15
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+void f() {
+	int num{ 123 };
+	cout << "나는 함수 f입니다." << endl;
+	cout << "f()의 변수 num - " << addressof(num) << endl;
+}
+
+int gnum{};
+string s{"전역 스트링"};
+
+int main()
+{ 
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	f();
+
+	cout << "전역 string - " << ::s << endl;
+	cout << addressof(::s) << endl;
+	cout << "전역 int" << endl;
+	cout << addressof(gnum) << endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:52:01
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+void f() {
+	int num{ 123 };
+	cout << "나는 함수 f입니다." << endl;
+	cout << "f()의 변수 num - " << addressof(num) << endl;
+}
+
+int gnum{};
+string s{"전역 스트링"};
+
+int main()
+{ 
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	f();
+
+	cout << endl << endl;
+	cout << "전역 string - " << ::s << endl;
+	cout << addressof(::s) << endl;
+	cout << "전역 int" << endl;
+	cout << addressof(gnum) << endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 3:58:55
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+void f() {
+	int num{ 123 };
+	cout << "나는 함수 f입니다." << endl;
+	cout << "f()의 변수 num - " << addressof(num) << endl;
+}
+
+int gnum{};
+string s{"전역 스트링"};
+
+int main()
+{ 
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	f();
+
+	cout << endl << endl;
+	cout << "전역 string - " << ::s << endl;
+	cout << addressof(::s) << endl;
+	cout << "전역 int" << endl;
+	cout << addressof(gnum) << endl;
+
+	cout << endl << endl;
+	cout << "함수가 기록되는 메모리 영역 - CODE segement, TEXT " << endl;
+	cout << "main() - " << addressof(main) << endl;
+	cout << "f() - " << addressof(f) << endl;
+	cout << "save() - " << addressof(save) << endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 4:04:52
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <string>
+#include <array>
+#include "save.h"
+using namespace std;
+
+void f() {
+	int num{ 123 };
+	cout << "나는 함수 f입니다." << endl;
+	cout << "f()의 변수 num - " << addressof(num) << endl;
+}
+
+int gnum{};
+string s{"전역 스트링"};
+
+int main()
+{ 
+	string s{"메모리 관찰"};
+	cout << "지역객체 string - " << addressof(s) << endl;
+	
+	array<int, 10>a;
+	cout << "지역객체 array<int, 10>" << endl;
+	for (int i = 0; i < a.size(); ++i)//이 데이터를 바꿀 것이 아니기에 const를 일단 붙여봄... 그랬었음
+		cout << "a[" << i << "] - " << addressof(a[i]) << endl;
+
+	f();
+
+	cout << endl << endl;
+	cout << "전역 string - " << ::s << endl;
+	cout << addressof(::s) << endl;
+	cout << "전역 int" << endl;
+	cout << addressof(gnum) << endl;
+
+	cout << endl << endl;
+	cout << "함수가 기록되는 메모리 영역 - CODE segement, TEXT " << endl;
+	cout << "main() - " << addressof(main) << endl;
+	cout << "f() - " << addressof(f) << endl;
+	cout << "save() - " << addressof(save) << endl;
+
+	string* p = new string[2]{ "동적할당한 string", "동적할당한 string2"};
+	cout << endl << endl;
+	cout << p[0] << " - " << addressof(p[0]) << endl;
+	cout << p[1] << " - " << addressof(p[1]) << endl;
+
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 4:51:49
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+int num[25'000];
+
+int main()
+{ 
+	for (int num : num)
+		cout << num << ' ';
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 4:55:46
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+//int num[0x7FFFFFFF];//int의 최대값
+
+int main()
+{ 
+	cout << 0xFFFFFFF << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 4:56:01
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+//int num[0x7FFFFFFF];//int의 최대값
+
+int main()
+{ 
+	cout << 0x7FFFFFFF << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 4:56:46
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+char num[0x7FFFFFFF];//int의 최대값
+
+int main()
+{ 
+	cout << 0x7FFFFFFF << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 4:57:31
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+char num1[0x7FFFFFFF];//int의 최대값 2147483647, 2GB까지 쓸 수 있다.
+char num2[0x7FFFFFFF];
+
+int main()
+{ 
+	cout << 0x7FFFFFFF << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 5:00:50
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+char num1[0x6FFFFFFF/2];//int의 최대값 2147483647, 2GB까지 쓸 수 있다.
+char num2[0x6FFFFFFF/2];//->2GB 둘이서 최대크기를 쓰니까 오류발생한듯
+
+int main()
+{ 
+	cout << num1[333333333] << endl;
+	cout << num2[433333333] << endl;
+	cout << num1[533333333] << endl;
+	cout << num2[633333333] << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 5:03:49
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+//int 최대값을 써봐라
+
+int num[1'0000'0000];//1억개
+
+int main()
+{ 
+	num[9999'9999] = 1234567;
+	cout << num[9999'9999] << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-19 화요일 오후 5:06:25
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.5 월 9-10시
+// 24-03-18 
+// 실행 파일의 메모리 영역 - STACK CODE DATA Free store(Heap)
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+using namespace std;
+
+// [문제] 프로그램에서 이용할 수 있는 전역변수의 최대 크기는?
+//int 최대값을 써봐라
+
+int num[1'0000'0000];//1억개
+
+int main()
+{ 
+	num[9999'9999] = 1234567890;
+	cout << num[9999'9999] << endl;
+	save("STL.cpp");
+}
