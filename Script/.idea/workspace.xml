@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="aa80014d-c816-41dc-82e0-3361ea4f51f9" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/docx/2020182028이규원_숙제2.docx" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/docx/2020182028이규원_숙제2.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/docx/2020182028이규원_숙제3.docx" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/docx/2020182028이규원_숙제3.docx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/work2/10-5.py" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/work2/10-5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/work2/3-2.py" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/work2/3-2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/work2/3-3.py" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/work2/3-3.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/work2/test.py" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,5 +69,16 @@
       <updated>1709779315581</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/_Homework/work2/10-4Ref.py</url>
+          <line>2</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
