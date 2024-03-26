@@ -1,0 +1,776 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 3:42:28
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <memory>
+#include "save.h"
+using namespace std;
+
+class Dog {
+public:
+	Dog() { cout << "개 생성" << endl; }
+	~Dog() { cout << "개 소멸" << endl; }
+
+};
+
+int main()
+{
+	unique_ptr<Dog> p{ new Dog };
+
+	cout << " 스마트 포인터 : " << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 3:44:14
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <memory>
+#include "save.h"
+using namespace std;
+
+class Dog {
+public:
+	Dog() { cout << "개 생성" << endl; }
+	~Dog() { cout << "개 소멸" << endl; }
+
+};
+
+int main()
+{
+	unique_ptr<Dog[]> p{new Dog[3]};
+	
+
+	cout << " 스마트 포인터 : " << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 3:46:25
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <memory>
+#include "save.h"
+using namespace std;
+
+class Dog {
+public:
+	Dog() { cout << "개 생성" << endl; }
+	~Dog() { cout << "개 소멸" << endl; }
+
+};
+
+int main()
+{
+	cout << "메인 시작" << endl;
+
+	unique_ptr<Dog[]> p{new Dog[3]};
+	cout << "스마트 포인터" << endl;
+
+	save("STL.cpp");
+	cout << " 메인 끝" << endl;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 3:48:44
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <memory>
+#include "save.h"
+using namespace std;
+
+class Dog {
+public:
+	Dog() { cout << "개 생성" << endl; }
+	~Dog() { cout << "개 소멸" << endl; }
+
+};
+
+int main()
+{
+	unique_ptr<Dog> p = make_unique<Dog>();
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:04:39
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <fstream>
+#include <array>
+#include <fstream>
+
+
+using namespace std;
+
+// [문제] "STL.cpp"의 모든 소문자를 대문자로 바꿔 "STL대문자.txt"에 저장해라
+
+int main()
+{
+	ifstream in{ "STL.cpp", ios::binary };
+	if (not in) return 444444;
+	ofstream out{ "STL대문자.txt", ios::binary };
+	
+	char c;
+	while (in.read(&c, sizeof(char)))
+		cout << c;
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:05:45
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <fstream>
+#include <array>
+#include <fstream>
+
+
+using namespace std;
+
+// [문제] "STL.cpp"의 모든 소문자를 대문자로 바꿔 "STL대문자.txt"에 저장해라
+
+int main()
+{
+	ifstream in{ "STL.cpp", ios::binary };
+	if (not in) return 444444;
+	ofstream out{ "STL대문자.txt", ios::binary };
+	
+	//파일 내용 저장
+	char c;
+	while (in.read(&c, sizeof(char)))
+		cout << c;
+
+	while (in.read(&c, sizeof(char))) {
+		out << (c = toupper(c));
+	}
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:09:17
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <fstream>
+#include <array>
+#include <fstream>
+
+
+using namespace std;
+
+// [문제] "STL.cpp"의 모든 소문자를 대문자로 바꿔 "STL대문자.txt"에 저장해라
+
+int main()
+{
+	ifstream in{ "STL.cpp", ios::binary };
+	if (not in) return 444444;
+	ofstream out{ "STL대문자.txt", ios::binary };
+	
+	//파일 내용 저장
+	char c;
+	while (in.read(&c, sizeof(char))) {
+		out << (c = toupper(c));
+	}
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:11:50
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <fstream>
+#include <array>
+#include <fstream>
+
+
+using namespace std;
+
+// [문제] "STL.cpp"의 모든 소문자를 대문자로 바꿔 "STL대문자.txt"에 저장해라
+
+int main()
+{
+	ifstream in{ "STL.cpp", ios::binary };
+	if (not in) return 444444;
+	ofstream out{ "STL대문자.txt", ios::binary };
+	
+	//파일 내용 저장
+	char c;
+	in >> noskipws;//공백을 무시하지 마.
+
+	while (in >> c) {
+		c = toupper(c);
+		cout << c;
+	}
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:17:26
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <fstream>
+#include <array>
+#include <fstream>
+#include <cctype>
+#include <algorithm>
+
+using namespace std;
+
+// [문제] "STL.cpp"의 모든 소문자를 대문자로 바꿔 "STL대문자.txt"에 저장해라
+
+int main()
+{
+	ifstream in{ "STL.cpp", ios::binary };
+	if (not in) return 444444;
+	ofstream out{ "STL대문자.txt", ios::binary };
+	
+	transform(istreambuf_iterator<char>(in), istreambuf_iterator<char>(), ostreambuf_iterator<char>(out), ::toupper);
+
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:26:31
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <fstream>
+#include <array>
+#include <fstream>
+#include <cctype>
+#include <algorithm>
+
+using namespace std;
+
+// [문제] "STL.cpp"의 모든 소문자를 대문자로 바꿔 "STL대문자.txt"에 저장해라
+
+int main()
+{
+	ifstream in{ "STL.cpp", ios::binary };
+	if (not in) return 444444;
+	ofstream out{ "STL대문자.txt", ios::binary };
+	
+	transform(istreambuf_iterator<char>{in}, {}, 
+		ostreambuf_iterator<char>{out}, [](char c) {return c = toupper(c); }
+	);
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:40:36
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 10000, 99999 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//qsort로 정렬 - generic함수의 대표
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:54:37
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//qsort로 정렬 - generic함수의 대표
+	qsort(a.data(), a.size(), sizeof(int), [](const void* a, const void* b) {
+		return *(int*)a - *(int*)b;//음수, 0, 양수
+		});
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:56:51
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//축약전 코드
+	qsort(a.data(), a.size(), sizeof(int), [](const void* a, const void* b) {
+		int val_a = *(int*)a;
+		int val_b = *(int*)b;
+		if (a < b)
+			return 1;
+		else if (a == b)
+			return 0;
+		return -1;
+		});
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:57:16
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//축약전 코드
+	qsort(a.data(), a.size(), sizeof(int), [](const void* a, const void* b) {
+		int val_a = *(int*)a;
+		int val_b = *(int*)b;
+		if (val_a < val_b)
+			return 1;
+		else if (val_a == val_b)
+			return 0;
+		return -1;
+		});
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:59:04
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//축약전 코드
+	qsort(a.data(), a.size(), sizeof(int), [](const void* a, const void* b) {
+		int val_a = *(int*)a;
+		int val_b = *(int*)b;
+		if (val_a < val_b)
+			return 1;
+		else if (val_a == val_b)
+			return 0;
+		return -1;
+		});
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 4:59:23
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//축약전 코드
+	qsort(a.data(), a.size(), sizeof(int), [](const void* a, const void* b) {
+		int val_a = *(int*)a;
+		int val_b = *(int*)b;
+		if (val_a > val_b)
+			return 1;
+		else if (val_a == val_b)
+			return 0;
+		return -1;
+		});
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 5:09:21
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//qsort로 정렬 - generic 함수라서 여기서 시작
+	int 정렬기준(const void* a, const void * b);
+	qsort(a.data(), a.size(), sizeof(int), 정렬기준);
+
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+int 정렬기준(const void* a, const void* b) {
+	return *(int*)a - *(int*)b;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 5:11:18
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//qsort로 정렬 - generic 함수라서 여기서 시작
+	int 정렬기준(const void* a, const void * b);
+	qsort(a.data(), a.size(), sizeof(int), 정렬기준);
+
+	cout << typeid(정렬기준).name() << endl;//이걸 위해서 지금까지 설명했다.
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+int 정렬기준(const void* a, const void* b) {
+	return *(int*)a - *(int*)b;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 5:11:23
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	array<int, 100> a;
+
+	for (int& num : a)
+		num = uid(dre);
+
+	//qsort로 정렬 - generic 함수라서 여기서 시작
+	int 정렬기준(const void* a, const void * b);
+	qsort(a.data(), a.size(), sizeof(int), 정렬기준);
+
+	cout << typeid(정렬기준).name() << endl;//이걸 위해서 지금까지 설명했다.
+
+	for (int num : a)
+		print("{:8}", num);
+
+	save("STL.cpp");
+}
+
+int 정렬기준(const void* a, const void* b) {
+	return *(int*)a - *(int*)b;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-03-26 화요일 오후 5:14:50
+================================================
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include <random>
+#include <array>
+#include <print>
+using namespace std;
+
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+
+uniform_int_distribution uid{ 1, 1000 };
+default_random_engine dre;
+
+int main()
+{
+	int 정렬기준(const void*, const void*);
+	auto a = 정렬기준;
+	cout << typeid(a).name() << endl;
+
+	(*save)("STL.cpp");
+}
+
+int 정렬기준(const void*, const void*) {
+	return 12345;
+}

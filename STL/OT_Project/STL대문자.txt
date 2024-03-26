@@ -1,0 +1,30 @@
+//----------------------------------------------------------
+// 2024 STL 3.26 화 (4-2주차)
+//  
+// ----------------------------------------------------------
+
+#INCLUDE <IOSTREAM>
+#INCLUDE "SAVE.H"
+#INCLUDE <FSTREAM>
+#INCLUDE <ARRAY>
+#INCLUDE <FSTREAM>
+#INCLUDE <CCTYPE>
+#INCLUDE <ALGORITHM>
+
+USING NAMESPACE STD;
+
+// [문제] "STL.CPP"의 모든 소문자를 대문자로 바꿔 "STL대문자.TXT"에 저장해라
+
+INT MAIN()
+{
+	IFSTREAM IN{ "STL.CPP", IOS::BINARY };
+	IF (NOT IN) RETURN 444444;
+	OFSTREAM OUT{ "STL대문자.TXT", IOS::BINARY };
+	
+	TRANSFORM(ISTREAMBUF_ITERATOR<CHAR>{IN}, {}, 
+		OSTREAMBUF_ITERATOR<CHAR>{OUT}, [](CHAR C) {RETURN C = TOUPPER(C); }
+	);
+
+
+	SAVE("STL.CPP");
+}
