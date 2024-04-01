@@ -19,7 +19,7 @@ void save(std::string_view fileName)
     }
 
     // 저장할 파일을 덧붙여 쓰기 모드로 연다.
-    std::ofstream out{ "0326_4_2_강의저장.txt", std::ios::app };
+    std::ofstream out{ "0401_5-1_강의저장.txt", std::ios::app };
 
     // 저장한 시간을 기록한다.
     out << std::endl << std::endl << std::endl;
