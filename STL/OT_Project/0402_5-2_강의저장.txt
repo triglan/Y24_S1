@@ -1,0 +1,1002 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 3:42:53
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{
+	String s{ "STL을 관찰하기 위한 클래스입니다." };
+	//String t = s; //디폴트 복사 생성자가 안돌아가서 실행이 안되는 것이다.
+
+	cout << s << endl;
+	//cout << t << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 3:50:36
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{
+	String s{ "STL을 관찰하기 위한 클래스입니다." };
+	String t = s; //디폴트 복사 생성자가 안돌아가서 실행이 안되는 것이다.
+
+	cout << s << endl;
+	//cout << t << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 3:50:46
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{
+	String s{ "STL을 관찰하기 위한 클래스입니다." };
+	String t = s; //디폴트 복사 생성자가 안돌아가서 실행이 안되는 것이다.
+
+	cout << s << endl;
+	cout << t << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:03:36
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{
+	String s{ "1234567890" };
+	String t = s; //디폴트 복사 생성자가 안돌아가서 실행이 안되는 것이다.
+
+	cout << s << endl;
+	cout << t << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:04:00
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{
+	String s{ "1234567890" };
+	String t = s; //디폴트 복사 생성자가 안돌아가서 실행이 안되는 것이다.
+
+	cout << s << endl;
+	cout << t << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:05:35
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{
+	String s{ "1234567890" };
+	String t = s; //디폴트 복사 생성자가 안돌아가서 실행이 안되는 것이다.
+
+	cout << s << endl;
+	cout << t << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:06:13
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{
+	String s{ "1234567890" };
+	String t = s; //디폴트 복사 생성자가 안돌아가서 실행이 안되는 것이다.
+
+	cout << s << endl;
+	cout << t << endl;
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:11:47
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{			
+	String s[10];
+
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:13:10
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{			
+	array<String, 5> a;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:13:52
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:15:19
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+
+	for (String s : a)
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:15:38
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+
+	for (String s : a)
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:31:08
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+	//std::sort(a.begin(), a.end(), a{});
+
+	for (String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:41:08
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+	관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){
+		return a.getLen() < b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:41:37
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+	관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){
+		return a.getLen() < b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:42:03
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+	//관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){
+		return a.getLen() > b.getLen();
+		});
+	//관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:51:08
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "2024년", "4월", "2일", "화요일", "즐거운 STL 시간" };
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+	관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() > b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 4:56:40
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//sort를 사용하여 a를 글자수 기준 오름차순으로 정렬한 후 출력하라.
+	관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() > b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:04:12
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	//관찰 = true;
+	sort(a.begin(), a.end(), [](const String a, const String b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() > b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:04:26
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	관찰 = true;
+	sort(a.begin(), a.end(), [](const String a, const String b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() > b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:05:13
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	//관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() > b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:06:02
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	//관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() > b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:06:10
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	//관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() < b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:06:24
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	//관찰 = true;
+	sort(a.begin(), a.end(), [](const String& a, const String& b){//const String& &<< 빼면 무슨일 생기는지 관찰
+		return a.getLen() < b.getLen();
+		});
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:17:04
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "abc", "cdef", "efght", "ra", "tokrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	//관찰 = true;
+	for (const String& s : a)
+		sort(s.getMem(), s.getMem() + s.getLen());
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-02 화요일 오후 5:17:28
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.2 화 (5-2주차)
+//  
+// callable type - 무한한 타입이 있다.
+// 호출 가능한 타입을 대표하는 타입을 만들었따 - function
+//	
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다 -> visual studio에서는 함수 객체 라고 단언 가능
+// 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체 -> 함수 객체
+// 
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <array>
+#include "save.h"
+#include "String.h"
+#include <algorithm>
+using namespace std;
+
+extern bool 관찰;
+
+int main()
+{			
+	array<String, 5> a{ "aersbc", "cdef", "efghght", "rdsfsagaa", "tokbsdfsrlk"};
+	//[문제] sort를 사용하여 a가 관리하는 string을 오름차순으로 정렬한 후 출력하라
+	//관찰 = true;
+	for (const String& s : a)
+		sort(s.getMem(), s.getMem() + s.getLen());
+	관찰 = false;
+
+	cout << "길이 오름차순 정렬결과" << endl;
+	for (const String& s : a) ///&의 의미는 복사하지 마라는 뜻
+		cout << s << endl;
+	save("STL.cpp");
+}
