@@ -1,0 +1,724 @@
+
+
+
+================================================
+stl.cpp, 저장시간: 2024-04-09 화요일 오후 3:49:10
+================================================
+//-----------------------------------------------------------------------------------
+// 2024 STL																	  (6주 2)
+// STL - Container: Containers are objects that store other objects
+// Object = 클래스로 만든 객체, 메모리를 차지하고 있는 클래스 객체
+//-----------------------------------------------------------------------------------
+#include <iostream>
+#include <array>
+#include <algorithm>
+#include <fstream>
+#include "save.h"
+#include "String.h"
+
+extern bool 관찰;
+
+int main()
+{
+	std::array<String, 100> a;
+
+	// [문제] a에 "stl.cpp"에 있는 단어를 저장하라......
+	// a를 길이 오름차순으로 정렬하라.....
+	// 화면에 a를 출력하라
+
+	std::ifstream in{ "stl.cpp" };
+
+	if (not in)
+		return 20240408;
+
+	for (int i = 0; i < a.size(); ++i)
+		in >> a[i];			//   operator>>(in, a[i]);
+
+	// 길이 오름차순 정렬
+	std::sort(a.begin(), a.end(), [](const String& a, const String& b) {
+		return a.getLen() < b.getLen();
+		});
+
+
+	for (const String& s : a)
+		std::cout << s << std::endl;
+
+	save("stl.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 3:55:47
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <random>
+#include <algorithm>
+#include <print>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+extern bool 관찰;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 1, 1'0000 };
+
+int main()
+{			
+	save("STL.cpp");
+
+	while (true) {
+		vector<int> v;
+
+		// [예제] int값 num을 입력받아 v에 [1, 1000]값을 갖는 int num개를 추가
+		// 오른차순 정렬한다
+		// 값을 출력한다.
+
+		cout << "숫자 입력 : ";
+		int num;
+		cin >> num;
+
+		for (int i = 0; i < num; ++i)
+			v.push_back(uid(dre));
+
+		sort(v.begin(), v.end());
+		for (int num : v)
+			print("{:8", num);
+	}
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 3:55:59
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <random>
+#include <algorithm>
+#include <print>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+extern bool 관찰;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 1, 1'0000 };
+
+int main()
+{			
+	save("STL.cpp");
+
+	while (true) {
+		vector<int> v;
+
+		// [예제] int값 num을 입력받아 v에 [1, 1000]값을 갖는 int num개를 추가
+		// 오른차순 정렬한다
+		// 값을 출력한다.
+
+		cout << "숫자 입력 : ";
+		int num;
+		cin >> num;
+
+		for (int i = 0; i < num; ++i)
+			v.push_back(uid(dre));
+
+		sort(v.begin(), v.end());
+		for (int num : v)
+			print("{:8", num);
+	}
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 3:56:42
+================================================
+//-----------------------------------------------------------------------------------
+// 2024 STL																	  (6주 2)
+// STL - Container: Containers are objects that store other objects
+// Object = 클래스로 만든 객체, 메모리를 차지하고 있는 클래스 객체
+//-----------------------------------------------------------------------------------
+#include <iostream>
+#include <array>
+#include <algorithm>
+#include <fstream>
+#include "save.h"
+#include "String.h"
+
+extern bool 관찰;
+
+int main()
+{
+	std::array<String, 100> a;
+
+	// [문제] a에 "stl.cpp"에 있는 단어를 저장하라......
+	// a를 길이 오름차순으로 정렬하라.....
+	// 화면에 a를 출력하라
+
+	std::ifstream in{ "stl.cpp" };
+
+	if (not in)
+		return 20240408;
+
+	for (int i = 0; i < a.size(); ++i)
+		in >> a[i];			//   operator>>(in, a[i]);
+
+	// 길이 오름차순 정렬
+	std::sort(a.begin(), a.end(), [](const String& a, const String& b) {
+		return a.getLen() < b.getLen();
+		});
+
+
+	for (const String& s : a)
+		std::cout << s << std::endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 3:57:09
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <random>
+#include <algorithm>
+#include <print>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+extern bool 관찰;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 1, 1'0000 };
+
+int main()
+{			
+	save("STL.cpp");
+
+	while (true) {
+		vector<int> v;
+
+		// [예제] int값 num을 입력받아 v에 [1, 1000]값을 갖는 int num개를 추가
+		// 오른차순 정렬한다
+		// 값을 출력한다.
+
+		cout << "숫자 입력 : ";
+		int num;
+		cin >> num;
+
+		for (int i = 0; i < num; ++i)
+			v.push_back(uid(dre));
+
+		sort(v.begin(), v.end());
+		for (int num : v)
+			print("{:8}", num);
+	}
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 3:59:04
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <random>
+#include <algorithm>
+#include <print>
+#include <ranges>
+#include "save.h"
+#include "String.h"
+using namespace std;
+
+extern bool 관찰;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 1, 1'0000 };
+
+int main()
+{			
+	save("STL.cpp");
+
+	while (true) {
+		vector<int> v;
+
+		// [예제] int값 num을 입력받아 v에 [1, 1000]값을 갖는 int num개를 추가
+		// 오른차순 정렬한다
+		// 값을 출력한다.
+
+		cout << "숫자 입력 : ";
+		int num;
+		cin >> num;
+
+		for (int i = 0; i < num; ++i)
+			v.push_back(uid(dre));
+
+		sort(v.begin(), v.end());
+
+		//뒤에서 100개만 
+		for (int num : v | views::take(100))
+			print("{:8}", num);
+	}
+}
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:14:21
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+	v.push_back("2024년");
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:15:41
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+
+	관찰 = true;
+	v.push_back("2024년");
+	v.push_back("4월");
+	v.push_back("9일");
+	관찰 = false;
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:17:19
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+
+	관찰 = true;
+	v.push_back("1");
+	v.push_back("123");
+	v.push_back("12345");
+	관찰 = false;
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:18:34
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+
+	관찰 = true;
+
+	v.push_back("1");
+	
+	cout << endl << endl;
+
+	v.push_back("12");
+	
+	cout << endl << endl;
+	
+	v.push_back("123");
+	관찰 = false;
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:20:34
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+
+	관찰 = true;
+
+	v.push_back("1");
+	
+	cout << endl << endl;
+
+	v.push_back("22");
+	
+	cout << endl << endl;
+	
+	v.push_back("333");
+
+	cout << endl << endl;
+	cout << "save 후" << endl;
+	관찰 = false;
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:21:03
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+
+	관찰 = true;
+
+	v.push_back("1");
+	
+	cout << endl << endl;
+
+	v.push_back("22");
+	
+	cout << endl << endl;
+	
+	v.push_back("333");
+
+	cout << endl << endl;
+	cout << "save 후" << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:55:40
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+	v.reserve(20);
+
+	관찰 = true;
+
+	v.push_back("1");	
+
+	cout << endl << endl;
+
+	v.push_back("22");
+	
+	cout << endl << endl;
+	
+	v.push_back("333");
+
+	cout << endl << endl;
+	cout << "save 후" << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 4:56:11
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	vector<String> v;
+	v.reserve(20);
+
+	관찰 = true;
+
+	v.emplace_back("1");	
+	v.emplace_back("22");
+	v.emplace_back("333");
+	//최적화
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 5:04:18
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	// [문제] 키보드에서 입력한 int값의 합계와 평균을 출력하라.
+	vector<int> v{ istream_iterator<int>{cin}, {} };//키보드 입력 시작부터 입력 끝까지 저장하라.
+	
+	int sum = accumulate(v.begin(), v.end(), 0);
+
+	cout << "합계 - " << sum << endl;
+	cout << "평균 - " << format("{:.2f}", (double)sum / v.size()) << endl;
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 5:04:58
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	// [문제] 키보드에서 입력한 int값의 합계와 평균을 출력하라.
+	vector<int> v{ istream_iterator<int>{cin}, {} };//키보드 입력 시작부터 입력 끝까지 저장하라.
+	//얘를 종료시키려면 ctrl z enter 해야한다
+	int sum = accumulate(v.begin(), v.end(), 0);
+
+	cout << "합계 - " << sum << endl;
+	cout << "평균 - " << format("{:.2f}", (double)sum / v.size()) << endl;
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 5:10:37
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	// [문제] 키보드에서 입력한 String을 길이오름차순 정렬하여 출력하라.
+	vector<String> v{ istream_iterator<String>{cin}, {} };//키보드 입력 시작부터 입력 끝까지 저장하라.
+	
+	for (String s : v)
+		cout << s << " ";
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 5:13:54
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <algorithm>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	// [문제] 키보드에서 입력한 String을 길이오름차순 정렬하여 출력하라.
+	vector<String> v{ istream_iterator<String>{cin}, {} };//키보드 입력 시작부터 입력 끝까지 저장하라.
+	
+	sort(v.begin(), v.end(), [](const String& a, const String& b) {
+		return a.getLen() < b.getLen();
+		});
+
+	for (String s : v)
+		cout << s << " ";
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-09 화요일 오후 5:14:01
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.9 화 (6-2주차)
+//  
+// vector - dynamic array
+// ----------------------------------------------------------
+
+#include <iostream>
+#include <vector>
+#include <numeric>
+#include <algorithm>
+#include "save.h"
+#include "String.h"
+using namespace std;
+extern bool 관찰;
+
+int main()
+{			
+	// [문제] 키보드에서 입력한 String을 길이오름차순 정렬하여 출력하라.
+	vector<String> v{ istream_iterator<String>{cin}, {} };//키보드 입력 시작부터 입력 끝까지 저장하라.
+	
+	sort(v.begin(), v.end(), [](const String& a, const String& b) {
+		return a.getLen() < b.getLen();
+		});
+
+	for (String s : v)
+		cout << s << " ";
+	save("STL.cpp");
+}
