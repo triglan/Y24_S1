@@ -4,7 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="aa80014d-c816-41dc-82e0-3361ea4f51f9" name="Changes" comment="" />
+    <list default="true" id="aa80014d-c816-41dc-82e0-3361ea4f51f9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Lecture/text.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Lecture/text.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/TUKorea_OnlineJudge/001_Palindrome.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/TUKorea_OnlineJudge/015_b진법.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/TUKorea_OnlineJudge/2020예선A_다음순열.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/TUKorea_OnlineJudge/프로그래머스_01_개인정보수집유효기간.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/work6/1100_white_block.py" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
