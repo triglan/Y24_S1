@@ -2,6 +2,7 @@
 // String.cpp	STL 동작을 관찰하기 위한 클래스
 // 
 // 2024.04.02	시작 
+// 2024.04.15 예외를 던지지 않음을 보장 noexcept
 //-----------------------------------------------------------------------------------
 #include "String.h"
 
@@ -64,7 +65,9 @@ String& String::operator=(const String& rhs)
 }
 
 // 이동생성과 이동할당 - 2024.04.02
-String::String(String&& other)
+// 예외를 던지지 않음을 보장 noexcept - 2024.04.15 TODO::
+
+String::String(String&& other) noexcept
 	: len(other.len), id(++uid)
 {
 	p.reset(other.p.release());	// 공부해라
@@ -72,7 +75,7 @@ String::String(String&& other)
 		std::cout << "[" << id << "] - 이동생성, 길이 - " << len << ", 주소 - " << (void*)p.get() << std::endl;
 }
 
-String& String::operator=(String&& other)
+String& String::operator=(String&& other) noexcept
 {
 	if (this == &other)
 		return *this;

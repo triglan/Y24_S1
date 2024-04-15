@@ -27,8 +27,9 @@ public:
 	String& operator=(const String&);
 
 	// 이동생성과 이동할당 - 2024.04.02
-	String(String&&);
-	String& operator=(String&&);
+	// 예외를 던지지 않음을 보장 noexcept - 2024.04.15 TODO::
+	String(String&&) noexcept;
+	String& operator=(String&&) noexcept;
 
 	// sort에서 사용하기 위한 getLen - 2024.04.02
 	size_t getLen() const;

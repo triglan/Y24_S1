@@ -1,28 +1,26 @@
 //----------------------------------------------------------
-// 2024 STL 4.9 화 (6-2주차)
+// 2024 STL 4.15 화 (7-1주차)
 //  
-// vector - dynamic array
+// 4/23 중간시험
 // ----------------------------------------------------------
 
 #include <iostream>
 #include <vector>
-#include <numeric>
-#include <algorithm>
 #include "save.h"
 #include "String.h"
 using namespace std;
 extern bool 관찰;
 
 int main()
-{			
-	// [문제] 키보드에서 입력한 String을 길이오름차순 정렬하여 출력하라.
-	vector<String> v{ istream_iterator<String>{cin}, {} };//키보드 입력 시작부터 입력 끝까지 저장하라.
+{
+	vector<int> v{ 1,2,3,4,5,5,3,4,3,33 };
 	
-	sort(v.begin(), v.end(), [](const String& a, const String& b) {
-		return a.getLen() < b.getLen();
-		});
+	//[문제] v에서 3을 제거하고 출력하라
+	//너무 많이 사용하는 문법이라 이름이 붙어있다
+	//erase-remove idiom
+	v.erase(remove(v.begin(), v.end(), 3), v.end());//벡터 멤버함수인 삭제 함수
 
-	for ( const String s : v)
-		cout << s << " ";
+	for (int num : v)
+		cout << num << ' ';
 	save("STL.cpp");
 }
