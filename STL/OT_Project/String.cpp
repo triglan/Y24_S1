@@ -4,6 +4,7 @@
 // 2024.04.02	시작 
 // 2024.04.15 예외를 던지지 않음을 보장 noexcept
 //-----------------------------------------------------------------------------------
+#include <algorithm>//2024.04.16 equal
 #include "String.h"
 
 // 관찰용 변수 추가 - 2024.04.02
@@ -91,6 +92,14 @@ String& String::operator=(String&& other) noexcept
 	return *this;
 }
 
+//연산자 오버로딩
+//2024.04.16 ==, string은 글자수, 내용이 같아야 한다.
+bool String::operator==(const String& rhs) {
+	if (len != rhs.len)
+		return false;
+	// 비교x
+	return std::equal(p.get(), p.get() + len, rhs.p.get());
+}
 
 // sort에서 사용하기 위한 getLen - 2024.04.02
 size_t String::getLen() const

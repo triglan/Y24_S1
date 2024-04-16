@@ -1,26 +1,37 @@
 //----------------------------------------------------------
-// 2024 STL 4.15 화 (7-1주차)
+// 2024 STL 4.16 화 (7-2주차)
 //  
 // 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
 // ----------------------------------------------------------
 
 #include <iostream>
-#include <vector>
 #include "save.h"
 #include "String.h"
+
+#include <vector>
+#include <deque>
+#include <list>
 using namespace std;
 extern bool 관찰;
 
+class Test {
+	char x[4'096];
+};
 int main()
 {
-	vector<int> v{ 1,2,3,4,5,5,3,4,3,33 };
-	
-	//[문제] v에서 3을 제거하고 출력하라
-	//너무 많이 사용하는 문법이라 이름이 붙어있다
-	//erase-remove idiom
-	v.erase(remove(v.begin(), v.end(), 3), v.end());//벡터 멤버함수인 삭제 함수
-
-	for (int num : v)
-		cout << num << ' ';
+	// vector<Test> v;//236'2204
+	list<Test> v;
+	while (true) {
+		try{
+			v.push_back(Test{});
+		}
+		catch (...) {
+			cout << "끝 : " << v.size() << endl;
+			break;
+		}
+		if (!(v.size() % 10'00000))
+			cout << v.size() << " - Still running..." << endl;
+	}
 	save("STL.cpp");
 }
