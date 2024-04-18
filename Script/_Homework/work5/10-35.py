@@ -8,7 +8,7 @@ class Ball:
         self.dx = 2     # x방향
         self.dy = 2     # y방향
         self.color = choice(colors)
-w = 800
+w = 600
 h = 400
 class MainGUI:
     def stop(self):
