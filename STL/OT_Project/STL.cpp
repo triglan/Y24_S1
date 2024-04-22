@@ -1,52 +1,39 @@
+//-----------------------------------------------------------------------------------
+//                                                         (8주 1일)
+// list
+//-----------------------------------------------------------------------------------
 #include <iostream>
-#include "save.h"
-#include <random>
-#include <array>
+#include <list>
+#include <vector>
+#include <algorithm>
 #include <fstream>
-using namespace std;
+#include "save.h"
+#include "String.h"
 
-default_random_engine dre;
-uniform_int_distribution<int> uidChar{ 'a','z' };
-uniform_int_distribution uidNum{ 1, 99999 };
-
-class Dog {
-	char c{ (char)uidChar(dre) };
-	int num{ uidNum(dre) };
-
-public:
-	Dog() {
-		cout << "디폴트 생성" << endl;
-	}
-	friend ostream& operator<<(ostream& os, const Dog& dog) {
-		return os << "글자 : " << dog.c << ", 숫자 : " << dog.num;
-	}
-};
+extern bool 관찰;
 
 int main()
 {
-	array<Dog, 100> dogs{};
-	for (const Dog& dog : dogs)
-		cout << dog << endl;
+    std::list<String> cont;
 
-	//문제 : dogs를 binary mode/write로 파일에 기록해라.
-	//기록된 파일을 읽어서 num값이 가장 큰 dog를 찾아 화면에 출력
+    std::ifstream in{ "String.cpp" };
+    if (not in)
+        return 0;
+    cont = { std::istream_iterator<String>{in}, {} };
 
-	cout << sizeof dogs << endl;
-	cout << typeid(dogs).name() << endl;
+    관찰 = true;
 
-	ofstream out{ "dogsData.txt", ios::binary };
-	out.write((const char*)dogs.data(), dogs.size() * sizeof(int) * 2);
-
-	ifstream in("dogsData.txt", ios::binary);
-	if (not in)
-		exit(0);
-
-	array<Dog, 100> indogs{};
-
-	in.read((char*)indogs.data(), dogs.size() * sizeof(int) * 2);
-
-	cout << *max_element(istream_iterator<int>{in}, {});
+    // [문제] cont를 길이 오름차순으로 정렬하시오.
+    cont.sort([](const String& a, const String& b) {
+        return a.getLen() < b.getLen();
+        });
 
 
-	//save("STL.cpp");
+    관찰 = false;
+
+    std::cout << std::endl;
+    // [문제] 길이가 5인 것들만 화면에 출력하라.
+    //준호 코딩, 지난 코드는 save 참조
+
+    save("stl.cpp");
 }

@@ -1,0 +1,380 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 5:41:21
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	list<String> cont;
+	관찰 = true;
+	cont.push_back("345");
+	관찰 = false;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 5:42:51
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	list<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;
+	관찰 = true;
+	cont.push_back("345");
+	관찰 = false;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 5:49:47
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	list<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;//리스트의 크기 - 16
+	관찰 = true;
+	cont.emplace_back("345");//push_back은 쓸게 못되는구만 emplace_back 복습해봤어요
+	관찰 = false;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 5:50:37
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	list<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;//리스트의 크기 - 16
+	관찰 = true;
+	cont.emplace_back("345");//push_back은 쓸게 못되는구만 emplace_back 복습해봤어요
+	cont.emplace_front("1");
+	관찰 = false;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 5:51:41
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	list<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;//리스트의 크기 - 16
+	관찰 = true;
+	cont.emplace_back("345");//push_back은 쓸게 못되는구만 emplace_back 복습해봤어요
+	cont.emplace_front("1");//push_back처럼 이동생성을 하지 않아요
+	cont.emplace(++cont.begin(), "22");
+	관찰 = false;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 5:52:48
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	list<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;//리스트의 크기 - 16
+	관찰 = true;
+	cont.emplace_back("345");//push_back은 쓸게 못되는구만 emplace_back 복습해봤어요
+	cont.emplace_front("1");//push_back처럼 이동생성을 하지 않아요
+	cont.emplace(++cont.begin(), "22");
+	관찰 = false;
+	cout << endl;
+	for (const String& s : cont)
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 6:02:17
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	list<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;//리스트의 크기 - 16
+	관찰 = true;
+	//[문제] "string.cpp"에 있는 단어를 cont에 저장하라
+
+	ifstream in{ "String.cpp" };
+	if (not in) return 0;
+	String s;
+	while (in >> s) {
+		cont.push_back(s);
+	}
+
+	관찰 = false;
+	cout << endl;
+	for (const String& s : cont)
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 6:06:34
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+#include <fstream>
+#include <vector>
+#include <deque>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	//vector로 돌리면 500개가 아니라 2000줄로 끝난다 엄청 많아졌네
+	vector<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;//리스트의 크기 - 16
+	관찰 = true;
+	//[문제] "string.cpp"에 있는 단어를 cont에 저장하라
+
+	ifstream in{ "String.cpp" };
+	if (not in) return 0;
+	String s;
+	while (in >> s) {
+		cont.emplace_back(s);//이건 어떨까 복사생성이 안나올까? -> 절대 안되지 그저 복사생성될 뿐이야.
+		//s 객체가 그냥 객체니까.
+	}
+
+	관찰 = false;
+	cout << endl;
+	for (const String& s : cont)
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-22 월요일 오후 6:07:10
+================================================
+//----------------------------------------------------------
+// 2024 STL 4.22 화 (8-1주차)
+//  
+// 4/23 중간시험
+// deque - vector와 list의 중간형태를 띄는 자료구조다.
+// ----------------------------------------------------------
+
+#include <iostream>
+#include "save.h"
+#include "String.h"
+#include <list>
+#include <fstream>
+#include <vector>
+#include <deque>
+using namespace std;
+extern bool 관찰;
+
+class Test {
+	char x[4'096];
+};
+int main()
+{
+	//list : 500, deque : 500, vector : 2000
+	deque<String> cont;
+	cout << "리스트의 크기 - " << sizeof cont << endl;//리스트의 크기 - 16
+	관찰 = true;
+	//[문제] "string.cpp"에 있는 단어를 cont에 저장하라
+
+	ifstream in{ "String.cpp" };
+	if (not in) return 0;
+	String s;
+	while (in >> s) {
+		cont.emplace_back(s);//이건 어떨까 복사생성이 안나올까? -> 절대 안되지 그저 복사생성될 뿐이야.
+		//s 객체가 그냥 객체니까.
+	}
+
+	관찰 = false;
+	cout << endl;
+	for (const String& s : cont)
+		cout << s << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+stl.cpp, 저장시간: 2024-04-22 월요일 오후 6:53:55
+================================================
+//-----------------------------------------------------------------------------------
+//                                                         (8주 1일)
+// list
+//-----------------------------------------------------------------------------------
+#include <iostream>
+#include <list>
+#include <vector>
+#include <algorithm>
+#include <fstream>
+#include "save.h"
+#include "String.h"
+
+extern bool 관찰;
+
+int main()
+{
+    std::list<String> cont;
+
+    std::ifstream in{ "String.cpp" };
+    if (not in)
+        return 0;
+    cont = { std::istream_iterator<String>{in}, {} };
+
+    관찰 = true;
+
+    // [문제] cont를 길이 오름차순으로 정렬하시오.
+    cont.sort([](const String& a, const String& b) {
+        return a.getLen() < b.getLen();
+        });
+
+
+    관찰 = false;
+
+    std::cout << std::endl;
+    // [문제] 길이가 5인 것들만 화면에 출력하라.
+    //준호 코딩, 지난 코드는 save 참조
+
+    save("stl.cpp");
+}
