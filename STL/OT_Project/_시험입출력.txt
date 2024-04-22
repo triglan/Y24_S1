@@ -1,0 +1,125 @@
+
+//문제 : a에 있는 모든 int 값을 파일 "int값들.txt에 기록"
+#include <fstream>
+	ofstream out{ "int값들.txt" }; // RAII
+	for (int num : a)
+		out << num << endl;
+		
+
+		
+		
+//문제 : 파일 int값들.txt에는 몇개인지 모르는 int가 저장되어 있다.
+//모두 몇개인지 출력하고 그 중에 가장 큰 값도 화면에 출력하시오
+
+	//파일 읽어오는건 이런 방식을 쓸 수 밖에 없네
+	ifstream in{ "int값들.txt" };
+	if (not in)
+		exit(0);
+	
+	cout << *max_element(istream_iterator<int>{in}, {});
+
+
+//dogs 읽고 쓰기
+//문제 : dogs를 binary mode/write로 파일에 기록해라.
+//기록된 파일을 읽어서 num값이 가장 큰 dog를 찾아 화면에 출력
+class Dog {
+	char c{ (char)uidChar(dre) };
+	int num{ uidNum(dre) };
+
+public:
+	Dog() {
+		cout << "디폴트 생성" << endl;
+	}
+	friend ostream& operator<<(ostream& os, const Dog& dog) {
+		return os << "글자 : " << dog.c << ", 숫자 : " << dog.num;
+	}
+};
+
+int main()
+{
+	array<Dog, 100> dogs{};
+	for (const Dog& dog : dogs)
+		cout << dog << endl;
+
+	cout << sizeof dogs << endl;
+	cout << typeid(dogs).name() << endl;
+
+	ofstream out{ "dogsData.txt", ios::binary };
+	out.write((const char*)dogs.data(), dogs.size() * sizeof(int) * 2);
+
+	ifstream in("dogsData.txt", ios::binary);
+	if (not in)
+		exit(0);
+	
+	array<Dog, 100> indogs{};
+
+	in.read((char*)indogs.data(), dogs.size() * sizeof(int) * 2);
+
+	cout << *max_element(istream_iterator<int>{in}, {});
+
+
+	save("STL.cpp");
+}
+
+//binary모드 개들 100개 가장 큰 dog 객체 출력
+//바이너리로 열지 않았는데도 정상적으로 종료되면서 정상적인 것처럼 보이기에 조심해야 된다
+//이 파일은 어떻게 기록되어 있는지 binary 기억해라.
+#include <fstream>
+#include <array>
+ifstream in{ "개들", ios::binary};
+if (not in) {
+	cout << "파일을 열 수 없다" << endl;
+	return 0;
+}
+
+//100번 Dog정보 - char - i, num - 38857
+array<Dog, 100> dogs;
+in.read((char*)dogs.data(), sizeof(Dog) * 100);
+dogs[99].show();
+
+
+//[변형] -->	여기에는 몇 개 인지 모르는 class Dog 객체를 write했다.
+ifstream in{ "개들", ios::binary};
+	if (not in) return 0;
+    
+    while (in >> dog)
+		++cnt;
+	cout << "Dog 개수 - " << cnt << endl;
+	cout << "100번째 Dog의 정보 - ";
+	dog.show();
+
+
+//[2] class Dog 객체 100개 기록되어 있다.
+array<Dog, 100> dogs;
+in.read((char*)dogs.data(), sizeof(Dog) * 100);
+Dog maxDog;
+int maxValue{ numeric_limits<int>::min() };
+
+
+//[3] 1000미만인 Dog 객체의 수를 출력해라.
+int cnt = count_if(dogs.begin(), dogs.end(), [](const Dog& dog) {
+	return dog.getNum() % 2; // 홀수 일 때 참, 짝수 일 때 거짓
+	});
+Cnt = 1000미만인 dog의 개수
+
+
+[문제] "STL.cpp"의 모든 소문자를 대문자로 바꿔 "STL대문자.txt"에 저장해라
+    ifstream in{ "STL.cpp", ios::binary };
+    if (not in) return 444444;
+    ofstream out{ "STL대문자.txt", ios::binary };
+
+    transform(istreambuf_iterator<char>{in}, {}, 
+        ostreambuf_iterator<char>{out}, [](char c) {return c = toupper(c); }
+    );
+
+//파일입출력 
+    ifstream in{ "STL.cpp", ios::binary };
+    if (not in) return 444444;
+    ofstream out{ "STL대문자.txt", ios::binary };
+
+    char c;
+    while (in.read(&c, sizeof(char)))
+        cout << c;
+
+//[문제] "string.cpp"에 있는 단어를 cont에 저장하라
+cont = { istream_iterator<string>{in}, {} };

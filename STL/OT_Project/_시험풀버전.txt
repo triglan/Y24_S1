@@ -1,0 +1,141 @@
+//Change 선언 및 정의
+    void change(int &a, int &b) {
+        int temp{ a };
+        a = b;
+        b = temp;
+    }
+    change(a, b);
+
+
+//숫자 랜덤 설정 및 출력
+    #include <random>
+    #include <format>
+
+    default_random_engine dre;
+    uniform_int_distribution uid{ 1000, 9999 };
+
+    int a[1000];
+    for (int num : a)
+        num = uid(dre);
+
+    for (int num : a)
+        cout << format("{:8}", num);
+	
+
+// 제일 큰 값을 찾아 화면에 출력해라
+    #include <minmax.h>
+    auto pos = max_element(begin(a), end(a));
+    cout << "최댓값 : " << *pos << endl;
+
+
+//[문제] eclass에 가면 개들 파일이 있다. 파일을 binary모드로 기록했다.
+//여기에는 class Dog 객체 100개 가록되어 있다. write함수를 사용하여 기록하였다.
+//class Dog의 멤버는 다음과 같다.
+//파일을 읽어 num값이 가장 큰 dog객체를 화면에 출력하라
+//[변형] -->	여기에는 몇 개 인지 모르는 class Dog 객체를 write했다.
+//[2] class Dog 객체 100개 기록되어 있다.
+
+    class Dog {
+        char c;
+        int num;
+
+    public:
+        int getNum() const {
+            return num;
+        }
+
+        void show() const {
+            cout << "char - " << c << ", num - " << num << endl;
+        }
+
+    };
+
+    int main()
+    {
+        //바이너리로 열지 않았는데도 정상적으로 종료되면서 정상적인 것처럼 보이기에 조심해야 된다
+        //이 파일은 어떻게 기록되어 있는지 binary 기억해라.
+        ifstream in{ "개들", ios::binary};
+        if (not in) {
+            cout << "파일을 열 수 없다" << endl;
+            return 0;
+        }
+        array<Dog, 100> dogs;
+        in.read((char*)dogs.data(), sizeof(Dog) * 100);
+            
+        Dog maxDog;
+        int maxValue{ numeric_limits<int>::min() };
+
+        for (const Dog& dog : dogs) {
+            if (maxValue < dog.getNum()) {
+                maxDog = dog;
+                maxValue = dog.getNum();
+            }
+        }
+
+        cout << "Num값이 가장 큰 dog" << endl;
+        maxDog.show();
+
+        save("STL.cpp");
+    }
+
+
+
+//int num 만큼 동적할당 후 0부터 num까지 합계출력
+    int num;
+    cout << "숫자 - ";
+    cin >> num;
+
+    int* arr = new int[num];
+
+    iota(arr, arr + num, 1);
+    auto sum = accumulate(arr, arr + num, 0LL);// (longlong) 0이라는 뜻 
+
+    cout << "합계 : " << sum << endl;
+
+
+
+
+//퀵소트
+// [문제] [10'000, 99'999) 범위의 값을 갖는 int 100개를 만들어 주세요.
+// qsort를 사용하여 오름차순으로 정렬하시오.
+// 정렬된 결과를 화면에 보여주시오.
+    #include <iostream>
+    #include "save.h"
+    #include <random>
+    #include <array>
+    #include <print>
+    using namespace std;
+
+    int main()
+    {
+        array<int, 100> a;
+
+        for (int& num : a)
+            num = uid(dre);
+
+        //qsort로 정렬 - generic 함수라서 여기서 시작
+        int 정렬기준(const void* a, const void * b);
+        qsort(a.data(), a.size(), sizeof(int), 정렬기준);
+
+        cout << typeid(정렬기준).name() << endl;//이걸 위해서 지금까지 설명했다.
+
+        for (int num : a)
+            print("{:8}", num);
+
+        save("STL.cpp");
+    }
+
+int 정렬기준(const void* a, const void* b) {
+	return *(int*)a - *(int*)b;
+}
+
+//[문제] "string.cpp"에 있는 단어를 cont에 저장하라
+
+    ifstream in{ "String.cpp" };
+    if (not in) return 0;
+    String s;
+    while (in >> s) {
+        cont.push_back(s);
+    }
+
+

@@ -11,7 +11,6 @@
 #include "save.h"
 void save(std::string_view fileName)
 {
-    exit(0);
     // fileName을 읽을 파일로 연다.
     std::ifstream in{ fileName.data() };
     if (not in) {
