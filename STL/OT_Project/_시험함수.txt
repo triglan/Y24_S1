@@ -1,0 +1,96 @@
+Const - 데이터 안바꿀거면 붙여
+
+//begin부터 end까지 0부터 +1 해가면서 더하면서 채워
+std::iota(v.begin(), v.end(), 0);
+
+//배열
+    array<int,10> arr{};
+
+
+// char* -> string
+// T[N] -> array
+// T* -> unique_ptr, shared_ptr(스마트 포인터로 대체)
+
+//예외처리 함수
+    try {// 문제가 발생할 수 있는 곳에 전부 넣어줘야 한다
+            f();//자원을 확보하고 정리하는 함수	
+        }
+        catch (...) {//예외를 캐치하게 되면..
+
+        }
+	
+//스마트포인터
+    unique_ptr<Dog[]> p{ new Dog[3] };
+
+
+//파일 입출력
+    ifstream in{ "STL.cpp", ios::binary };
+    ofstream out{ "STL대문자.txt", ios::binary };
+
+//소문자 -> 대문자
+    transform(istreambuf_iterator<char>{in}, {}, 
+        ostreambuf_iterator<char>{out}, [](char c) {return c = toupper(c); }
+    );
+    대문자화 toupper, 소문자화 tolower
+
+//랜덤 숫자
+    uniform_int_distribution uid{ 10000, 99999 };
+    default_random_engine dre;
+    for (int& num : a)
+        num = uid(dre);
+
+//정렬
+    qsort(a.data(), a.size(), sizeof(int), 정렬기준);  
+    int 정렬기준(const void* a, const void* b) {
+        return *(int*)a - *(int*)b;
+    }//정렬기준 type id : int __cdecl(void const * __ptr64,void const * __ptr64)
+
+    std::sort(a.begin(), a.end(), [](int a, int b) {
+        return a > b;
+        });// 가독성 훌륭한 코드 내림차순 
+
+//deque - 이사 안가서 list처럼 많이 이동 안함, vector는 무슨 4배는 더 활동함
+    sort( cont.begin(), cont.end(), [](const String& a, const String& b) {
+        return a.getLen() > b.getLen();
+        });
+
+//리스트 정렬
+    cont.sort( [](const String& a, const String& b) {
+        return a.getLen() > b.getLen();
+        });//리스트 정렬, 리스트는 위치가 주르르 연결된게 아니니까
+        길이를 몰라 이렇게 전달해야 한다.
+
+
+std::sort(a.begin(), a.end());
+
+
+// sort할 때 어떤 기준으로 정렬할지를 어떻게 sort 함수에게 알려주나?
+// 1. 함수포인터를 전닳나다
+// 2. 람다를 전달한다
+/ 3. () 연산자(FUNCTION CALL)를 오버로딩한 클래스의 객체
+
+//typeid
+ typeid(정렬기준).name() 
+
+//람다 -> visual studio에서는 함수 객체 라고 단언 가능
+    void f(function<bool(int,int)> x) {
+        x(3, 5);
+    }
+    f([](int a, int b)->bool {
+            return true;
+            });
+		
+//push_back 대용 emplace_back
+    list<String> cont;
+    cont.emplace_back("345");//push_back은 쓸게 못되는구만 emplace_back 복습해봤어요
+    cont.emplace_front("1");//push_back처럼 이동생성을 하지 않아요
+
+//[문제] "string.cpp"에 있는 단어를 cont에 저장하라
+    cont = { istream_iterator<string>{in}, {} };
+
+
+//ifstream으로 읽은 글자 읽기
+char c;
+while (in >> c)//이거 이상 간단하고 좋은 코드가 없다 글자를 읽는 것
+
+
