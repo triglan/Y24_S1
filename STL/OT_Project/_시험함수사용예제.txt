@@ -1,3 +1,21 @@
+//컨테이너
+    Sequence - 원소에 R/W 해도 됨
+    array 
+        메모리가 딱 붙어 있음
+        random_acess 가능
+    vector
+        메모리 딱 붙어있음
+        random_acess 가능
+        push_back 뒤로 추가 가능
+    deque
+        메모리 띄어져 있음
+        random_acess 완전히 가능은 아님
+        push_back, fron 가능
+    list
+        시퀀스의 공통점
+        push_back,fron,insert,erase 상수시간에 가능
+
+
 //기본함수
     cout << sizeof in << endl; // 너 몇바이트 짜리야? ifstream은 272바이트 만큼 차지하네
     cout << addressof( in ) << endl; // 넌 어디에 살고 있니?, 얘는 괄호에 넣어야 하네.
@@ -646,7 +664,6 @@
     }
 
 
-
 //[문제] v에서 3을 제거하고 출력하라
     #include <iostream>
     #include <vector>
@@ -785,18 +802,21 @@
 
     int main()
     {
-
-
-        //파일 읽어오는건 이런 방식을 쓸 수 밖에 없네
         ifstream in{ "int값들.txt" };
         if (not in)
             exit(0);
 
-        cout << *max_element(istream_iterator<int>{in}, {});
+        cout << *max_element(istream_iterator<int>{in}, {}) << endl;
+        in.clear();
+        in.seekg(0, ios::beg);//포인터 처음으로 돌리기
 
 
-        save("STL.cpp");
-    }
+        int num, cnt{};
+        while (in >> num)
+            ++cnt;
+        cout << "모두 " << cnt << "개의 int를 읽었다." << endl;
+        
+    }   
 
 
 //[문제] "string.cpp"에 있는 단어를 cont에 저장하라

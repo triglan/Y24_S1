@@ -5,17 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="aa80014d-c816-41dc-82e0-3361ea4f51f9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/docx/2020182028이규원_숙제6.docx" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/docx/2020182028이규원_숙제6.docx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work2/10-2Ref.py" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/work2/10-2Ref.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work2/10-5.py" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/work2/10-5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work6/001_Palindrome.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work6/015_b진법.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work6/BJ_10250_ACMHotel.py" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/work6/BJ_10250_ACMHotel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work6/TU_2020B_BestElbum.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work6/TU_2021A_MoneyInOut.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work6/TU_2021B_matrixGame.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/_Homework/work6/프로그래머스_01_개인정보수집유효기간.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidExam.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/MidExam_Function.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/_Homework/.idea/.name" beforeDir="false" afterPath="$PROJECT_DIR$/_Homework/.idea/.name" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
