@@ -132,10 +132,14 @@
     <ClCompile Include="save.cpp" />
     <ClCompile Include="STL.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="중간시험.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="save.h" />
     <ClInclude Include="String.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="개들" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
