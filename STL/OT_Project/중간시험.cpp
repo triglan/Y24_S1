@@ -1,3 +1,8 @@
+
+
+==================================================
+stl.cpp, 저장시간: 2024 - 04 - 29 월요일 오후 6 : 46 : 28
+==================================================
 //-----------------------------------------------------------------------------
 // 2024 STL 중간시험
 // 
@@ -23,6 +28,7 @@
 #include <string>
 #include <vector>
 #include <numeric>
+#include "save.h"
 using namespace std;
 
 default_random_engine dre;
@@ -48,38 +54,46 @@ private:
 	array<int, 1'000> a{};				// 여기에 num개의 int 값이 저장된다
 
 public:
-	Dog( ) = default;
+	Dog() = default;
 
-	Dog( int num ) : num{ num } {		// 파일을 읽지 못한 경우 사용할 생성자
+	Dog(int num) : num{ num } {		// 파일을 읽지 못한 경우 사용할 생성자
 		for (int i = 0; i < num; ++i)
-			a[i] = uid( dre );
+			a[i] = uid(dre);
 	}
 
-	int getNum( ) const {
+	int getNum() const {
 		return num;
 	}
 
-	int* getData( ) const {
+	int* getData() const {
 		return const_cast<int*>(a.data());
 	}
 
-	void show( ) const {
+	void show() const {
 		cout << "저장하고 있는 int 개수 - " << num << endl;
 		for (int i = 0; i < num; ++i)
-			print( "{:8}", a[i] );
+			print("{:8}", a[i]);
 		cout << endl;
 	}
 
-	void write( ostream& os ) {
-		os.write( (const char*)(this), sizeof( *this ) );
+	void write(ostream& os) {
+		os.write((const char*)(this), sizeof(*this));
 	}
 };
 
 
 //---------
-int main( )
+int main()
 //---------
 {
+	save("stl.cpp");
+
+	// 제일 먼저 확인해 볼 것은 객체의 크기다.
+	cout << "Dog 객체의 크기 - " << sizeof Dog << endl;
+
+	// 화면 출력 결과
+	// Dog 객체의 크기 - 4004
+
 	//------------------------------------------------------------
 	// 이 파일을 그대로 실행하면 오류없이 실행될 것이다. 
 	// 실행되는지 확인하고 문제를 해결하자. 
@@ -92,13 +106,13 @@ int main( )
 		return 0;
 	}
 
-	size_t fileSize = filesystem::file_size( inFileName );
+	size_t fileSize = filesystem::file_size(inFileName);
 	cout << "파일 \"" << inFileName << "\"의 크기는 " << fileSize << " 바이트 입니다" << endl;
 
 	{
 		// 실행 확인용 코드
 		Dog dog{ 23 };
-		dog.show( );
+		dog.show();
 
 		// 화면 출력(예)
 		// 저장하고 있는 int 개수 - 23
@@ -107,6 +121,7 @@ int main( )
 		//	157613  725839  970592
 	}
 
+
 	//--------------------------------------------------------------------------
 	// [문제 1] 파일에 저장된 Dog 객체가 모두 몇 개인지 화면에 출력하라.	(10)
 	//--------------------------------------------------------------------------
@@ -114,17 +129,15 @@ int main( )
 	// Dog 객체가 몇 개인지 계산하여 출력하는 코드를 답지에 쓴다.
 	// 화면에 출력된 개수도 답지에 쓴다.
 	//--------------------------------------------------------------------------
-	int dogNum{}, cnt{};
+	int dogNum{};				// 여기에 Dog 객체의 개수를 저장한다
 
-	//in.clear();
-	//in.seekg(0, ios::beg);//포인터 처음으로 돌리기
+	cout << endl;
+	cout << "[문제 1] 답" << endl;
+	dogNum = fileSize / sizeof(Dog);
+	cout << "파일의 저장된 Dog 객체의 수 - " << dogNum << endl;
 
-	//while (in >> dogNum)
-	//	++cnt;
-	//cout << "모두 " << cnt << "개의 개를 읽었다." << endl << endl;
-
-
-
+	// 화면에 출력된 답
+	// 파일의 저장된 Dog 객체의 수 - 2024
 
 	//--------------------------------------------------------------------------
 	// [문제 2] 파일에 있는 Dog 객체를 컨테이너에 저장하라.                  
@@ -135,17 +148,20 @@ int main( )
 	// 화면에 출력된 num 값을 답지에 쓴다.
 	//--------------------------------------------------------------------------
 
-	Dog dog;
-	vector<Dog> dogVector;
+	cout << endl;
+	cout << "[문제 2] 답" << endl;
 
-	while (inFile) {
-		dog.read(inFile); // 파일에서 Dog 객체 읽기
-		dogVector.push_back(dog); // vector에 저장
-	}
+	// 어떤 컨테이너에 저장할 것인가?
+	// vector와 list 둘 다 좋다 -> list로 답을 보이진 않겠다.
+	// 메모리를 이해한다면 앞의 답보다 더 좋은 답을 쓸 수 있다 
+	// 이렇게...
+	vector<Dog> v(dogNum);
+	in.read((char*)v.data(), dogNum * sizeof(Dog));
 
-	//vector<Dog> cont;
-	//for (const Dog& d : dog)
-	//	cont.emplace_back();
+	v.back().show();
+
+	// 화면출력
+	// 마지막 객체의 num - 40
 
 	//**************************************************************************
 	// 파일에 있는 Dog를 읽지 못한 학생은 아래 주석을 제거한 후 
@@ -154,12 +170,14 @@ int main( )
 	//**************************************************************************
 
 	// 파일을 읽지 못했다면 주석을 풀어 다음 코드를 사용하여 진행하면 된다.
+	/*
 		dogNum = 1234;
 		vector<Dog> v;
 		v.reserve( 1234 );
 		for ( int i = 0; i < 1'234; ++i )
-			v.emplace_back( uidNum(dre) );
+		v.emplace_back( uidNum(dre) );
 
+	*/
 
 	//--------------------------------------------------------------------------
 	// [문제 3] Dog 객체를 num 기준 오름차순으로 정렬하라.				   	
@@ -168,13 +186,21 @@ int main( )
 	// 문제를 해결하는 코드를 답지에 적어라.
 	// 화면에 출력된 호출횟수를 답지에 적어라.
 	//--------------------------------------------------------------------------
-	int sortcnt = 0;
-	sort(v.begin(), v.end(), [&](const Dog& a, const Dog& b) {//const String& &<< 빼면 무슨일 생기는지 관찰
-		++sortcnt;
-		return a.getNum() > b.getNum();
+
+	cout << endl;
+	cout << "[문제 3] 답" << endl;
+
+	size_t cnt{};
+
+	sort(v.begin(), v.end(), [&cnt](const Dog& a, const Dog& b) {
+		++cnt;
+		return a.getNum() < b.getNum();
 		});
 
-	cout << "sortcnt : " << sortcnt << endl;
+	cout << "비교함수 호출 횟수 - " << cnt << endl;
+
+	// 화면출력결과
+	// 비교함수 호출 횟수 - 32673
 
 
 	//--------------------------------------------------------------------------
@@ -185,15 +211,34 @@ int main( )
 	// 문제를 해결하는 코드를 답지에 적는다.
 	// 화면에 출력된 num 값을 답지에 쓴다.
 	//--------------------------------------------------------------------------
-	
-	//vector DogData<int, 1234>& data = dog.getData();
-	//int sum{ 1234 };
-	//for (const Dog& d : v)
-	//	sum = d.getNum();
-	//cout << sum;
 
-	//cout << "평균 - " << format("{:.2f}", (double)sum / v.size()) << endl;
+	cout << endl;
+	cout << "[문제 4] 답" << endl;
 
+	// 가장 큰 객체를 찾을 때는 -> max_element
+	auto pos = max_element(v.begin(), v.end(), [](const Dog& a, const Dog& b) {
+		double ave1 = accumulate(a.getData(), a.getData() + a.getNum(), 0.f) / a.getNum();
+		double ave2 = accumulate(b.getData(), b.getData() + b.getNum(), 0.f) / b.getNum();
+		return ave1 < ave2;
+		});
+	cout << "평균값이 가장 큰 Dog의 num - " << pos->getNum() << endl;
+
+	// 화면 출력결과
+	// 평균값이 가장 큰 Dog의 num - 6
+
+	// 답이 맞는 지 궁금해서 평균값 기준으로 sort 한 후 출력해 본다
+	// 제일 마지막 Dog가 정답일 것이다
+	cout << endl;
+
+	sort(v.begin(), v.end(), [](const Dog& a, const Dog& b) {
+		double ave1 = accumulate(a.getData(), a.getData() + a.getNum(), 0.f) / a.getNum();
+		double ave2 = accumulate(b.getData(), b.getData() + b.getNum(), 0.f) / b.getNum();
+		return ave1 < ave2;
+		});
+
+	for (const Dog& dog : v)
+		print("{:8}", dog.getNum());
+	cout << endl;
 
 
 	//--------------------------------------------------------------------------
@@ -216,4 +261,22 @@ int main( )
 	// 출력된 평균값도 답지에 적는다.
 	// (힌트) 전역함수 to_string()은 int를 string으로 변환한다.
 	//--------------------------------------------------------------------------
+
+	cout << endl;
+	cout << "[문제 5] 답" << endl;
+
+	long long cnt5{};
+	long long sum{};
+
+	for (long long i = numeric_limits<int>::min(); i <= numeric_limits<int>::max(); ++i) {
+		++cnt5;
+		sum += to_string(i).length();
+		if (not (i % 1'0000'0000)) {
+			cout << cnt5 << " - " << i << endl;
+		}
+	}
+
+	cout << "int를 글자로 표현할때 필요한 바이트 수의 평균 - " << format("{:.2f}",
+		(double)sum / cnt5) << endl;
+
 }
