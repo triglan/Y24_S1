@@ -1,0 +1,106 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-30 화요일 오후 5:07:03
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 4월 30일 화요일
+// 
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include <list>
+#include "save.h"
+#include "string.h"
+#include <fstream>
+#include <vector>
+#include <algorithm>
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	//===vector 완===
+	// forward_list는 낭비되는 공간이 없지만 쓰게 굉장히 난해하고 어렵다
+	// [문제] "STL.cpp"의 소문자를  list<char>에 push_back()으로 저장하라.
+	ifstream in{ "STL.cpp" };
+	if (not in) return -1;
+
+	vector<char> list{};
+	char c;
+	
+	while (in >> c)
+		if(islower(c))	//너 소문자야?
+			list.push_back(c);
+
+	sort(list.begin(), list.end()); // 벡터의 정렬, algorithm include
+	auto p = unique(list.begin(), list.end());
+	list.erase(p, list.end());
+
+	// 출력하라
+	for (const char& c : list)
+		cout << c;
+	cout << endl;
+
+
+	// 모든 소문자가 다 있나 확인하라. - qyzj
+	if (list.size() == 26)
+		cout << "[a,z] 다 있음" << endl;
+	else
+		cout << "없는 문자가 있다." << endl;
+
+	save("STL.cpp");
+}   
+
+
+================================================
+STL.cpp, 저장시간: 2024-04-30 화요일 오후 5:07:53
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 4월 30일 화요일
+// 
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include <list>
+#include "save.h"
+#include "string.h"
+#include <fstream>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	// ===list완==
+	// [문제] "STL.cpp"의 소문자를  list<char>에 push_back()으로 저장하라.
+	ifstream in{ "STL.cpp" };
+	if (not in) return -1;
+
+	list<char> list{};
+	char c;
+	
+	while (in >> c)
+		if(islower(c))	//너 소문자야?
+			list.push_back(c);
+
+	//정렬도 해보자
+	list.sort();//char을 담고 있고 char char을 비교할텐데, 언어 자체적으로 지원한다.
+	//중복 제거 해보자
+	list.unique();
+
+	// 출력하라
+	for (const char& c : list)
+		cout << c;
+	cout << endl;
+
+
+	// 모든 소문자가 다 있나 확인하라.
+	if (list.size() == 26)
+		cout << "[a,z] 다 있음" << endl;
+	else
+		cout << "없는 문자가 있다." << endl;
+
+	save("STL.cpp");
+}   

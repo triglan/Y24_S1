@@ -3,7 +3,8 @@
 // 
 // 2024.04.02	시작 
 // 2024.04.15 noexcept -> 검사 없이? 돌리기 성능 향상
-// 2024.04.16 operator== 
+// 2024.04.16 operator==
+// 2024.04.30 operator<  
 //-----------------------------------------------------------------------------------
 #pragma once
 #include <memory>
@@ -36,6 +37,9 @@ public:
 	//연산자 오버로딩
 	//2024.04.16 ==, string은 글자수, 내용이 같아야 한다.
 	bool operator==(const String& rhs);
+
+	//2024.04.30 <
+	bool operator<(const String& rhs)const;
 
 	// sort에서 사용하기 위한 getLen - 2024.04.02
 	size_t getLen() const;
