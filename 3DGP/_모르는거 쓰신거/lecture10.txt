@@ -1,0 +1,62 @@
+OMSetRenderTargets의 RTsSingleHandleToDescriptorRange 매개변수: 렌더 타겟 서술자들이 연속되어있다면, 첫 번째 원소의 주소에만 의존하도록 함
+한번에 설정할 수 있는 렌더 타겟 서술자의 최대 개수: 8개
+
+RSSetViewports: 모든 뷰포트를 동시에 설정해야 함, 뷰포트의 개수가 1보다 크면 기하 쉐이더에서 SV_ViewportArrayIndex를 사용(그렇지 않으면 첫번째 사각형을 사용)
+한번에 설정할 수 있는 뷰포트의 최대 개수: D3D12_VIEWPORT_AND_SCISSORRECT_OBJECT_COUNT_PER_PIPELINE(16)
+
+RSSetScissorRects: 시저 사각형은 렌더링에서 제거하지 않을 영역, 뷰포트와 마찬가지로 동시에 설정해야 함
+	-> 시저 사각형에서 포함되지 않은 영역이 렌더링에서 제거됨
+	마찬가지로 시저 사각형의 개수가 1보다 크면 기하 쉐이더에서 SV_ViewportArrayIndex를 사용
+	*명령 리스트가 Reset() 될 때마다 시저 사각형을 다시 설정해야 함
+
+D3D12_RESOURCES_STATE: 리소스 상태 (읽기/쓰기 동작에 대한 권한들)
+	- 디폴트 힙의 초기 상태: COPY_DEST
+	- 업로드 힙의 초기 상태: GENERIC_READ
+	- 읽기 힙의 초기 상태: COPY_DEST
+	- 백버퍼: RENDER_TARGET
+	- depth버퍼: DEPTH_WRITE
+	- VERTEX_AND_CONSTANT_BUFFER, INDEX_BUFFER, etc.
+
+	*ppt에서 파란색은 read, 빨간색은 write, 보라색은 r/w를 나타냄
+
+Resource Barrier
+	- Transition: 서브리소스의 이전 사용 상태, 이후 사용 상태로 동기화
+	- Aliasing
+	- UAV
+
+
+파이프라인
+	- 고정 프로그램 단계
+		- IA
+		- TS(Tessellator Stage)
+		- SO(Stream Output Stage)
+		- RS
+		- OM
+	- 프로그램(Programmable) 단계
+		- VS
+		- HS
+		- DS
+		- GS
+		- PS
+		
+Device 출력 상태는 PSO를 통해 바꾸거나, 고정 파이프라인 함수를 통해 바꾸거나
+
+
+IA: 응용 프로그램에서 제공한 정점 버퍼의 정점데이터를 다른 파이프라인 단계에서 사용할 프리미티브로 조립,
+	시스템 생성 값을 추가 (SV_PrimitiveID, SV_InstanceID, SV_VertexID)
+(IASetPrimitiveTopology)
+
+
+5월 4일 17시 10분
+
+
+
+
+----------------------------------------------------------
+OIT - dual depth peeling, stocastic transparency
+directML upscaling
+PBD
+Ray tracing
+GAN - UI, SFX
+LOD
+Lock Free Programming

@@ -1,0 +1,5 @@
+depth test 왜 하냐 -> z좌표 기준으로 정렬 안하려고
+
+constant buffer에서 constant의 의미: Draw call 도중에 변하지 않는다.
+
+D3DCompileFromFile -> VS 내장 컴파일러를 이용해 미리 바이트코드를 만들고 갖다 쓸 수도 있고, 이 함수를 써서 직접 런타임에 컴파일할 수도 있다.

@@ -1,0 +1,81 @@
+Alt + Enter 비활성화
+
+VRAM에다가 리소스를 만들고 그 뷰를 활용하는 것 가능
+ -> DXGI의 백버퍼 Usage와는 조금 다르다. (스왑체인 안에 있는 백버퍼 리소스)
+
+GetBuffer(0, ...)의 0: 그래픽 카드에 있는 Primary Display를 의미하든가, 0번 백버퍼.
+
+Present의 SyncInterval: 수직회귀를 몇 번 기다릴지 (수직동기화 관련 내용)
+0: 기다리지 않음
+1: 1번 기다림
+2: 2번 기다림 ...
+
+Present 플래그: 백버퍼 채울 때 동기화 기다릴지, 버퍼 시퀀싱 등과 관련한 내용
+0: 
+
+DXGI_SWAP_CHAIN_DESC1 -> 빠르게 입체 영상 출력할 때 스테레오 플래그를 활성화할 수 있다.
+
+전체화면 <-> 윈도우: DXGI가 Alt + Enter를 감지하면 자동으로 했으나, 비활성화하면 수동으로 SetFullScreenState() 함수 사용
+전체화면으로 확장했을때 뷰포트의 해상도와 디스플레이의 해상도가 다른 걸 Stretch로 해결하는 게 싫다!
+우린 디스플레이의 해상도를 줄여서 뷰포트에 맞추고 싶다!
+
+ResizeBuffers -> 스왑체인의 백버퍼들의 Configuration을 수정할 수 있는 함수 (개수, 가로, 세로, 포맷, 플래그)
+ResizeTarget -> 바탕화면의 Configuration을 수정할 수 있는 함수 (포캣, 가로, 세로, 주사율, 스캔라인옵션)
+
+*D3D는 ResizeTarget을 호출하면 반드시 ResizeBuffers를 호출하라고 요구함
+-> 버퍼 안 바뀌어도 호출해야 함.
+*ResizeBuffers할 때에는 기존 버퍼의 크기와 같아도 일단 백버퍼들을 전부 릴리즈한 뒤 다시 할당한다.
+	(Depth Stencil View에 유의! 이 친구도 릴리즈해야 함.)
+
+
+그래픽카드에는 내부적으로 엔진 세 개: CopyEngine, RenderingEngine, ComputeEngine
+큐 세 가지 - Copy Queue, Rendering Queue, Compute Queue
+RenderingQueue는 나머지 두 Queue의 역할을 다 수행할 수 있다.
+
+Queue! 먼저 들어간 Command List가 먼저 실행됨
+List도 순서대로 되어있다: 근데 그룹으로 지어서 넣는 이유: 병렬 실행(상태 전환 & 배치 처리)
+
+CMDQueue와 CMDList 둘다 메모리를 차지하잖아 -> 메모리 관리해야지 -> CommandAllocator
+
+ExecuteCommandLists를 호출한다고 바로 실행되지는 않을 수가 있다
+
+D3D12_COMMAND_QUEUE_DESC::D3D12_COMMAND_LIST_TYPE: [Copy, Render, Compute] 중에 하나로 유형을 결정
+한 타입의 큐는 그 타입의 리스트 밖에 실행 못하겠구나~
+
+D3D12_COMMAND_LIST_TYPE_DIRECT: Rendering, 다 할 수 있음
+D3D12_COMMAND_LIST_TYPE_BUNDLE: ? GPU가 직접 실행할 수 없댄다
+D3D12_COMMAND_LIST_TYPE_COMPUTE: Compute
+D3D12_COMMAND_LIST_TYPE_COPY: Copy
+
+Command Queue엔 우선 순위가 있다.
+여러 Command Queue가 경합할 때 어떤 걸 먼저 실행할지 결정
+어떤 걸 높게 하고 어떤 걸 보통으로 해야 하냐? -> 프로그램의 성격에 따라 결정해야 하는 요소
+
+Command Queue에 GPU 타임아웃 옵션을 설정할 수 있음
+D3D12_COMMAND_QUEUE_FLAGS에서 DISABLE_GPU_TIMEOUT 가능 but 잘 안 씀
+
+그래픽카드 여러 개를 쓰면? 멀티 어댑터 프로그램
+-> NodeMask도 설정해야 함 but 우리 게임엔 그럴 일 잘 없음
+
+
+생성 순서: CommandQueue -> CommandAllocator -> CommandList
+
+Allocator도 타입을 따진다 -> Rendering, Compute, Copy
+* 같은 Allocator에서 동시에 두 개 이상의 명령 리스트가 Open 상태가 될 수 없음
+Open 상태란? -> 명령어를 추가할 수 있는 상태
+
+Queue에다 집어넣으려면 Close 하고 넣어야 함
+
+Device의 상태는 두 가지로 관리가 된다.
+- PSO(Pipeline State Object)
+- NPSO(Non-Pipeline State Object)
+
+CommandList::Reset() -> 커맨드 리스트가 재사용 가능한 상태가 됨
+
+CPU와 GPU의 동기화 -> Fence를 통해서
+D3D12_FENCE_FLAGS: Share(공유), Cross Adapter(다중 어댑터, 두 개 이상의 gpu) 플래그 설정 가능
+
+목표 펜스 값을 Signal하고
+gpu로부터 GetCompletedValue()로 펜스 값을 받아옴.
+둘에 차이가 있으면? 아직 실행 안 끝났다.
+SetEventOnCompletion를 통해 펜스 값 비교해서 목표 펜스값에 도달했을 때 실행시킬 동작을 설정
