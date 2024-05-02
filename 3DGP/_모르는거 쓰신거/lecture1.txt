@@ -1,0 +1,38 @@
+Painter's Algorithm - background -> foreground * Not Z-buffering
++ 원근법
+
+Rendering: 3D World -> 2D Display
+
+Model: 3차원 객체의 겉면
+-> Mesh: 물체의 외관, Polygon Mesh: 연결된 다각형 집합
+Polygon <- Edges
+Edge <- Vertices
+Vertex <- real numbers
+
+=> Geometry Modeling
+
+Stored 3D Model File -> real numbers
+
+DX -> CW Winding as Default (CCW is considered as Back Face)
+
+x-up LHC RHC
+y-up LHC RHC: DX: y-up LHC
+z-up LHC RHC
+
+왼손 좌표계의 이점: x(right), y(up) z(front, look, view)로 딱 align 가능 (오른손 좌표계에서 내가 바라보는 방향은 -z축)
+* + 왼손 좌표계의 이점: 행렬을 곱하는 순서와 변환의 적용 순서가 일치하게 된다
+
+*이 수업 시간에서는 Model Space라 한다.(Local, Object)
+
+원점 조정하기: 모델마다 원점(물체의 중심)이 다를 수 있다.
+단위 정하기: 모델마다 단위가 다를 수 있다 (cm, m, km, mile)
+
+Model Space -> 모델마다 유일
+World Space -> 게임 월드에 통일된 하나의 좌표계
+
+객체의 중심(pivot)과 모델의 중심 -> 같지 않을 수도 있다
+
+모델좌표계와 월드좌표계는 가급적 같은 것을 써라. -> y-up LHC
+
+모델 = 메쉬(기하학적 모델)
+객체 = 모델의 인스턴스 -> 객체의 위치와 방향

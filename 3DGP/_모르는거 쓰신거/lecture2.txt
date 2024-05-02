@@ -1,0 +1,27 @@
+*포인트가 아니라 버텍스라고 부르는 이유
+
+텍스처 매핑
+
+Winding order - D3D는 시계방향 -> 반시계방향이다? 은면 -> 은면제거 *행렬식, 내적
+각 면의 정면에서 와인딩 -> 바라보는 방향이 역이냐 정이냐에 따라 CW와 CCW가 반전됨
+
+장면(Scene) -> 월드(World)의 부분집합'
+
+렌더링: 장면에 있는 모든 3D 객체들을 2D로 그리는 것 (결과적으로 모든 픽셀을 그리는 것)
+변환: 3D 점이 어떤 2D 점으로 매핑되는지를 찾아내는 과정
+
+
+
+
+
+------------------------------------------------------------------
+
+MeshAttribute -> a type of unit object that constitutes a Mesh, obtained via querying from Mesh
+Mesh -> a set of MeshAttributes (V, VN, VT, etc)
+*StaticMesh/DynamicMesh
+SceneLayer -> a set of meshs which have to be drawn at a spcific time
+Scene -> a set of SceneLayers
+RenderMethod -> a method to draw an mesh that supports a specific set of MeshAttributes
+RenderLogic -> an object which determines how many times the mesh have to be drawn, and in each of that time,
+	where the mesh have to be drawn and which RenderMethod have to be chosen
+Renderer -> an object which draws a given Scene via utlizing arbitrary RenderLogics

@@ -1,0 +1,15 @@
+CONSERVATIVE_RASTERIZATION_MODE: 프리미티브에 조금이라도 걸치는 모든 픽셀 래스터화, 조금 더 삼각형을 넓게 그림
+
+UI -> VS에서 애초에 Projection 좌표계를 사용하라(모델 쓸 필요 없다). OM에서 Blend하라.
+
+몇 개는 와이어프레임, 몇 개는 솔리드, 몇 개는 VS1, 몇 개는 VS2 등등 여러 configuration -> configuration 수 만큼의 PSO가 필요
+
+배칭, 공간분할에 대한 얘기 하셨음
+
+* 작은 뷰포트에 UI 그릴 때, 렌더 타겟의 크기는 변화 시켜야 하는가?
+* 하드웨어적으로 해상도가 변한 상태로 래스터화되는가?
+
+
+리소스의 구분 - static resource, dynamic resource
+static: 미리 만들어 놓을 수 있는 데이터(메시, 텍스처, 쉐이더 코드 등)
+dynamic: 월드 변환 행렬, 뷰 행렬 등등

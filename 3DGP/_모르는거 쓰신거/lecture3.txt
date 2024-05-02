@@ -1,0 +1,42 @@
+fov와 화면의 크기 간의 관계: fov를 작게 하면 볼 수 있는 범위는 작아지는데 화면의 크기는 그대로이므로, 확대되어 보임
+(레이싱 게임 같은 데에서 속도감을 주려면 fov를 작게 줘라.)
+그냥 확대되어 보이는 것은 아니고, 가까운 물체들의 가시성이 작아짐 (거리감?)
+Vamishing Point - 멀어지면서 모이는 점 -> 원근 나눗셈을 통해서
+
+투영평면과 카메라 사이의 거리 d는 fov가 90도일 때 1 -> 그냥 y/z, x/z만으로 가시성 여부 알 수 있음
+임의의 각도 fov가 주어졌을 때에는 1/tan(fov)로 d를 구하고 y/z*d, x/z*d를 통해서 가시성 여부를 알 수 있다.
+
+
+-------------------------------------------------------
+
+math
+: Expressive, Performant Supports for mathmatical operations via hlsl++ library and own unique extension
+
+
+gfx
+: Basic Components for Drawing (SwapChain, Buffering, Device Initialization, Exception Handling, etc.)
+
+
+gfx::po
+: Defines Pipeline Objects that are overridable
+IPipelineObject -> abstraction for pipeline objects
+
+
+gfx::scenery
+: Renderer-Camera-Scene Model
+
+MeshAttribute -> a type of unit object that constitutes a Mesh, obtained via querying from Mesh
+Mesh -> a set of MeshAttributes (V, VN, VT, etc)
+*StaticMesh/DynamicMesh
+SceneLayer -> a set of meshs which have to be drawn at a spcific time
+Scene -> a set of SceneLayers
+RenderMethod -> a method to draw an mesh that supports a specific set of MeshAttributes
+RenderLogic -> an object which determines how many times the mesh have to be drawn, and in each of that time,
+	where the mesh have to be drawn and which RenderMethod have to be chosen
+Renderer -> an object which draws a given Scene via utlizing arbitrary RenderLogics
+
+현재의 문제: DrawContext로 구현되는 뷰, 투영변환 행렬이 더러움, Mesh의 부재로 인해 적어야 하는 코드가 많음,
+	Math 라이브러리의 부재, 하드웨어 인스턴싱 및 멀티바인딩이 안 되고 있음, po이면서 po에 있지않은 애매한 클래스가 많음
+
+gfx::scenery::po?
+gfx::light?

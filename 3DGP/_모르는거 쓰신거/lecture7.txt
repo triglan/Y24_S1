@@ -1,0 +1,25 @@
+숙제) Software Renderer로 하는 건가
+1. 3D Menu "Start"
+2. 적기(들)도 미사일 발사
+3. 'z'키를 누르면 player shield
+
+CheckFeatureSupport: 특정 Feature 지원하는지 확인 가능(출력 파라미터 void*)  *멀티샘플링 지원
+
+Device -> Command Queue -> SwapChain 의존성
+
+SwapChain: 백버퍼들 접근 (전면 버퍼는 접근 불가), GetBuffer(Idx)
+*DXGI_MODE_DESC: 디스플레이 모드
+
+DXGI_SWAP_CHAIN_FLAG: DXGI_SWAP_CHAIN_FLAG_ALLOW_MODE_SWITCH: 전체화면 <-> 창화면 전환 가능하도록
+
+IDXGISwapChain::ResizeTarget <-> ResizeBuffer: ResizeTarget은 바탕화면의 해상도를 바꿈
+
+*SwapChain이 RefreshRate까지 결정한다.
+
+*ScanlineOrdering: Legacy, 옛날에는 디스플레이 속도가 느려서 홀수 스캔라인과 짝수 스캔라인을 번갈아 디스플레이하는 최적화 방법을 사용했다.
+
+SwapChain은 백버퍼만(RGBA) -> DXGI
+D3D에서 추가로 쓸 것들(Depth Buffer, Stencil Buffer 등)은 D3D에서 따로 직접 만들어야 함
+
+DXGI_SAMPLE_DESC::Count: 샘플링할 샘플의 개수 (common options are 4 and 8) -> 최대로 가능한 샘플 개수? CheckFeatureSupport를 통해 알 수 있음
+DXGI_SAMPLE_DESC::Quaility: 품질 레벨? 이거 어케 동작함? (0: 안 하겠다. 32: 현재 최대값)
