@@ -1,7 +1,6 @@
 # -*- coding: cp949 -*-
 from xml.dom.minidom import parse, parseString  # minidom 모듈의 파싱 함수를 임포트합니다.
 from xml.etree import ElementTree
-
 ##### global
 loopFlag = 1
 xmlFD = -1
@@ -147,7 +146,7 @@ def SearchBookTitle(keyword):
         return None
 
     # Book 엘리먼트 리스트를 가져 옵니다.
-    bookElements = tree.iter("book")
+    bookElements = tree.iter("book") # 얘는 안보여줘 속을 대신 book을 다 찾아?나
     # bookElements = tree.getiterator("book")
     for item in bookElements:
         strTitle = item.find("title")
