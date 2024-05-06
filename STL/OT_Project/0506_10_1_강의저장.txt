@@ -1,0 +1,492 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 5:44:16
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <numeric>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	int a[100];
+	iota(begin(a), end(a), 1);
+
+	for (int num : a)
+		cout << a << ' ';
+	cout << endl;
+
+	save("STL.cpp");
+}    
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 5:48:55
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <numeric>
+#include <span>
+#include <print>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	int a[100];
+	iota(begin(a), end(a), 1);
+	
+	//span 쓰는 방법을 배워보자 
+	//a를 span으로 바꿔볼래?
+	span<int> s{ a };
+	
+	for (auto i = s.rbegin(); i != s.rend(); ++i)
+		print("{:8}", *i);
+	cout << endl;
+	save("STL.cpp");
+}    
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:25:46
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	//반복자란 무엇인가?
+	//출력스트림반복자(stream 반복자, 반복자 어댑터)
+	//무엇인지 알아본다.
+
+	ostream_iterator<char> p{ cout };
+	*p = 'A';
+	++p;
+	*p = 'B';
+	++p;
+	*p = 'C';
+
+	save("STL.cpp");
+}    
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:34:06
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	//반복자란 무엇인가?
+	//출력스트림반복자(stream 반복자, 반복자 어댑터)
+	//무엇인지 알아본다.
+	// - 반복자는 절대 포인터가 아니다.
+
+	ostream_iterator<char> p{ cout };
+
+	//이게 뭐길래 화면에 ABC가 찍혔을까? A를 풀어쓰면 아래와 같다.
+	//(p.operator*()).operator=('A'); <- 이 함수에 글자를 넘겨서 글자가 써졌다.
+	//p.operator++();
+	//포인터 역활을 하면서 A를 넘기는 이유는 클래스여서 그렇다.
+	//그럼 다른 방식으론?
+	*p = 'A';
+	++p;
+	*p = 'B';
+	++p;
+	*p = 'C';
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:34:25
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	//반복자란 무엇인가?
+	//출력스트림반복자(stream 반복자, 반복자 어댑터)
+	//무엇인지 알아본다.
+	// - 반복자는 절대 포인터가 아니다.
+
+	ostream_iterator<char> p{ cout };
+
+	//이게 뭐길래 화면에 ABC가 찍혔을까? A를 풀어쓰면 아래와 같다.
+	//(p.operator*()).operator=('A'); <- 이 함수에 글자를 넘겨서 글자가 써졌다.
+	//p.operator++();
+	//포인터 역활을 하면서 A를 넘기는 이유는 클래스여서 그렇다.
+	//그럼 다른 방식으론?
+	//출력 반복자는 아래와 같이도 쓸 수 있다.
+	p = 'A';
+	p = 'B';
+	p = 'C';
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:37:09
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	//반복자란 무엇인가?
+	//출력스트림반복자(stream 반복자, 반복자 어댑터)
+	//무엇인지 알아본다.
+	// - 반복자는 절대 포인터가 아니다.
+
+	ostream_iterator<char> p{ cout };
+
+	//이게 뭐길래 화면에 ABC가 찍혔을까? A를 풀어쓰면 아래와 같다.
+	//(p.operator*()).operator=('A'); <- 이 함수에 글자를 넘겨서 글자가 써졌다.
+	//p.operator++();
+	//포인터 역활을 하면서 A를 넘기는 이유는 클래스여서 그렇다.
+	//그럼 다른 방식으론?
+	//출력 반복자는 아래와 같이도 쓸 수 있다.
+	p = 'A';
+	p = 'B';
+	p = 'C';
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:46:28
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	cout << typeid(it).name() << endl;
+}
+
+int main()
+{
+	//[문제] 반복자는 6가지 종류가 있다.
+	//함수 f에게 반복자를 인자로 넘겨주면 어떤 종류인지 출력하게 하라.
+	f(ostream_iterator<String>{cout});
+	f(vector<int>{}.begin());
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:47:41
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	cout << typeid(it).name() << endl;
+}
+
+int main()
+{
+	//[문제] 반복자는 6가지 종류가 있다.
+	//함수 f에게 반복자를 인자로 넘겨주면 어떤 종류인지 출력하게 하라.
+	f(ostream_iterator<String>{cout});
+	f(vector<int>{}.begin());
+	f(int{});
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:55:43
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	cout << typeid(반복자::iterator_category).name() << endl;
+}
+
+int main()
+{
+	//[문제] 반복자는 6가지 종류가 있다.
+	//함수 f에게 반복자를 인자로 넘겨주면 어떤 종류인지 출력하게 하라.
+	f(ostream_iterator<String>{cout});
+	f(vector<int>{}.begin());
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 6:59:52
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	cout << typeid(반복자::iterator_category).name() << endl;
+}
+
+int main()
+{
+	//[문제] 반복자는 6가지 종류가 있다.
+	//함수 f에게 반복자를 인자로 넘겨주면 어떤 종류인지 출력하게 하라.
+	f(istream_iterator<String>{cin});
+	f(ostream_iterator<String>{cout});
+	f(forward_list<char>::iterator{});
+	f(list<double>::reverse_iterator{});
+	f(deque<int>{}.cbegin());
+	f(vector<int>{}.begin());
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 7:03:23
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	cout << typeid(반복자::iterator_category).name() << endl;
+}
+
+int main()
+{
+	//[문제] 반복자는 6가지 종류가 있다.
+	//함수 f에게 반복자를 인자로 넘겨주면 어떤 종류인지 출력하게 하라.
+	f(istream_iterator<String>{cin});
+	f(ostream_iterator<String>{cout});
+	f(forward_list<char>::iterator{});
+	f(list<double>::reverse_iterator{});
+	f(deque<int>{}.cbegin());
+	f(vector<int>{}.begin());
+	// 여기서 나와야할 질문은 vector는 contiguous가 나와야 한다는 것.
+	// 17까지는 vector의 반복잔느 random_access, bidirectional 둘중 뭐가 나와도 ㅇㅇ였음
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 7:05:31
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	//C++17이후
+	cout << typeid(반복자::iterator_concept).name() << endl;
+}
+
+int main()
+{
+	//[문제] 벡터가 contiguous인지 판별하려면 질문을 바꿔야 한다.
+	f(vector<int>{}.begin());
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 7:06:38
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	//C++17이후
+	cout << typeid(반복자::iterator_concept).name() << endl;
+}
+
+int main()
+{
+	//[문제] 벡터가 contiguous인지 판별하려면 질문을 바꿔야 한다.
+	//f(deque<char>::iterator{});
+	f(vector<int>{}.begin());
+	//f함수를 저렇게 바꾸면 contiguous한 iterator다라고 답한다.
+
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-06 월요일 오후 7:07:55
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 6일 월요일
+// 
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <forward_list>
+#include <deque>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 it) {
+	//C++17이후
+	cout << typeid(반복자::iterator_concept).name() << endl;
+}
+
+int main()
+{
+	//[문제] 벡터가 contiguous인지 판별하려면 질문을 바꿔야 한다.
+	//벡터만 컴파일통과
+	//다른 컴파일러는 실패 - SFINAE 이걸 찾아보시길바래요
+	//f(deque<char>::iterator{});
+	f(vector<int>{}.begin());
+	//f함수를 저렇게 바꾸면 contiguous한 iterator다라고 답한다.
+
+
+	save("STL.cpp");
+}
