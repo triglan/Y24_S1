@@ -1,0 +1,291 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 3:41:45
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+
+	String s{ "1357924680" };
+	// [문제] 다음 문장이 실행되게 하라 (5분)
+	//for (char c : s)
+	//	cout << c << ' ';
+	cout << endl;
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 3:55:58
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	String s{ "1357924680" };
+	// [문제] 다음 문장이 실행되게 하라 (5분)
+	// A : String.h에 begin, end 추가함
+
+	//이 문장은 원래
+	//for(auto i = s.begin(); i != s.end(); ++i)
+	//	cout<<*i<<' ';
+	;
+	for (char c : s)//-> range-for, for_each for
+		cout << c << ' ';
+	cout << endl;
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 3:58:28
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	std::string s{ "1357924680" };
+	// [문제] 거꾸로 출력하라.
+	for (auto i = s.rbegin(); i != s.rend(); ++i)
+		cout << *i << ' ';
+	cout << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 4:02:20
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <span>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	std::string s{ "1357924680" };
+	// [문제] 거꾸로 출력하라.
+	//A: 이걸 span으로 고급스럽게 풀 ㅅ ㅜ있다.
+	span<char> sp{ s.begin(), s.end() };
+	for (auto i = sp.rbegin(); i != sp.rend(); ++i)
+		cout << *i << ' ';
+	cout << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 4:02:52
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <span>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	std::string s{ "1357924680" };
+	// [문제] 거꾸로 출력하라. 10분 
+
+	for (auto i = s.rbegin(); i != s.rend(); ++i)
+		cout << *i << ' ';
+
+	cout << endl;
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 4:51:46
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <span>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	String s{ "1357924680" };
+	// [문제] 거꾸로 출력하라. 10분 
+
+	//아래는 for(auto i = s.rbegin(); i.operator != (s.rend()); i.operator++())
+	for (auto i = s.rbegin(); i != s.rend(); i.operator++())//++i 는 i.operator++()
+		cout << *i << ' ';
+
+	cout << endl; 
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 4:52:47
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <span>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	String s{ "1357924680" };
+	// [문제] 거꾸로 출력하라. 10분 
+
+	//아래는 for(auto i = s.rbegin(); i.operator != (s.rend()); i.operator++())
+	for (auto i = s.begin(); i != s.end(); ++i)//++i 는 i.operator++()
+		cout << *i << ' ';
+
+	cout << endl; 
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 5:14:34
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <span>
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 iter) {
+	cout << typeid(iterator_traits<반복자>::iterator_category).name() << endl;
+	//C++17
+	cout << typeid(반복자::iterator_concept).name() << endl;
+
+}
+
+int main()
+{
+	String s{ "1357924680" };
+	//반복자의 속성을 확인하는 표준 질문에 응답할 수 있어야 한다.
+	//C++ 표준을 지키는 반복자가 되려면 다음 5가지 항목을 정의해야 한다.
+	//difference_type	
+	//value_type	
+	//pointer	
+	//reference	
+	//iterator_category
+
+	f(s.rbegin());
+
+	for (auto i = s.begin(); i != s.end(); ++i)//++i 는 i.operator++()
+		cout << *i << ' ';
+
+	cout << endl; 
+	save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-07 화요일 오후 5:21:20
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 7일 화요일
+// 
+// 반복자가 뭐야 ? : 포인터를 일반화한 것.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <span>
+#include <algorithm>
+#include <vector>
+#include <string>
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+void f(반복자 iter) {
+	cout << typeid(iterator_traits<반복자>::iterator_category).name() << endl;
+	//C++17
+	cout << typeid(반복자::iterator_concept).name() << endl;
+
+}
+
+int main()
+{
+	string s{ "1357924680" };
+	
+	sort(s.rbegin(), s.rend());
+	
+	cout << s << endl;
+
+	save("STL.cpp");
+}

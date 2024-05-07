@@ -5,10 +5,40 @@
 // 2024.04.15 noexcept -> 검사 없이? 돌리기 성능 향상
 // 2024.04.16 operator==
 // 2024.04.30 operator<  
+// 2024.05.07 begin(), end()
+// 2024.05.07 rbegin(), rend()의 결과는 class 객체이어야 한다.
 //-----------------------------------------------------------------------------------
 #pragma once
 #include <memory>
 #include <iostream>
+
+//String이 제공하는 반복자 - 반복자 iterator
+class String_iterator {
+public:
+	using difference_type = ptrdiff_t;
+	using value_type = char;
+	using pointer = char*;
+	using reference = char&;
+	using iterator_category = std::random_access_iterator_tag;
+
+	// C++17
+	using iterator_concept = std::contiguous_iterator_tag;
+private:
+	char* p;
+public:
+	String_iterator(char* p) : p{p} { }
+
+	char* operator++() {
+		return --p;
+	}
+	char operator*() {
+		return *(p - 1);
+	}
+	bool operator == (const String_iterator& rhs)const {
+		return p == rhs.p;
+	}
+};
+
 
 class String {
 	size_t len{};
@@ -46,6 +76,23 @@ public:
 
 	// p가 가리키는 메모리를 알려준다 - 2024.04.02
 	char* getMem() const;
+
+	//2024.5.7
+	String_iterator begin() const {
+		return String_iterator{ p.get() };
+	}
+	String_iterator end() const {
+		return String_iterator{ p.get() + len };
+	}
+
+	
+
+	String_iterator rbegin() const {
+		return String_iterator{ p.get() + len };
+	}
+	String_iterator rend() const {
+		return String_iterator{ p.get() };
+	}
 
 	friend std::ostream& operator<<(std::ostream& os, const String& s) {
 		for (size_t i = 0; i < s.len; ++i) {
