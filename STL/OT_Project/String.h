@@ -7,6 +7,7 @@
 // 2024.04.30 operator<  
 // 2024.05.07 begin(), end()
 // 2024.05.07 rbegin(), rend()의 결과는 class 객체이어야 한다.
+// 2024.05.13 String_iterator가 진짜 random_access 반복자가 되도록 코딩
 //-----------------------------------------------------------------------------------
 #pragma once
 #include <memory>
@@ -29,13 +30,41 @@ public:
 	String_iterator(char* p) : p{p} { }
 
 	char* operator++() {
-		return --p;
+		return ++p;
 	}
-	char operator*() {
-		return *(p - 1);
-	}
+	//char operator*() {
+	//	return *(p - 1);
+	//}
 	bool operator == (const String_iterator& rhs)const {
 		return p == rhs.p;
+	}
+
+	//2024.05.13
+	difference_type operator-(const String_iterator& rhs)const {
+		return p - rhs.p;
+	}
+	reference operator*() {
+		return *p;
+	}
+	reference operator*( ) const {// TODO: 한번 해봐x
+		return *p;
+	}
+
+	String_iterator& operator --() {
+		--p;
+		return *this;
+	}
+
+	String_iterator operator+(difference_type d)const {
+		return p + d;
+	}
+
+	bool operator<(const String_iterator& rhs)const {
+		return p < rhs.p;
+	}//이런거 면접 연습 하고 있어
+
+	String_iterator operator-(difference_type d)const {
+		return p - d;
 	}
 };
 
