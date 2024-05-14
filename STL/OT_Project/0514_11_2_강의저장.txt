@@ -1,0 +1,1437 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:32:59
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// 
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 값>
+반복자 my_find(반복자 b, 반복자 e, 값 val) {
+	//직접 코딩한다.
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 - stl, container iterator algorithm" };
+
+	//[문제] 사용자가 찾는 글자가 s에 있는지 알려주자.
+
+	while (true) {
+		cout << "찾을 문자는? ";
+		char ch;
+		cin >> ch;
+
+		auto p = find(s.begin(), s.end(), ch);
+		if (p != s.end())
+			cout << "위치 - " << "을 찾음" << endl;
+		else
+			cout << ch << "는 s에 없는 글자입니다." << endl;
+	}
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:40:23
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 값>
+반복자 my_find(반복자 b, 반복자 e, 값 val) {
+	while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+		if (*b == val)
+			return b;
+		++b;
+	}
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 - stl, container iterator algorithm" };
+
+	//[문제] 사용자가 찾는 글자가 s에 있는지 알려주자.
+
+	while (true) {
+		cout << "찾을 문자는? ";
+		char ch;
+		cin >> ch;
+
+		auto p = my_find(s.begin(), s.end(), ch);
+		if (p != s.end())
+			cout << "위치 - " << "을 찾음" << endl;
+		else
+			cout << ch << "는 s에 없는 글자입니다." << endl;
+	}
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:42:13
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 값>
+반복자 my_find(반복자 b, 반복자 e, 값 val) {
+	while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+		if (*b == val)
+			return b;
+		++b;
+	}
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 - stl, container iterator algorithm" };
+
+	//[문제] 사용자가 찾는 글자가 s에 있는지 알려주자.
+
+	while (true) {
+		cout << "찾을 문자는? ";
+		char ch;
+		cin >> ch;
+
+		auto p = my_find(s.begin(), s.end(), ch);
+		if (p != s.end())
+			cout << ch << "는 s의" << distance(s.begin(), p) + 1
+			<<"번째 문자입니다." << endl;
+		else
+			cout << ch << "는 s에 없는 글자입니다." << endl;
+	}
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:43:00
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 값>
+반복자 my_find(반복자 b, 반복자 e, 값 val) {
+	while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+		if (*b == val)
+			return b;
+		++b;
+	}
+	return b;
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 - stl, container iterator algorithm" };
+
+	//[문제] 사용자가 찾는 글자가 s에 있는지 알려주자.
+
+	while (true) {
+		cout << "찾을 문자는? ";
+		char ch;
+		cin >> ch;
+
+		auto p = my_find(s.begin(), s.end(), ch);
+		if (p != s.end())
+			cout << ch << "는 s의" << distance(s.begin(), p) + 1
+			<<"번째 문자입니다." << endl;
+		else
+			cout << ch << "는 s에 없는 글자입니다." << endl;
+	}
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:51:39
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 값>
+반복자 my_find(반복자 b, 반복자 e, 값 val) {
+	while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+		if (*b == val)
+			return b;
+		++b;
+	}
+	return b;
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = find_if(s.begin(), s.end(), [](char c) {
+		if (isdigit(c))
+			if (c & 1)//%2보다 좋은 문장이다
+				return true;
+		return false;
+		});
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:52:57
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 값>
+반복자 my_find(반복자 b, 반복자 e, 값 val) {
+	while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+		if (*b == val)
+			return b;
+		++b;
+	}
+	return b;
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = find_if(s.begin(), s.end(), [](char c) {
+		if (isdigit(c))
+			if (c & 1) // %2보다 좋은 문장이다
+				return true;
+		return false;
+		});
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:57:59
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 조건함수>
+반복자 my_find_if(반복자 b, 반복자 e, 조건함수 func) {
+	while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+		if (func(*b))
+			return b;
+		++b;
+	}
+	return b;
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), [](char c) {
+		if (isdigit(c))
+			if (c & 1) // %2보다 좋은 문장이다
+				return true;
+		return false;
+		});
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 3:59:23
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+template <class 반복자, class 조건함수>
+반복자 my_find_if(반복자 b, 반복자 e, 조건함수 func) {//gpt가 짜준 답.
+	while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+		if (func(*b))
+			return b;
+		++b;
+	}
+	return b;
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), [](char c) {
+		if (isdigit(c))
+			if (c & 1) // %2보다 좋은 문장이다
+				return true;
+		return false;
+		});
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:06:21
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b))
+			return b;
+		++b;
+	}
+	return e;		//b == e 
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), [](char c) {
+		if (isdigit(c))
+			if (c & 1) // %2보다 좋은 문장이다
+				return true;
+		return false;
+		});
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:06:26
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b))
+			return b;
+		++b;
+	}
+	return e;		//b == e 
+}
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), [](char c) {
+		if (isdigit(c))
+			if (c & 1) // %2보다 좋은 문장이다
+				return true;
+		return false;
+		});
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:07:56
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b))
+			return b;
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//이렇게 따로 뺼 수도 있다.
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:08:15
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b))
+			return b;
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "stl algorithm - 2024년 5월 14일" };
+
+	//[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+	if (p != s.end())
+		cout << *p << "는 s의" << distance(s.begin(), p) + 1
+		<< "번째 문자입니다." << endl;
+	else
+		cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:27:10
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b)) {
+			return b;
+		}
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	//[문제] s에 있는 홀수를 모두 찾아 출력하라
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+
+	while (p != s.end()) {
+		cout << *p << "  ";
+		++p;
+		p = my_find_if(s.begin(), s.end(), 홀수판단);
+	}
+	//if (p != s.end())
+	//	cout << *p << "는 s의" << distance(s.begin(), p) + 1
+	//	<< "번째 문자입니다." << endl;
+	//else
+	//	cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:27:54
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b)) {
+			return b;
+		}
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	//[문제] s에 있는 홀수를 모두 찾아 출력하라
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+
+	while (p != s.end()) {
+		cout << *p << "  ";
+		++p;
+		p = my_find_if(p, s.end(), 홀수판단);
+	}
+	//if (p != s.end())
+	//	cout << *p << "는 s의" << distance(s.begin(), p) + 1
+	//	<< "번째 문자입니다." << endl;
+	//else
+	//	cout << "s에 찾는 것이 없다." << endl;
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:31:54
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b)) {
+			return b;
+		}
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	//[문제] s에 있는 홀수를 모두 찾아 출력하라
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+
+	while (p != s.end()) {
+		if (p != s.end())
+			cout << *p << "는 s의" << distance(s.begin(), p) + 1
+			<< "번째 문자입니다." << endl;
+		else
+			cout << "s에 찾는 것이 없다." << endl;
+		++p;
+		p = my_find_if(p, s.end(), 홀수판단);
+	}
+
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:32:04
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b)) {
+			return b;
+		}
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "2424" };
+
+	//[문제] s에 있는 홀수를 모두 찾아 출력하라
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+
+	while (p != s.end()) {
+		if (p != s.end())
+			cout << *p << "는 s의" << distance(s.begin(), p) + 1
+			<< "번째 문자입니다." << endl;
+		else
+			cout << "s에 찾는 것이 없다." << endl;
+		++p;
+		p = my_find_if(p, s.end(), 홀수판단);
+	}
+
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:32:30
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b)) {
+			return b;
+		}
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	//[문제] s에 있는 홀수를 모두 찾아 출력하라
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+
+	while (p != s.end()) {
+		if (p != s.end())
+			cout << *p << "는 s의" << distance(s.begin(), p) + 1
+			<< "번째 문자입니다." << endl;
+		else
+			cout << "s에 찾는 것이 없다." << endl;
+		++p;
+		p = my_find_if(p, s.end(), 홀수판단);
+	}
+
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:33:03
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b)) {
+			return b;
+		}
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	//[문제] s에 있는 홀수를 모두 찾아 출력하라
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+
+	while (true) {
+		if (p != s.end())
+			cout << *p << "는 s의" << distance(s.begin(), p) + 1
+			<< "번째 문자입니다." << endl;
+		else {
+			cout << "s에 찾는 것이 없다." << endl;
+			break;
+		}
+		++p;
+		p = my_find_if(p, s.end(), 홀수판단);
+	}
+
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:33:35
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+#include <algorithm>
+#include <vector>
+
+//세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+//특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+//f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+template <class 반복자, class 조건자>
+반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		if (f(*b)) {
+			return b;
+		}
+		++b;
+	}
+	return e;		//b == e 
+}
+bool 홀수판단(char c) {
+	if (isdigit(c))
+		if (c & 1)
+			return true;
+	return false;
+}
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	//[문제] s에 있는 홀수를 모두 찾아 출력하라
+	//왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+	auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+
+	while (true) {
+		if (p != s.end())
+			cout << *p << "는 s의" << distance(s.begin(), p) + 1
+			<< "번째 문자입니다." << endl;
+		else {
+			cout << "s에 찾는 것이 없다." << endl;
+			break;
+		}
+		++p;
+		p = my_find_if(p, s.end(), 홀수판단);
+	}
+
+
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:36:20
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	copy(s.begin(), s.end(), ostream_iterator<char>{cout});
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:40:59
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자, class 조건자>
+
+void my_copy(반복자 b, 반복자 e, 조건자 f) {
+	while (b != e) {
+		cout << *b;
+		++b;
+	}
+}
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	my_copy(s.begin(), s.end(), ostream_iterator<char>{cout});
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:47:05
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+
+using namespace std;
+extern bool 관찰;
+
+template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+void my_copy(InIter b, InIter e, OutIter d) {
+	while (b != e) {
+		d = *b;
+		++b;
+		++d;
+	}
+}
+
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+	my_copy(s.begin(), s.end(), ostream_iterator<char>{cout});
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:49:20
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <vector>
+using namespace std;
+extern bool 관찰;
+
+template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+void my_copy(InIter b, InIter e, OutIter d) {
+	while (b != e) {
+		*d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
+		++b;
+		++d;
+	}
+}
+
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+	vector<char> v;
+
+	my_copy(s.begin(), s.end(), v.begin());
+
+	for (char c : v)
+		cout << c;
+	cout << endl;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:49:35
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <vector>
+using namespace std;
+extern bool 관찰;
+
+template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+void my_copy(InIter b, InIter e, OutIter d) {
+	while (b != e) {
+		*d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
+		++b;
+		++d;
+	}
+}
+
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+	vector<char> v;
+
+	my_copy(s.begin(), s.end(), v.begin());
+
+	for (char c : v)
+		cout << c;
+	cout << endl;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:51:27
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <vector>
+using namespace std;
+extern bool 관찰;
+
+template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+void my_copy(InIter b, InIter e, OutIter d) {
+	while (b != e) {
+		*d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
+		++b;
+		++d;
+	}
+}
+
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+	vector<char> v;
+
+	my_copy(s.begin(), s.end(), v.begin());
+
+	for (char c : v)
+		cout << c;
+	cout << endl;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 4:56:39
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <vector>
+using namespace std;
+extern bool 관찰;
+
+template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+void my_copy(InIter b, InIter e, OutIter d) {
+	while (b != e) {
+		*d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
+		++b;
+		++d;
+	}
+}
+
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+	vector<char> v;
+	v.reserve(100);//벡터에 자리 100칸을 준다. 자리를 안주니까 터졌었다.
+	my_copy(s.begin(), s.end(), v.begin());
+
+	for (char c : v)
+		cout << c;
+	cout << endl;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 5:01:06
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <vector>
+using namespace std;
+extern bool 관찰;
+
+template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+void my_copy(InIter b, InIter e, OutIter d) {
+	while (b != e) {
+		*d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
+		++b;
+		++d;
+	}
+}
+
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+	vector<char> v;
+	v.reserve(100);//벡터에 자리 100칸을 준다. 자리를 안주니까 터졌었다.
+	my_copy(s.begin(), s.end(), v.begin());
+
+	for (auto i = v.begin(); i!= v.end(); ++i)
+		cout << *i;
+	cout << endl;
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-14 화요일 오후 5:05:15
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 14일 화요일
+// my_find 만들기
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <vector>
+using namespace std;
+extern bool 관찰;
+
+template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+void my_copy(InIter b, InIter e, OutIter d) {
+	while (b != e) {
+		*d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
+		++b;
+		++d;
+	}
+}
+
+
+
+int main()
+{
+	save("STL.cpp");
+
+	String s{ "20240514 기말시험 6월 15일 15주 2일" };
+	vector<char> v;
+	v.reserve(100);//벡터에 자리 100칸을 준다. 자리를 안주니까 터졌었다.
+	my_copy(s.begin(), s.end(), back_inserter(v));
+	for (char c : v) {
+		cout << c;
+	}
+	//벡터에 데이터는 100% 들어갔는데 왜 출력을 못해? 
+	//데이터는 들어갔는데 벡터가 데이터가 들어간걸 모르니까 begin과 end가 가리키는 위치가 같다.
+	//그래서 아무 것도 출력하지 못하고 있는 거다.
+	//벡터가 우리에게 알려준게 아니라 우리가 무식하게 벡터 위치에다가 넣은거니까
+	//벡터는 사이즈 관리와 원소관리를 따로 한다
+}
