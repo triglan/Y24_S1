@@ -1,0 +1,141 @@
+※ 프리미티브 유형
+입력조립기가 버텍스 쉐이더를 거쳐서 레스터 라이저로 데이터를 넘기게 되는데
+정점 버퍼의 데이터를 해석하는 방법
+설정하는 함수: IASetPrimitiveTopology -> 인자: D3D12_PRIMITIVE_TOPOLOGY primitivetopology
+
+primitivetopology 종류
+D3D_PRIMITIVE_TOPOLOGY_UNDEFINED
+D3D_PRIMITIVE_TOPOLOGY_POINTLIST // 점들의 리스트
+D3D_PRIMITIVE_TOPOLOGY_LINELIST // 선분들의 리스트
+D3D_PRIMITIVE_TOPOLOGY_LINESTRIP // 선분들의 스트립
+D3D_PRIMITIVE_TOPOLOGY_TRIANGLELIST // 삼각형들의 리스트(대부분의 경우 사용)
+D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP // 삼각형들의 스트립
+
+스트립으로 무언가를 출력하려고 하면 -> 정점의 위치를 아래 위 아래 위 ... (반복)
+
+우리가 사용하는 대부분의 모델에는 인접성 모델이 안들어가있음
+그래서 프리미티브 유형에 인접성이 들어간 유형이 있음
+
+인접성 들어간 primitivetopology 종류
+D3D_PRIMITIVE_TOPOLOGY_LINELIST_ADJ // 기하 쉐이더에서 사용
+D3D_PRIMITIVE_TOPOLOGY_LINETRIP_ADJ
+D3D_PRIMITIVE_TOPOLOGY_TRIAMGLELIST_ADJ
+D3D_PRIMITIVE_TOPOLOGY_TRIANGLESTRIP_ADJ
+
+그리기 함수인 DrawInstanced를 호출하기 위해서는 정점의 개수를 알아야 함
+
+※ 인덱스 버퍼(GL 했을때랑 같은 개념)
+각각의 삼각형을 위한 정점을 정점 버퍼에 넣으면 너무 많은 메모리와 시간이 듬
+-> 삼각형1과 삼각형2의 두 정점은 모든 정보는 같은데 시멘틱만 달라짐
+-> 즉, 버텍스쉐이더가 같은 정점에 대해 똑같은 일을 또 하기 때문에 시간이 많이 듬(낭비!)
+그래서 정점 버퍼에는 '정점들만' 저장하고, 인덱스에 삼각형을 표현하기 위한 정보 저장(정점 순서)
+인덱스 버퍼 사용하는데 훨씬 좋음
+
+인덱스 버퍼가 있을 것을 가정해서 그리기 함수(Draw)는
+DrawInstanced(정점 버퍼만 사용) 와 DrawIndexedInstanced(인덱스 버퍼도 사용) 가 있음
+
+※ 리소스의 생성
+CreateIndexBuffer(): 인덱스 버퍼 생성
+
+※ 정점 버퍼 뷰 생성
+16개까지 생성 가능(0 ~ 15)
+GetGPUVirtualAddress(): 버퍼 리소스의 GPU 주소 반환
+IASetVertexBuffers(): 정점 버퍼 연결
+
+※ 인덱스 버퍼 뷰 생성
+파이프라인의 하나의 인덱스 버퍼를 연결 가능
+변수 Format: 폴리곤 개수에 따라 선택
+IASetIndexBuffers(): 인덱스 버퍼 연결
+
+※ 메쉬 클래스
+ReleaseUploadBuffers(): 카피가 모두 일어난 업로드 버퍼를 릴리즈
+
+※ 루트 시그니쳐
+어떤 리소스들이 그래픽스 파이프라인의 쉐이더에 연결되는 가를 정의
+명령 리스트들을 쉐이더 리소스에 연결
+그래픽스 파이프라인의 제일 첫 데이터
+
+※ 루트 시그니쳐의 파라미터
+루트 상수: 쉐이더의 상수 버퍼로 직접 대응, 32비트(하나만 넘기기(int 64개), 빠름)
+루트 서술자: 상수 버퍼, 버퍼, 64비트(여러개를 넘기고 싶으면 서술자 힙을 만들어 전달)
+서술자 테이블: 리소스 서술자 힙의 영역을 표현, 32비트
+
+(C++에서 시그니쳐란: 함수 오버로드에서의 함수의 이름과 파라미터)
+(f(int a(아규먼트)), void f(int a(파라미터)))
+
+※ 상수 버퍼
+여러 개의 상수의 의미를 갖는 데이터들을 한꺼번에 빠르게 리소스의 내용을 갱신 할 수 있는 특별한 의미의 버퍼들
+모든 상수 버퍼 크기는 최소 하드웨어 할당 크기 256바이트의 배수이어야 함((nBytesOfData + 255) & ~255)
+바뀔 것을 가정(기본적으로 UPLOAD 힙에 만들어야 함)
+GPU 입장에서 상수 버퍼는 읽을 수 있는 상태이여야 함
+
+※ 루트 상수
+매개변수가 32비트 상수들을 포함, 서술자 힙이 필요없음
+가급적이면 앞쪽에 배치를 하는것을 권장
+
+※ 루트 서술자
+매개변수가 내부적인 서술자를 직접 포함, 서술자 힙이 필요없음
+버퍼 리소스에 대한 SRV/UAV, 상수 버퍼에 대한 CBV
+
+※ 서술자 테이블
+서술자 힙에 간접적으로 접근해야 하므로 시간이 걸림
+
+CreateRootSignature: 루트 시그니쳐 생성 함수
+
+루트 시그니쳐 파라미터 타입
+D3D12_ROOT_DESCRIPTOR_CBV: Constant Buffer View
+D3D12_ROOT_DESCRIPTOR_SRV: Shader Resource View
+D3D12_ROOT_DESCRIPTOR_UAV: Unordered Access View
+D3D12_ROOT_DESCRIPTOR_DESCRIPTOR_TABLE
+D3D12_ROOT_DESCRIPTOR_32BIT_CONSTANTS(상수 버퍼 한개짜리)
+
+CBV, SRV, UAV 다 쓰는게 아니라 하나만 결정해서 사용
+
+루트 시그니쳐 파라미터
+상수 버퍼: 멤버 Num32BitValues -> 32비트 상수의 개수
+서술자(CBV, SRV, UAV)
+서술자 테이블
+
+D3D12_ROOT_DESCRIPTOR_RANGE: 서술자 테이블을 정의하는 구조체
+D3D12_ROOT_DESCRIPTOR_RANGE_TYPE: DESCRIPTOR_RANGE 타입 지정(SRV, UAV, CBV, SAMPLER)
+
+SetGraphicsRootConstantBufferView: 루트 서술자를 위한 리소스를 실제로 연결하는 함수(Set함수)
+
+※ 상수 버퍼의 생성
+cbuffer 버퍼이름 : register(b0) {
+	행렬
+}
+-> bo라는 레지스터를 통해 연결
+
+typedef struct D3D12_ROOT_CONSTANTS {
+	레지스터 번호
+	레지스터 공간 -> 어차피 space는 하나만 쓸거니까 0으로 고정하자
+	32비트 상수 개수
+}
+
+※ 상수 버퍼 사용
+.Constants.ShaderRegister = 번호; 하고
+스페이스는 0 박고
+.Constants.Num32BitValues = c버퍼 내의 개수;
+SetGraphicsRoot32BitConstants()
+
+※ 상수 버퍼 여러 개 넘기기
+상수 버퍼는 갱신을 하면 무조건 전체를 갱신해야 함
+상수 버퍼는 객체당 한개씬 하면 좋음(전체 상수 버퍼, 카메라 상수 버퍼, 플레이어 상수 버퍼....)
+[0].ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
+[0].Constants.Num32BitValues = 16;(float 행렬)
+[0].Constants.ShaderRegister = 0; // (ex. 월드)
+...
+[1].ParameterType = D3D12_ROOT_PARAMETER_TYPE_32BIT_CONSTANTS;
+[1].Constants.Num32BitValues = 32;
+[1].Constants.ShaderRegister = 1; // (ex. 카메라)
+
+※ 상수 버펴 뷰 생성
+CreateConstantBufferView(VIEW_DESC(사이즈는 256의 배수), HANDLE(상수 버퍼 뷰를 포함하는 서술자 힙의 시작))
+상수 버퍼 서술자: 상수 버퍼를 파이프라인에 연결하기 위하여 서술자가 필요함
+
+※ 서술자 힙
+서술자 힙은 사용하기 전에 디바이스(파이프라인)에 연결(설정)되어야 함
+같은 유형의 서술자 힙은 한번에 하나만 설정 가능
+설정하는 서술자 힙 배열의 각 원소(서술자 힙)의 유형은 서로 달라야 함
+SetDescriptorHeaps(서술자 힙 개수, 서술자 힙 배열/각 원소의 유형 달라야 함);
