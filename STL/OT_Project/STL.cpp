@@ -1,44 +1,56 @@
 //---------------------------------------------------------
-// 2024 1학기 STL 5월 14일 화요일
+// 2024 1학기 STL 5월 20일 월요일
 //
-// Associative 
+// Associative Container - Set
+// 
+// set은 어떻게 절렬하는가
+// 디폴트 less<Key> -> operator< 를 이용한다.
 //---------------------------------------------------------
 #include <iostream>
 #include "save.h"
 #include "string.h"
-#include <vector>
+#include <set>
+#include <fstream>
+#include <cctype>
+#include <algorithm>
 using namespace std;
 extern bool 관찰;
-
-template<class InIter, class OutIter>// 반복자, 다른 반복자
-
-void my_copy(InIter b, InIter e, OutIter d) {
-	while (b != e) {
-		*d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
-		//실제로는 *d.operator=(*b){
-		//	v.push_back(*b); } 이런 활동이 이뤄지고 있다. 설명 코드, 실제로 돌아가는 코드는 아님.
-		++b;
-		++d;
-	}
-}
-
 
 
 int main()
 {
-	save("STL.cpp");
+	//[문제] "이상한 나라의 앨리스.txt" 파일에 있는 단어를 multiset에 읽어 왔다.
+	
+	multiset<String> s;
 
-	String s{ "20240514 기말시험 6월 15일 15주 2일" };
-	vector<char> v;
-	v.reserve(100);//벡터에 자리 100칸을 준다. 자리를 안주니까 터졌었다.
-	my_copy(s.begin(), s.end(), back_inserter(v));//back_inserter로 넣으니까 실행이 된다. 
-	for (char c : v) {
-		cout << c;
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (!in) return 0;
+	
+	String str;
+	while (in >> str)
+		s.insert(str);
+	
+	cout << "읽은 multiset의 단어 - " << s.size() << endl;
+
+	//[문제] 찾는 단어가 set에 있는지 알려준다.
+	while (true) {
+		cout << "찾을 단어는? ";
+		String word;
+		cin >> word;
+
+		auto p = s.find(word);//이렇게 써야 한다. 아까 begin 이런식으로 하면 0점
+		//인간의 눈으론 구분하지 못하겠지만 내부에선 엄청나게 빨라졌다.
+		
+		//+ 이 단어 있어 없어를 출력해주는거 
+		bool b = s.contains(word);
+
+		if (b)//가장 빠른 이거 있어? 의 알고리즘
+			cout << word << "는 앨리스에 있는 단어 입니다." << endl;
+		else
+			cout << "그런거 없습니다." << endl;
+		
 	}
-	//벡터에 데이터는 100% 들어갔는데 왜 출력을 못해? 
-	//데이터는 들어갔는데 벡터가 데이터가 들어간걸 모르니까 begin과 end가 가리키는 위치가 같다.
-	//그래서 아무 것도 출력하지 못하고 있는 거다.
-	//벡터가 우리에게 알려준게 아니라 우리가 무식하게 벡터 위치에다가 넣은거니까
-	//벡터는 사이즈 관리와 원소관리를 따로 한다
+
+	save("STL.cpp");
 }
 
