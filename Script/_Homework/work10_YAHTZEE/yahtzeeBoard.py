@@ -58,7 +58,7 @@ class YahtzeeBoard:
         self.rollDice.grid(row=0, column=0)
         for i in range(5):  # dice 버튼 5개 생성
             self.diceButtons.append(Button(self.window, text="?",
-            font = self.TempFont, width = 8, command = lambda row=i: self.diceListener(row)))
+                font = self.TempFont, width = 8, command = lambda row=i: self.diceListener(row)))
             # 각각의 dice 버튼에 대한 이벤트 처리 diceListener 연결
             # 람다 함수를 이용하여 diceListener 매개변수 설정하면 하나의 Listener로 해결
             self.diceButtons[i].grid(row=i + 1, column=0)
@@ -123,19 +123,47 @@ class YahtzeeBoard:
             else:
                 self.fields[self.UPPERBONUS][self.player].configure(text="0")  # UPPERBONUS=7
         # LOWER category 전부 사용되었으면 LowerScore 계산
-        if (self.players[self.player].allLowerUsed()):
-            pass
+        #if (self.players[self.player].allLowerUsed()):
+        self.fields[self.UPPERTOTAL][self.player].configure(text=str(self.players[self.player].getUpperScore()))
+        self.fields[self.LOWERTOTAL][self.player].configure(text=str(self.players[self.player].getLowerScore()))
         # UPPER category와 LOWER category가 전부 사용되었으면 TOTAL 계산
-        if (self.players[self.player].allUpperUsed() and self.players[self.player].allLowerUsed()):
-            pass
+        #if (self.players[self.player].allUpperUsed() and self.players[self.player].allLowerUsed()):
+        total_score = self.players[self.player].getTotalScore()
+        self.fields[self.TOTAL][self.player].configure(text=str(total_score))
+
         # 다음 플레이어로 넘어가고 선택할 수 없는 카테고리들은 disable 시킴
+        for i in range(self.TOTAL + 1):
+            self.fields[i][self.player]['state']='disabled'
+            self.fields[i][self.player]['bg']='light gray'
+
         self.player = (self.player + 1) % self.numPlayers
         for i in range(self.TOTAL + 1):
-            for j in range(self.numPlayers):
-                pass
+            if not i == self.UPPERTOTAL or i == self.UPPERBONUS or i == self.LOWERTOTAL or i == self.TOTAL:
+                self.fields[i][self.player]['state'] = 'active'
+                self.fields[i][self.player]['bg'] = 'white'
+        #다이스 버튼 활성화
+        for i in range(5):
+            self.diceButtons[i]['state'] = 'active'
+            self.diceButtons[i]['bg'] = 'white'
+            self.diceButtons[i].configure(text="?")
+
+        self.roll = 0
+        self.rollDice.configure(text="Roll Dice")
+        self.rollDice['state'] = 'active'
+        self.rollDice['bg'] = 'white'
+
+        # 상태 메시지 업데이트
+        self.bottomLabel.configure(text=self.players[self.player].toString() + " 차례: Roll Dice 버튼을 누르세요")
+        roll = 0
         # 라운드 증가 시키고 종료 검사
         if (self.player == 0):
             self.round += 1
         if (self.round == 13):
-            pass
+            self.endGame()
+
+    def endGame(self):
+        scores = [player.getTotalScore() for player in self.players]
+        winner = self.players[scores.index(max(scores))].toString()
+        tkinter.messagebox.showinfo("Game Over", "게임 종료!\n우승자: " + winner + "\n점수: " + str(max(scores)))
+        self.window.destroy()
 YahtzeeBoard()

@@ -3,6 +3,8 @@ class Configuration:
     configs = ["Category","Ones", "Twos","Threes","Fours","Fives","Sixes",
     "Upper Scores","Upper Bonus(35)","Three of a kind", "Four of a kind", "Full House(25)",
     "Small Straight(30)", "Large Straight(40)", "Yahtzee(50)","Chance","Lower Scores", "Total"]
+
+    @staticmethod
     def getConfigs(): # 정적 메소드: 객체생성 없이 사용 가능
         return Configuration.configs
     def score(row, d): # 정적 메소드: 객체생성 없이 사용 가능
@@ -34,24 +36,45 @@ class Configuration:
                 sum+= num
         return sum
 
-    def scoreThreeOfAKind(d): # 5개 주사위 주에서 3개가 같으냐? 족보를 만족하면 5개 주사위 눈금의 합을 반환
-        pass
+    def scoreThreeOfAKind(d): # 5개 주사위 중에서 3개가 같으냐? 족보를 만족하면 5개 주사위 눈금의 합을 반환
+        counts = [0] * 6
+        for die in d:
+            counts[die.getRoll() - 1] += 1
+        if max(counts) >= 3:
+            return Configuration.sumDie(d)
+        return 0
 
     def scoreFourOfAKind(d): # 4개같? 주사위 눈금 합 반환
-        pass
+        counts = [0] * 6
+        for die in d:
+            counts[die.getRoll() - 1] += 1
+        if max(counts) >= 4:
+            return Configuration.sumDie(d)
+        return 0
 
     def scoreFullHouse(d): # 3/2같? 25점 반환
-        ...
+        counts = [0] * 6
+        for die in d:
+            counts[die.getRoll() - 1] += 1
+        if 3 in counts and 2 in counts:
+            return 25
+        return 0
 
     def scoreSmallStraight(d):#30점?
-        pass
-            # 1 2 3 4 혹은 2 3 4 5 혹은 3 4 5 6 검사
-            # 1 2 2 3 4, 1 2 3 4 6, 1 3 4 5 6, 2 3 4 4 5
+        rolls = sorted(set(die.getRoll() for die in d))
+        if len(rolls) >= 4:
+            if all(item in rolls for item in [1, 2, 3, 4]) or \
+                    all(item in rolls for item in [2, 3, 4, 5]) or \
+                    all(item in rolls for item in [3, 4, 5, 6]):
+                return 30
+        return 0
 
 
     def scoreLargeStraight(d): # 40?
-        pass
-    # 1 2 3 4 5 혹은 2 3 4 5 6 검사
+        rolls = sorted(set(die.getRoll() for die in d))
+        if rolls == [1, 2, 3, 4, 5] or rolls == [2, 3, 4, 5, 6]:
+            return 40
+        return 0
 
     def scoreYahtzee(d): #50점반환
         for i in range(4):
