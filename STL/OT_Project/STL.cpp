@@ -1,38 +1,34 @@
 //---------------------------------------------------------
-// 2024 1학기 STL 5월 21일 화요일
+// 2024 1학기 STL 5월 27일 월요일
 //
-// Associative Container - map<key, value> -> dictionary
-// 
-// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
-// 
+// Unordered associative container
+// - unordered의 의미
+// - 메모리 구조는 어떻게?
+// - 내가 만든 String도 관리가능해?
 // 
 // 6월 11일 화요일(15주 2) - 기말시험
 //---------------------------------------------------------
 #include <iostream>
 #include "save.h"
 #include "string.h"
-#include <map>
-#include <fstream>
-#include <list>
+#include <unordered_set>
+
 using namespace std;
 extern bool 관찰;
 
-
 int main()
 {
-	//그룹과 멤버
-	map<String, list<String>>m{ {"아이브", {"안유진", "가을", "레이", "장원영", "리즈", "이서"}}};
-	m.insert(pair<String, list<String>> {"블랙핑크", {"지수", "제니", "로제", "리사"}});
-	m.insert(make_pair("아이유", list<String>{ "아이유" }));
-	m["르세라핌"] = { "사쿠라","김채원","허윤진","허윤진","카즈하","홍은채"};
+	unordered_set<int> us{ 3, 1, 4, 2 };
 
-	//전체 출력
-	for (const auto& [그룹, 멤버들] : m) {
-		cout << 그룹 << " - " << 멤버들.size() << "명, ";
-		for (const auto& 멤버 : 멤버들)
-			cout << 멤버 << " ";
-		cout << endl;
-	}
+	us.insert(7);//데이터를 중가에 삽입하면..? 3 1 4 2 7 엥 뒤에 붙었네 순서 있네 뭘
+	us.insert(10);//3 1 4 10 2 7 엥 이번엔 이렇게 뜨네
+
+
+	for (int num : us)
+		cout << num << ' ';
+	cout << endl;
+
+
 	save("STL.cpp");
 }
 

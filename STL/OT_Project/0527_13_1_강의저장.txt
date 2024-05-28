@@ -1,0 +1,1753 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:34:30
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:44:33
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char> icm;
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	for (auto [개수, 소문자] : icm)
+		cout << 소문자 << " - " << 개수 << endl;//아쉽게도 오름차순으로 출력된다
+
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:46:05
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char, less<int>> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	for (auto [개수, 소문자] : icm)
+		cout << 소문자 << " - " << 개수 << endl;//아쉽게도 오름차순으로 출력된다
+
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:46:29
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char, greater<int>> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+	//greater이라고 하면 내림차순으로 정렬될 것이다.
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	for (auto [개수, 소문자] : icm)
+		cout << 소문자 << " - " << 개수 << endl;//아쉽게도 오름차순으로 출력된다
+
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:46:43
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char, greater<int>> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+	//greater이라고 하면 내림차순으로 정렬될 것이다.
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	for (auto [개수, 소문자] : icm)
+		cout << 소문자 << " - " << 개수 << endl;//아쉽게도 오름차순으로 출력된다
+
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:49:07
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+	//greater이라고 하면 내림차순으로 정렬될 것이다.
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	
+	//+ 이번엔 역방향으로 출력한다.
+	for (auto p = icm.rbegin(); p != icm.rend(); ++p)
+		cout << p->second << " - " << p->first << endl;//
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:49:20
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+	//greater이라고 하면 내림차순으로 정렬될 것이다.
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	
+	//+ 이번엔 역방향으로 출력한다.
+	for (auto p = icm.rbegin(); p != icm.rend(); ++p)
+		cout << p->second << " - " << p->first << endl;//찍을 때 거꾸로 찍어도 되네
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:50:12
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+	//greater이라고 하면 내림차순으로 정렬될 것이다.
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	for (auto [개수, 문자] : icm)
+		cout << 문자 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 5:52:03
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+	//a - 333개, b - 454개... z - 52개
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	map<char, int> m;
+	char c;
+	while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+		if (isalpha(c))
+			m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+	}
+	for (auto [소문자, 개수] : m) // 구조화한 binding
+		cout << 소문자 << " - " << 개수 << endl;
+
+	// [문제] 개수 내림차수으로 출력하라.
+	// 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+	// 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+	map<int, char> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+	//greater이라고 하면 내림차순으로 정렬될 것이다.
+	for (auto [소문자, 개수] : m)
+		icm[개수] = 소문자;
+
+	cout << "개수 기준으로 정렬한 결과" << endl;
+	for (auto [개수, 문자] : icm | views::reverse )// | 라는 필터를 써도 내림차순을 오름차순으로 가능 #include<ranges> 필요
+		cout << 문자 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:00:28
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//단어와 출현횟수를 출력하라 //+
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	//몇줄 안되는 코딩으로 되죠?
+	//key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+	map<String, int> Sim;
+	String s;
+	while (in >> s)
+		Sim[s]++;
+	
+	for (const auto& [단어, 개수] : Sim)
+		cout << 단어 << " - " << 개수 << endl;
+
+	//[문제] 많이 사용된 단어 순으로 출력하라.
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:05:56
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//단어와 출현횟수를 출력하라 //+
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	//몇줄 안되는 코딩으로 되죠?
+	//key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+	map<String, int> Sim;
+	String s;
+	while (in >> s)
+		Sim[s]++;
+	
+	for (const auto& [단어, 개수] : Sim)
+		cout << 단어 << " - " << 개수 << endl;
+
+	//[문제] 많이 사용된 단어 순으로 출력하라.
+	for (auto [단어, 개수] : Sim)
+		cout << 단어 << " - " << 개수 << endl;
+
+	map<int, String> icm;
+	for (auto [소문자, 개수] : Sim)
+		icm[개수] = 소문자;
+
+
+	cout << "개수 기준으로 정렬" << endl;
+	for (auto [개수, 문자] : icm | views::reverse)
+		cout << 문자 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:07:33
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//단어와 출현횟수를 출력하라 //+
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	//몇줄 안되는 코딩으로 되죠?
+	//key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+	map<String, int> Sim;
+	String s;
+	while (in >> s)
+		Sim[s]++;
+	
+	for (const auto& [단어, 개수] : Sim)
+		cout << 단어 << " - " << 개수 << endl;
+
+	//[문제] 많이 사용된 단어 순으로 출력하라.
+	//교수ver, 근데 이건 0점짜리같지?
+	map<int, String> iSm;
+	for (const auto& [단어, 개수] : Sim)
+		iSm[개수] = 단어;
+
+	cout << "많이 사용된 단어 순" << endl;
+	for (const auto& [개수, 단어] : iSm)//String은 const auto& 넣는듯
+		cout << 단어 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:07:56
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//단어와 출현횟수를 출력하라 //+
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	//몇줄 안되는 코딩으로 되죠?
+	//key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+	map<String, int> Sim;
+	String s;
+	while (in >> s)
+		Sim[s]++;
+	
+	for (const auto& [단어, 개수] : Sim)
+		cout << 단어 << " - " << 개수 << endl;
+
+	//[문제] 많이 사용된 단어 순으로 출력하라.
+	//교수ver, 근데 이건 0점짜리같지?
+	map<int, String> iSm;
+	for (const auto& [단어, 개수] : Sim)
+		iSm[개수] = 단어;
+
+	cout << "많이 사용된 단어 순" << endl;
+	for (const auto& [개수, 단어] : iSm | views::reverse)//String은 const auto& 넣는듯
+		cout << 단어 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:10:36
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//단어와 출현횟수를 출력하라 //+
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	//몇줄 안되는 코딩으로 되죠?
+	//key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+	map<String, int> Sim;
+	String s;
+	while (in >> s)
+		Sim[s]++;
+	
+	//for (const auto& [단어, 개수] : Sim)
+		//cout << 단어 << " - " << 개수 << endl;
+
+	//[문제] 많이 사용된 단어 순으로 출력하라.
+	//교수ver, 근데 이건 0점짜리같지? 답지에 이렇게 쓰면 0점이다.
+	//겹칠 수 있으니 multi를 써라 +
+	//근데 multi를 쓰는 순간 iSm같은 연산자를 제공하지 않는다.
+	//그랫 insert make_pair 아래와 같이 써야한다.
+	multimap<int, String> iSm;
+	for (const auto& [단어, 개수] : Sim)
+		iSm.insert(make_pair(개수, 단어));//++ 이거 시험에 나올듯
+
+	cout << "많이 사용된 단어 순" << endl;
+	for (const auto& [개수, 단어] : iSm | views::reverse)//String은 const auto& 넣는듯
+		cout << 단어 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:11:01
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//단어와 출현횟수를 출력하라 //+
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	//몇줄 안되는 코딩으로 되죠?
+	//key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+	map<String, int> Sim;
+	String s;
+	while (in >> s)
+		Sim[s]++;
+	
+	//for (const auto& [단어, 개수] : Sim)
+		//cout << 단어 << " - " << 개수 << endl;
+
+	//[문제] 많이 사용된 단어 순으로 출력하라.
+	//교수ver, 근데 이건 0점짜리같지? 답지에 이렇게 쓰면 0점이다.
+	//겹칠 수 있으니 multi를 써라 +
+	//근데 multi를 쓰는 순간 iSm같은 연산자를 제공하지 않는다.
+	//그랫 insert make_pair 아래와 같이 써야한다.
+	//결과로 1번 사용된 결과들도 많이 저장되어있다.
+	multimap<int, String> iSm;
+	for (const auto& [단어, 개수] : Sim)
+		iSm.insert(make_pair(개수, 단어));//++ 이거 시험에 나올듯
+
+	cout << "많이 사용된 단어 순" << endl;
+	for (const auto& [개수, 단어] : iSm | views::reverse)//String은 const auto& 넣는듯
+		cout << 단어 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:12:20
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <fstream>
+#include<ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+	save("STL.cpp");
+	
+	//[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+	//단어와 출현횟수를 출력하라 //+
+
+	ifstream in{ "이상한 나라의 앨리스.txt" };
+	if (not in)return 0;
+	
+	//몇줄 안되는 코딩으로 되죠?
+	//key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+	map<String, int> Sim;
+	String s;
+	while (in >> s)
+		Sim[s]++;
+	
+	//for (const auto& [단어, 개수] : Sim)
+		//cout << 단어 << " - " << 개수 << endl;
+
+	//[문제] 많이 사용된 단어 순으로 출력하라.
+	//교수ver, 근데 이건 0점짜리같지? 답지에 이렇게 쓰면 0점이다.
+	//겹칠 수 있으니 multi를 써라 +
+	//근데 multi를 쓰는 순간 iSm같은 연산자를 제공하지 않는다.
+	//그랫 insert make_pair 아래와 같이 써야한다.
+	//결과로 1번 사용된 결과들도 많이 저장되어있다.
+	multimap<int, String> iSm;
+	for (const auto& [단어, 개수] : Sim)
+		iSm.insert(make_pair(개수, 단어));//++ 이거 시험에 나올듯
+
+	cout << "많이 사용된 단어 순" << endl;
+	for (const auto& [개수, 단어] : iSm | views::reverse | views::take(200))//views::take로 200개만 출력하게 해볼까
+		cout << 단어 << " - " << 개수 << endl;
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:30:46
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 1, 99'999 };
+
+int main()
+{
+	// 유니폼분포는 정말 유니폼한가? dre 저부분
+	// 값을 10등분해서 출현횟수를 출력하라.
+	map<int, int> m;
+
+	for (int i = 0; i < 100'0000; ++i)
+		++m[uid(dre) / 10];
+
+	for (auto [넘버, 개수] : m)
+		cout << 넘버 << " - " << 개수 << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:32:23
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 1, 99'999 };
+
+int main()
+{
+	// 유니폼분포는 정말 유니폼한가? dre 저부분
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//교수 ver
+	map<int, int> m;
+
+	for (int i = 0; i < 100'0000; ++i)
+		++m[uid(dre) / 10000 ];
+
+	for (auto [넘버, 개수] : m)
+		cout << 넘버 << " - " << 개수 << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:34:09
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+uniform_int_distribution uid{ 1, 99'999 };
+
+int main()
+{
+	// 유니폼분포는 정말 유니폼한가? ++ 맞는듯?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//교수 ver
+	map<int, int> m;
+
+	for (int i = 0; i < 100'0000; ++i)
+		++m[uid(dre) / 10000 ];
+
+	for (auto [구간, 개수] : m)
+		cout << 구간 << " - " << 개수 << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:35:21
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd;
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	map<int, int> m;
+
+	for (int i = 0; i < 100; ++i)
+		cout << nd(dre) << endl;
+
+	for (auto [구간, 개수] : m)
+		cout << 구간 << " - " << 개수 << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:36:07
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd;
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+저렇게 넣어서 평균 50000근처로 보내볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100; ++i)
+		cout << nd(dre) + 50000 << endl;
+
+	for (auto [구간, 개수] : m)
+		cout << 구간 << " - " << 개수 << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:36:55
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd;
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100; ++i)
+		cout << nd(dre) * 50000 << endl;
+
+	for (auto [구간, 개수] : m)
+		cout << 구간 << " - " << 개수 << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:40:18
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd;
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 10000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:40:33
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd;
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100000; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 10000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:41:37
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd{ 0.0, 0.01 };
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100000; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 10000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:42:00
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd{ 0.0, 0.1 };//+여기 수정중
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100000; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 10000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:42:34
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd{ 0.0, 0.1 };//+여기 수정중
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100000; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 5000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:43:18
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd{ 0.0, 0.2 };//+여기 수정중
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100000; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 5000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:43:32
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd{ 0.0, 0.5 };//+여기 수정중
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100000; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 5000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:43:42
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Associative Container - map<key, value> -> dictionary
+// 
+// 독특한 기능 : map -> 연관 배열처럼 사용할 수 있다.
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <map>
+#include <random>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre;
+normal_distribution nd{ 0.0, 0.3 };//+여기 수정중
+
+int main()
+{
+	// 노말분포는 정말 노말한가?
+	// 값을 10등분해서 출현횟수를 출력하라.
+	//노말분포를 일단 알아보자
+	//+int값이 아니네 평균이 0이 되는 것 같네?
+	//+이번엔 50000을 곱해서 분포를 넓혀볼까?
+	map<int, int> m;
+
+	for (int i = 0; i < 100000; ++i) {
+		double val = nd(dre) * 50000 + 50000;
+		if (0 < val && val < 10'0000)//0에서 10만 사이만 넣겟다.
+			m[val / 5000]++;//이렇게 하면 노말 분포를 확인할 수 있을 것 같다.
+	}
+
+	for (auto [구간, 개수] : m) 
+		cout << 구간 << " - " << 개수 << endl;
+	
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:56:25
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Unordered associative container
+// - unordered의 의미
+// - 메모리 구조는 어떻게?
+// - 내가 만든 String도 관리가능해?
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <unordered_set>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	unordered_set<int> us{ 1, 2, 3, 4 };
+	for (int num : us)
+		cout << num << ' ';
+	cout << endl;//순서가 없으니 제멋대로 나오겠지.. 어 근데 적은 순서 그대론데?
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:56:52
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Unordered associative container
+// - unordered의 의미
+// - 메모리 구조는 어떻게?
+// - 내가 만든 String도 관리가능해?
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <unordered_set>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	unordered_set<int> us{ 3, 1, 4, 2 };
+	for (int num : us)
+		cout << num << ' ';
+	cout << endl;
+	//어 순서 기억하고 있는데 바꿔도 그러네?
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:57:34
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Unordered associative container
+// - unordered의 의미
+// - 메모리 구조는 어떻게?
+// - 내가 만든 String도 관리가능해?
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <unordered_set>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	unordered_set<int> us{ 3, 1, 4, 2 };
+
+	us.insert(7);//데이터를 중가에 삽입하면..? 엥 뒤에 붙었네 순서 있네 뭘
+	for (int num : us)
+		cout << num << ' ';
+	cout << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:57:57
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Unordered associative container
+// - unordered의 의미
+// - 메모리 구조는 어떻게?
+// - 내가 만든 String도 관리가능해?
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <unordered_set>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	unordered_set<int> us{ 3, 1, 4, 2 };
+
+	us.insert(7);//데이터를 중가에 삽입하면..? 엥 뒤에 붙었네 순서 있네 뭘
+	us.insert(10);
+
+
+	for (int num : us)
+		cout << num << ' ';
+	cout << endl;
+
+
+	save("STL.cpp");
+}
+
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-05-27 월요일 오후 6:58:35
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 27일 월요일
+//
+// Unordered associative container
+// - unordered의 의미
+// - 메모리 구조는 어떻게?
+// - 내가 만든 String도 관리가능해?
+// 
+// 6월 11일 화요일(15주 2) - 기말시험
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <unordered_set>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+	unordered_set<int> us{ 3, 1, 4, 2 };
+
+	us.insert(7);//데이터를 중가에 삽입하면..? 3 1 4 2 7 엥 뒤에 붙었네 순서 있네 뭘
+	us.insert(10);//3 1 4 10 2 7 엥 이번엔 이렇게 뜨네
+
+
+	for (int num : us)
+		cout << num << ' ';
+	cout << endl;
+
+
+	save("STL.cpp");
+}
+
