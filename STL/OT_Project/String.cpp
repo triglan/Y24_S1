@@ -95,7 +95,7 @@ String& String::operator=(String&& other) noexcept
 
 //연산자 오버로딩
 //2024.04.16 ==, string은 글자수, 내용이 같아야 한다.
-bool String::operator==(const String& rhs) {
+bool String::operator==(const String& rhs) const{
 	if (len != rhs.len)
 		return false;
 	// 비교x

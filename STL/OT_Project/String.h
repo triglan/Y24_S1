@@ -95,7 +95,7 @@ public:
 
 	//연산자 오버로딩
 	//2024.04.16 ==, string은 글자수, 내용이 같아야 한다.
-	bool operator==(const String& rhs);
+	bool operator==(const String& rhs) const;
 
 	//2024.04.30 <
 	bool operator<(const String& rhs)const;
