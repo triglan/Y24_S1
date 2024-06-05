@@ -1,0 +1,832 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 5:44:13
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// Algorithm
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+
+using namespace std;
+extern bool 관찰;
+
+int main()
+{
+    array<int, 5> a{ 1,3,5,7,9 };
+    //[문제] a의 원소가 모두 홀수인가? 검사하고 출력하자.
+    bool b = all_of(a.begin(), a.end(), [](int n) {return n & 1; });
+    
+    if (b)
+        cout << "everyone Odd" << endl;
+    else
+        cout << "Nof" << endl;
+
+
+    save("STL.cpp");
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 5:57:05
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// Algorithm
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자, class 단항조건자>
+bool my_all_of(반복자 b, 반복자 e, 단항조건자 p) {
+    while (b != e) {//+ 이게 제일 중요함 p를 몇번 돌려야 이 함수가 끝나냐
+        if (not p(*b))
+            return false;
+        ++b;
+    }
+    return true;
+}
+
+int main()
+{
+    array<int, 5> a{1,2,3,4,5};
+    //[문제] a의 원소가 모두 홀수인가? 검사하고 출력하자.
+    bool b = my_all_of(a.begin(), a.end(), [](int n) {return n & 1; });
+    
+    if (b)
+        cout << "everyone Odd" << endl;
+    else
+        cout << "Nof" << endl;
+
+
+    save("STL.cpp");
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 5:59:59
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// Algorithm
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자, class 단항조건자>
+bool my_all_of(반복자 b, 반복자 e, 단항조건자 p) {
+    while (b != e) {//+ 이게 제일 중요함 p를 몇번 돌려야 이 함수가 끝나냐
+        if (not p(*b))
+            return false;
+        ++b;
+    }
+    return true;
+}
+
+int main()
+{
+    array<int, 5> a{2,4,6,8,10};
+    //[문제] a의 원소가 모두 홀수인가? 검사하고 출력하자.
+    bool b = my_all_of(a.begin(), a.end(), [](int n) {return n & 1; });
+    
+    if (b)
+        cout << "모두 홀수다" << endl;
+    else
+        cout << "모두가 홀수는 아님" << endl;
+
+
+    save("STL.cpp");
+
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:10:37
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// Algorithm
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <iterator>  // 추가된 헤더 파일
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre{ random_device{}() };
+//+ cpu의 온도, 팬의 속도, 마우스의 랜덤한 위치등을 적절히 조합해 값을 뽑는다.
+
+int main()
+{
+    // [1,46) 숫자 이 중에 6개를 샘플링(뽑아라)
+    array<int, 45> a;
+    iota(a.begin(), a.end(), 1);
+
+    cout << "이번 주 구매 할 번호다." << endl;
+    sample(a.begin(), a.end(), ostream_iterator<int>{cout, " "}, 6, dre);
+
+    save("STL.cpp");
+
+    return 0; // main 함수는 return 0을 명시적으로 추가하는 것이 좋습니다.
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:12:05
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// Algorithm
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <print>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre{ random_device{}() };
+//+ cpu의 온도, 팬의 속도, 마우스의 랜덤한 위치등을 적절히 조합해 값을 뽑는다.
+
+int main()
+{
+    string s{ "STL - Container Iterator - Algorithm" };
+    for (int i = 0; i < 10; ++i)
+        cout << endl;
+    print("{}", s);
+
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:12:56
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// Algorithm
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <print>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre{ random_device{}() };
+//+ cpu의 온도, 팬의 속도, 마우스의 랜덤한 위치등을 적절히 조합해 값을 뽑는다.
+
+int main()
+{
+    string s{ "STL - Container Iterator - Algorithm" };
+    for (int i = 0; i < 10; ++i)
+        cout << endl;
+    print("{:^80}", s);
+
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:24:01
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// sort 관련 algorithm - 복잡도에 따른 분류
+// partition
+// nth_element - 위보단 좀 정렬된
+// partial_sort - 위보다 좀 더 복ㅈ바함
+// sort - 
+// stable_sort - 가장 복잡한놈
+// 
+// C++에서 소트는 뭘로 하는지 모른다. 원소 개수따라서 알고리즘이 달라진다.
+// 머지 퀵소트 등등 다 섞는다. 가장 효율적으로 돌리기 위해.
+// 니가 암만 재수 없어도 sort 이상으로 복잡한건 곤란해라는 문구가 있다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <print>
+#include <thread>
+
+using namespace std;
+extern bool 관찰;
+
+default_random_engine dre{ random_device{}() };
+//+ cpu의 온도, 팬의 속도, 마우스의 랜덤한 위치등을 적절히 조합해 값을 뽑는다.
+
+int main()
+{
+    array<int, 100> a;
+    iota(a.begin(), a.end(), 1);
+
+    for (int num : a)
+        print("{:4}", num);
+    cout << endl;
+
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:26:03
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// sort 관련 algorithm - 복잡도에 따른 분류
+// partition
+// nth_element - 위보단 좀 정렬된
+// partial_sort - 위보다 좀 더 복ㅈ바함
+// sort - 
+// stable_sort - 가장 복잡한놈
+// 
+// C++에서 소트는 뭘로 하는지 모른다. 원소 개수따라서 알고리즘이 달라진다.
+// 머지 퀵소트 등등 다 섞는다. 가장 효율적으로 돌리기 위해.
+// 니가 암만 재수 없어도 sort 이상으로 복잡한건 곤란해라는 문구가 있다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <print>
+#include <thread>
+
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+
+int main()
+{
+    array<int, 100> a;
+    iota(a.begin(), a.end(), 1);
+
+    shuffle(a.begin(), a.end(), dre);
+
+    for (int num : a)
+        print("{:4}", num);
+    cout << endl;
+
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:31:14
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// sort 관련 algorithm - 복잡도에 따른 분류
+// partition
+// nth_element - 위보단 좀 정렬된
+// partial_sort - 위보다 좀 더 복ㅈ바함
+// sort - 
+// stable_sort - 가장 복잡한놈
+// 
+// C++에서 소트는 뭘로 하는지 모른다. 원소 개수따라서 알고리즘이 달라진다.
+// 머지 퀵소트 등등 다 섞는다. 가장 효율적으로 돌리기 위해.
+// 니가 암만 재수 없어도 sort 이상으로 복잡한건 곤란해라는 문구가 있다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <print>
+#include <thread>
+
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+
+int main()
+{
+    array<int, 100> a;
+    iota(a.begin(), a.end(), 1);
+    
+    {
+        // 홀짝으로 분리 - partition
+        shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+        cout << "홀짝으로 분리하기 전" << endl;
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+        auto p = partition(a.begin(), a.end(), [](int n) {return n & 1; });
+        cout << endl;
+        cout << "홀수" << endl;
+        for (auto i = a.begin(); i != p; ++i)
+            print("{:4}", *i);
+
+        cout << endl;
+        cout << "짝수" << endl;
+        for (auto i = p; i != a.end(); ++i)
+            print("{:4}", *i);
+    }
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:39:38
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// sort 관련 algorithm - 복잡도에 따른 분류
+// partition
+// nth_element - 위보단 좀 정렬된
+// partial_sort - 위보다 좀 더 복ㅈ바함
+// sort - 
+// stable_sort - 가장 복잡한놈
+// 
+// C++에서 소트는 뭘로 하는지 모른다. 원소 개수따라서 알고리즘이 달라진다.
+// 머지 퀵소트 등등 다 섞는다. 가장 효율적으로 돌리기 위해.
+// 니가 암만 재수 없어도 sort 이상으로 복잡한건 곤란해라는 문구가 있다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <print>
+#include <thread>
+
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+
+int main()
+{
+    array<int, 100> a;
+    iota(a.begin(), a.end(), 1);
+    
+    {
+        // 홀짝으로 분리 - partition
+        shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+        cout << "홀짝으로 분리하기 전" << endl;
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+        auto p = partition(a.begin(), a.end(), [](int n) {return n & 1; });
+        cout << endl;
+        cout << "홀수" << endl;
+        for (auto i = a.begin(); i != p; ++i)
+            print("{:4}", *i);
+
+        cout << endl;
+        cout << "짝수" << endl;
+        for (auto i = p; i != a.end(); ++i)
+            print("{:4}", *i);
+    }
+    {
+        // 30등까지와 나머지로 분리 - nth_element
+        shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+        cout << "30등까지와 나머지로 분리하기 전" << endl;
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+        auto nth = a.begin() + 30;
+        nth_element (a.begin(), nth, a.end());
+        cout << endl;
+        cout << "30등까지" << endl;
+        for (auto i = a.begin(); i != nth; ++i)
+            print("{:4}", *i);
+
+        cout << endl;
+        cout << "나머지" << endl;
+        for (auto i = nth; i != a.end(); ++i)
+            print("{:4}", *i);
+    }
+
+    {
+        // 30등까지만 정렬 - partial_sort
+        shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+        cout << "30등까지와 나머지로 분리하기 전" << endl;
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+        auto nth = a.begin() + 30;
+        partial_sort(a.begin(), nth, a.end());
+        cout << endl;
+        cout << "30등까지는 정렬됨" << endl;
+        for (auto i = a.begin(); i != nth; ++i)
+            print("{:4}", *i);
+
+        cout << endl;
+        cout << "나머지" << endl;
+        for (auto i = nth; i != a.end(); ++i)
+            print("{:4}", *i);
+    }
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:40:52
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// sort 관련 algorithm - 복잡도에 따른 분류
+// partition
+// nth_element - 위보단 좀 정렬된
+// partial_sort - 위보다 좀 더 복ㅈ바함
+// sort - 
+// stable_sort - 가장 복잡한놈
+// 
+// C++에서 소트는 뭘로 하는지 모른다. 원소 개수따라서 알고리즘이 달라진다.
+// 머지 퀵소트 등등 다 섞는다. 가장 효율적으로 돌리기 위해.
+// 니가 암만 재수 없어도 sort 이상으로 복잡한건 곤란해라는 문구가 있다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+#include <numeric>
+#include <random>
+#include <print>
+#include <thread>
+
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+
+int main()
+{
+    array<int, 100> a;
+    iota(a.begin(), a.end(), 1);
+    
+    {
+        // 홀짝으로 분리 - partition
+        shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+        cout << "홀짝으로 분리하기 전" << endl;
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+        auto p = partition(a.begin(), a.end(), [](int n) {return n & 1; });
+        cout << endl;
+        cout << "홀수" << endl;
+        for (auto i = a.begin(); i != p; ++i)
+            print("{:4}", *i);
+
+        cout << endl;
+        cout << "짝수" << endl;
+        for (auto i = p; i != a.end(); ++i)
+            print("{:4}", *i);
+        cout << endl << endl;
+    }
+    {
+        // 30등까지와 나머지로 분리 - nth_element
+        shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+        cout << "30등까지와 나머지로 분리하기 전" << endl;
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+        auto nth = a.begin() + 30;
+        nth_element (a.begin(), nth, a.end());
+        cout << endl;
+        cout << "30등까지" << endl;
+        for (auto i = a.begin(); i != nth; ++i)
+            print("{:4}", *i);
+
+        cout << endl;
+        cout << "나머지" << endl;
+        for (auto i = nth; i != a.end(); ++i)
+            print("{:4}", *i);
+        cout << endl << endl;
+    }
+
+    {
+        // 30등까지만 정렬 - partial_sort
+        shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+        cout << "30등까지와 나머지로 분리하기 전" << endl;
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+        auto nth = a.begin() + 30;
+        partial_sort(a.begin(), nth, a.end());
+        cout << endl;
+        cout << "30등까지는 정렬됨" << endl;
+        for (auto i = a.begin(); i != nth; ++i)
+            print("{:4}", *i);
+
+        cout << endl;
+        cout << "나머지" << endl;
+        for (auto i = nth; i != a.end(); ++i)
+            print("{:4}", *i);
+        cout << endl << endl;
+    }
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:54:15
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <random>
+#include <array>
+
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+uniform_int_distribution<int> uidC{ 'A', 'Z' };
+uniform_int_distribution uidN{ 1,30 };
+
+struct Dog {
+    char c = uidC(dre);
+    int n{ uidN(dre) };
+};
+
+int main()
+{
+    cout << "stable sort" << endl;
+    array<Dog, 100> dogs;
+
+    //[문제] dogs를 글자 오름차순으로 정렬하라.
+    sort(dogs.begin(), dogs.end(), [](const Dog& a, const Dog& b) {
+        return a.c < b.c;
+        });
+
+    for (auto [글자, 숫자] : dogs)//dogs는 for루프의 range, 즉 begin과 end를 가져오고 있음, [글자, 숫자] 글자 바인딩 코딩할 떄 가독성이 좋아지겠지
+        cout << '\t' << 글자 << " - " << 숫자 << endl;
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:57:58
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <random>
+#include <array>
+#include <ranges>
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+uniform_int_distribution<int> uidC{ 'A', 'Z' };
+uniform_int_distribution uidN{ 1,30 };
+
+struct Dog {
+    char c = uidC(dre);
+    int n{ uidN(dre) };
+};
+
+int main()
+{
+    cout << "stable sort" << endl;
+    array<Dog, 100> dogs;
+
+    //[문제] dogs를 글자 오름차순으로 정렬하라.
+    //이 sort를 앞으로 안쓰게 될거야.
+    /*sort(dogs.begin(), dogs.end(), [](const Dog& a, const Dog& b) {
+        return a.c < b.c;
+        });*/
+    ranges::sort(dogs, {}, &Dog::c);
+
+    for (auto [글자, 숫자] : dogs)//dogs는 for루프의 range, 즉 begin과 end를 가져오고 있음, [글자, 숫자] 글자 바인딩 코딩할 떄 가독성이 좋아지겠지
+        cout << '\t' << 글자 << " - " << 숫자 << endl;
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:59:06
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <random>
+#include <array>
+#include <ranges>
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+uniform_int_distribution<int> uidC{ 'A', 'Z' };
+uniform_int_distribution uidN{ 1,30 };
+
+struct Dog {
+    char c = uidC(dre);
+    int n{ uidN(dre) };
+};
+
+int main()
+{
+    cout << "stable sort" << endl;
+    array<Dog, 100> dogs;
+
+    //[문제] dogs를 글자 오름차순으로 정렬하라.
+    //이 sort를 앞으로 안쓰게 될거야.
+    /*sort(dogs.begin(), dogs.end(), [](const Dog& a, const Dog& b) {
+        return a.c < b.c;
+        });*/
+    ranges::sort(dogs, {}, &Dog::c);//캐릭터 정렬
+    ranges::sort(dogs, {}, &Dog::n);//정수 정렬
+
+    for (auto [글자, 숫자] : dogs)//dogs는 for루프의 range, 즉 begin과 end를 가져오고 있음, [글자, 숫자] 글자 바인딩 코딩할 떄 가독성이 좋아지겠지
+        cout << '\t' << 글자 << " - " << 숫자 << endl;
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-03 월요일 오후 6:59:47
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <random>
+#include <array>
+#include <ranges>
+using namespace std;
+extern bool 관찰;
+
+random_device rd;
+default_random_engine dre{ rd() };
+uniform_int_distribution<int> uidC{ 'A', 'Z' };
+uniform_int_distribution uidN{ 1,30 };
+
+struct Dog {
+    char c = uidC(dre);
+    int n{ uidN(dre) };
+};
+
+int main()
+{
+    cout << "stable sort" << endl;
+    array<Dog, 100> dogs;
+
+    //[문제] dogs를 글자 오름차순으로 정렬하라.
+    //이 sort를 앞으로 안쓰게 될거야.
+    /*sort(dogs.begin(), dogs.end(), [](const Dog& a, const Dog& b) {
+        return a.c < b.c;
+        });*/
+    ranges::sort(dogs, {}, &Dog::c);//캐릭터 정렬
+    ranges::stable_sort(dogs, {}, &Dog::n);//정수 정렬
+
+    for (auto [글자, 숫자] : dogs)//dogs는 for루프의 range, 즉 begin과 end를 가져오고 있음, [글자, 숫자] 글자 바인딩 코딩할 떄 가독성이 좋아지겠지
+        cout << '\t' << 글자 << " - " << 숫자 << endl;
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:37:52
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    array<int, 10> a {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    copy(a.begin(), a.end(), a.begin() - 1);
+    for (int num : a)
+        cout << num << " ";
+    cout << endl;
+    save("STL.cpp");
+}

@@ -1,0 +1,643 @@
+
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:38:21
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 4일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    array<int, 10> a {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+
+    copy(a.begin(), a.end(), a.begin() - 1);
+
+    for (int num : a)
+        cout << num << " ";
+
+    cout << endl;
+
+    save("STL.cpp");
+}
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:39:38
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <array>
+#include <algorithm>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    array<int, 10> a {1, 2, 3, 4, 5, 6, 7, 8, 9, 10};
+    copy(a.begin(), a.begin() + 5, a.begin() + 5);
+    for (int num : a)
+        cout << num << " ";
+    cout << endl;
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:41:37
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    vector<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << distance(v.begin(), v.end()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:42:30
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    //리스트도 5걸음임?
+    list<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << distance(v.begin(), v.end()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:42:48
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    //리스트도 5걸음임?
+    vector<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:43:47
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는?
+    list<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:45:14
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    list<int> v{ 1,2,3,4,5 };
+
+    auto p = v.begin();
+    --p;
+    if (p == v.end())
+        cout << "이중연결리스트" << endl;
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:45:57
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    list<int> v{ 1,2,3,4,5 };
+
+    auto p = v.begin();
+    --p;
+    if (p == v.end())
+        cout << "이중연결리스트" << endl;
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << distance(v.end(), ++v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:52:29
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+
+//long long이면 대부분 다 커버 할꺼야
+long long my_distance(반복자 b, 반복자 e) {
+    long long step{};
+    while (b != e) {
+        ++b;
+        ++step;
+    }
+    return step;
+}
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+    list<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << my_distance(v.begin(), v.end()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:52:42
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+
+//long long이면 대부분 다 커버 할꺼야
+long long my_distance(반복자 b, 반복자 e) {
+    long long step{};
+    while (b != e) {
+        ++b;
+        ++step;
+    }
+    return step;
+}
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+    list<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << my_distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 3:56:41
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+
+//long long이면 대부분 다 커버 할꺼야
+long long my_distance(반복자 b, 반복자 e) {
+    //만일 랜덤억세스 반복자라면
+    return e - b;
+
+    //아니라면
+    long long step{};
+    while (b != e) {
+        ++b;
+        ++step;
+    }
+    return step;
+}
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+    vector<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << my_distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 4:03:30
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+
+//long long이면 대부분 다 커버 할꺼야
+long long my_distance(반복자 b, 반복자 e) {
+    //만일 랜덤억세스 반복자라면 근데 int == int 이런 문법은 오류나서 해결해야한다. {}를 붙이면 메ㅔ모리 할당됨.
+    if (typeid(iterator_traits<반복자>::iterator_category).name()
+        == typeid(random_access_iterator_tag).name())
+        return e - b;
+
+    //아니라면
+    long long step{};
+    while (b != e) {
+        ++b;
+        ++step;
+    }
+    return step;
+}
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+    vector<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << my_distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 4:17:41
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+
+//long long이면 대부분 다 커버 할꺼야
+long long my_distance(반복자 b, 반복자 e) {
+    //만일 랜덤억세스 반복자라면 근데 int == int 이런 문법은 오류나서 해결해야한다. {}를 붙이면 메모리 할당됨.
+    //typeid로 하는건 너무 복잡한거야.
+    if (is_same<typename iterator_traits<반복자>::iterator_category, random_access_iterator_tag>::value)
+        return e - b;
+
+    //아니라면
+    long long step{};
+    while (b != e) {
+        ++b;
+        ++step;
+    }
+    return step;
+}
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+    vector<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << my_distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 4:26:49
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+
+//long long이면 대부분 다 커버 할꺼야
+long long my_distance(반복자 b, 반복자 e) {
+    //만일 랜덤억세스 반복자라면 근데 int == int 이런 문법은 오류나서 해결해야한다. {}를 붙이면 메모리 할당됨.
+    //typeid로 하는건 너무 복잡한거야.
+    //C++17부터는 constexpr if로 선택적 소스코드 확장 가능
+    if constexpr(is_same_v<typename iterator_traits<반복자>::iterator_category, random_access_iterator_tag>)
+        return e - b;
+
+    //아니라면
+    long long step{};
+    while (b != e) {
+        ++b;
+        ++step;
+    }
+    return step;
+}
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+    list<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << my_distance(v.begin(), v.end()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 4:26:59
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// stable_sort - 가장 복잡한놈
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+#include <vector>
+#include <list>
+
+using namespace std;
+extern bool 관찰;
+
+template<class 반복자>
+
+//long long이면 대부분 다 커버 할꺼야
+long long my_distance(반복자 b, 반복자 e) {
+    //만일 랜덤억세스 반복자라면 근데 int == int 이런 문법은 오류나서 해결해야한다. {}를 붙이면 메모리 할당됨.
+    //typeid로 하는건 너무 복잡한거야.
+    //C++17부터는 constexpr if로 선택적 소스코드 확장 가능
+    if constexpr(is_same_v<typename iterator_traits<반복자>::iterator_category, random_access_iterator_tag>)
+        return e - b;
+
+    //아니라면
+    long long step{};
+    while (b != e) {
+        ++b;
+        ++step;
+    }
+    return step;
+}
+int main()
+{
+    //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+    //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+    list<int> v{ 1,2,3,4,5 };
+
+    //distance 함수로 반복자간의 거리를 잰다.
+    cout << my_distance(v.end(), v.begin()) << endl;
+
+    save("STL.cpp");
+}
+
+
+================================================
+STL.cpp, 저장시간: 2024-06-04 화요일 오후 4:50:40
+================================================
+//---------------------------------------------------------
+// 2024 1학기 STL 6월 3일 화요일
+//
+// 6/11 화요일 - 기말시험
+// 
+// C++20 Concept / Range
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <algorithm>
+
+using namespace std;
+extern bool 관찰;
+
+template<class T>
+T add(T a, T b) {
+    return a + b;
+}
+int main()
+{
+    //[문제] 함수 템플릿 add를 코딩하시오.
+    cout << add<int>(1, 2) << endl;
+    cout << add<float>(1.1, 2.2) << endl;
+    cout << add<string>("2024년 "s, "6월 4일"s) << endl;//s는 야 이거 string이야 라고 알려줌. 모호성이 사라짐.
+    save("STL.cpp");
+}
