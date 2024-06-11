@@ -12,10 +12,10 @@ import re
 from datetime import date, datetime, timedelta
 import traceback
 
-key = '여기에 API KEY를 입력하세요'
-TOKEN = '여기에 텔레그램 토큰을 입력하세요'
+key = 'sea100UMmw23Xycs33F1EQnumONR%2F9ElxBLzkilU9Yr1oT4TrCot8Y2p0jyuJP72x9rG9D8CN5yuEs6AS2sAiw%3D%3D'
+TOKEN = '6796860991:AAGLtFidisxjOefcOrZCJSFk1OvW2ICmBKc'
 MAX_MSG_LENGTH = 300
-baseurl = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcAptTrade?ServiceKey='+key
+baseurl = 'http://openapi.molit.go.kr:8081/OpenAPI_ToolInstallPackage/service/rest/RTMSOBJSvc/getRTMSDataSvcRHTrade?ServiceKey='+key
 bot = telepot.Bot(TOKEN)
 
 def getData(loc_param, date_param):
@@ -30,7 +30,9 @@ def getData(loc_param, date_param):
         item = re.sub('<.*?>', '|', item.text)
         parsed = item.split('|')
         try:
-            row = parsed[3]+'/'+parsed[6]+'/'+parsed[7]+', '+parsed[4]+' '+parsed[5]+', '+parsed[8]+'m², '+parsed[11]+'F, '+parsed[1].strip()+'만원\n'
+            #row = parsed[3]+'/'+parsed[6]+'/'+parsed[7]+', '+parsed[4]+' '+parsed[5]+', '+parsed[8]+'m², '+parsed[11]+'F, '+parsed[1].strip()+'만원\n'
+            row = parsed[6] + ', ' + parsed[14] + ' ' + parsed[9] + ' ' + parsed[10] + ' ' + parsed[5] + '동, ' + parsed[
+                13] + 'm², ' + parsed[17] + 'F, ' + parsed[1].strip() + '만원\n'
         except IndexError:
             row = item.replace('|', ',')
 
