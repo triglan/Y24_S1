@@ -1204,17 +1204,170 @@
     }
 
 
+//알파벳 개수 출력, stable sort
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <random>
+    #include <array>
+    #include <ranges>
+    using namespace std;
+    extern bool 관찰;
+
+    random_device rd;
+    default_random_engine dre{ rd() };
+    uniform_int_distribution<int> uidC{ 'A', 'Z' };
+    uniform_int_distribution uidN{ 1,30 };
+
+    struct Dog {
+        char c = uidC(dre);
+        int n{ uidN(dre) };
+    };
+
+    int main()
+    {
+        cout << "stable sort" << endl;
+        array<Dog, 100> dogs;
+
+        //[문제] dogs를 글자 오름차순으로 정렬하라.
+        //이 sort를 앞으로 안쓰게 될거야.
+        /*sort(dogs.begin(), dogs.end(), [](const Dog& a, const Dog& b) {
+            return a.c < b.c;
+            });*/
+        ranges::sort(dogs, {}, &Dog::c);
+
+        for (auto [글자, 숫자] : dogs)//dogs는 for루프의 range, 즉 begin과 end를 가져오고 있음, [글자, 숫자] 글자 바인딩 코딩할 떄 가독성이 좋아지겠지
+            cout << '\t' << 글자 << " - " << 숫자 << endl;
+        save("STL.cpp");
+    }
+
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <random>
+    #include <array>
+    #include <ranges>
+    using namespace std;
+    extern bool 관찰;
+
+    random_device rd;
+    default_random_engine dre{ rd() };
+    uniform_int_distribution<int> uidC{ 'A', 'Z' };
+    uniform_int_distribution uidN{ 1,30 };
+
+    struct Dog {
+        char c = uidC(dre);
+        int n{ uidN(dre) };
+    };
+
+    int main()
+    {
+        cout << "stable sort" << endl;
+        array<Dog, 100> dogs;
+
+        //[문제] dogs를 글자 오름차순으로 정렬하라.
+        //이 sort를 앞으로 안쓰게 될거야.
+        /*sort(dogs.begin(), dogs.end(), [](const Dog& a, const Dog& b) {
+            return a.c < b.c;
+            });*/
+        ranges::sort(dogs, {}, &Dog::c);//캐릭터 정렬
+        ranges::stable_sort(dogs, {}, &Dog::n);//정수 정렬
+
+        for (auto [글자, 숫자] : dogs)//dogs는 for루프의 range, 즉 begin과 end를 가져오고 있음, [글자, 숫자] 글자 바인딩 코딩할 떄 가독성이 좋아지겠지
+            cout << '\t' << 글자 << " - " << 숫자 << endl;
+        save("STL.cpp");
+    }
 
 
+14-2
+//distance 거리 재기
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <algorithm>
+    #include <vector>
+    #include <list>
+
+    using namespace std;
+    extern bool 관찰;
 
 
+    int main()
+    {
+        vector<int> v{ 1,2,3,4,5 };
+
+        //distance 함수로 반복자간의 거리를 잰다.
+        cout << distance(v.begin(), v.end()) << endl;
+
+        save("STL.cpp");
+    }
+
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <algorithm>
+    #include <vector>
+    #include <list>
+
+    using namespace std;
+    extern bool 관찰;
 
 
+    int main()
+    {
+        //거꾸로 재면 -5걸음이네 리스트는? 1걸음 이중연결리스트여서
+        list<int> v{ 1,2,3,4,5 };
+
+        //distance 함수로 반복자간의 거리를 잰다.
+        cout << distance(v.end(), v.begin()) << endl;
+
+        save("STL.cpp");
+    }
+
+    //만들어봐 길이재기
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <algorithm>
+    #include <vector>
+    #include <list>
+
+    using namespace std;
+    extern bool 관찰;
+
+    template<class 반복자>
+
+    //long long이면 대부분 다 커버 할꺼야
+    long long my_distance(반복자 b, 반복자 e) {
+        //만일 랜덤억세스 반복자라면 근데 int == int 이런 문법은 오류나서 해결해야한다. {}를 붙이면 메모리 할당됨.
+        //typeid로 하는건 너무 복잡한거야.
+        //C++17부터는 constexpr if로 선택적 소스코드 확장 가능
+        if constexpr(is_same_v<typename iterator_traits<반복자>::iterator_category, random_access_iterator_tag>)
+            return e - b;
+
+        //아니라면
+        long long step{};
+        while (b != e) {
+            ++b;
+            ++step;
+        }
+        return step;
+    }
+    int main()
+    {
+        //거꾸로 재면 -5걸음이네 리스트는? 뭐여 씹 얜 왜 1걸음임
+        //5에서 앞으로 가면 1로 갈 수 있어서 문명1때 간디처럼 ㅇㅇ 그래서 1걸음인거임
+        list<int> v{ 1,2,3,4,5 };
+
+        //distance 함수로 반복자간의 거리를 잰다.
+        cout << my_distance(v.end(), v.begin()) << endl;
+
+        save("STL.cpp");
+    }
 
 
-
-
-
+15-1
+//벡터 셔플
 
 
 
