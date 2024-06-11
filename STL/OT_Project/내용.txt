@@ -1,0 +1,1233 @@
+반복자란? : 포인터를 일반화 한 것
+
+// [문제] "STL.cpp"의 소문자를  list<char>에 push_back()으로 저장하라.
+    #include <iostream>
+    #include <list>
+    #include "save.h"
+    #include "string.h"
+    #include <fstream>
+
+    using namespace std;
+    extern bool 관찰;
+
+    int main()
+    {
+        // ===list완==
+        // [문제] "STL.cpp"의 소문자를  list<char>에 push_back()으로 저장하라.
+        ifstream in{ "STL.cpp" };
+        if (not in) return -1;
+
+        list<char> list{};
+        char c;
+        
+        while (in >> c)
+            if(islower(c))	//너 소문자야?
+                list.push_back(c);
+
+        //정렬도 해보자
+        list.sort();//char을 담고 있고 char char을 비교할텐데, 언어 자체적으로 지원한다.
+        //중복 제거 해보자
+        list.unique();
+
+        // 출력하라
+        for (const char& c : list)
+            cout << c;
+        cout << endl;
+
+
+        // 모든 소문자가 다 있나 확인하라.
+        if (list.size() == 26)
+            cout << "[a,z] 다 있음" << endl;
+        else
+            cout << "없는 문자가 있다." << endl;
+
+        save("STL.cpp");
+    }   
+
+// [문제] 100에서 1까지 출력
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <numeric>
+    #include <span>
+    #include <print>
+
+    using namespace std;
+    extern bool 관찰;
+
+    int main()
+    {
+        int a[100];
+        iota(begin(a), end(a), 1);
+        
+        //span 쓰는 방법을 배워보자 
+        //a를 span으로 바꿔볼래?
+        span<int> s{ a };
+        
+        for (auto i = s.rbegin(); i != s.rend(); ++i)
+            print("{:8}", *i);
+        cout << endl;
+        save("STL.cpp");
+    }    
+
+//[문제] 반복자는 6가지 종류가 있다.
+//함수 f에게 반복자를 인자로 넘겨주면 어떤 종류인지 출력하게 하라.
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <forward_list>
+    #include <deque>
+    #include <vector>
+    #include <list>
+
+    using namespace std;
+    extern bool 관찰;
+
+    template<class 반복자>
+    void f(반복자 it) {
+        cout << typeid(반복자::iterator_category).name() << endl;
+    }
+
+    int main()
+    {
+        //[문제] 반복자는 6가지 종류가 있다.
+        //함수 f에게 반복자를 인자로 넘겨주면 어떤 종류인지 출력하게 하라.
+        // 여기서 나와야할 질문은 vector는 contiguous가 나와야 한다는 것.
+	    // 17까지는 vector의 반복잔느 random_access, bidirectional 둘중 뭐가 나와도 ㅇㅇ였음
+        f(istream_iterator<String>{cin});
+        f(ostream_iterator<String>{cout});
+        f(forward_list<char>::iterator{});
+        f(list<double>::reverse_iterator{});
+        f(deque<int>{}.cbegin());
+        f(vector<int>{}.begin());
+
+        save("STL.cpp");
+    }
+
+//[문제] String을 출력해라
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        String s{ "1357924680" };
+        // [문제] 다음 문장이 실행되게 하라 (5분)
+        // A : String.h에 begin, end 추가함
+
+        //이 문장은 원래
+        //for(auto i = s.begin(); i != s.end(); ++i)
+        //	cout<<*i<<' ';
+        ;
+        for (char c : s)//-> range-for, for_each for
+            cout << c << ' ';
+        cout << endl;
+
+        save("STL.cpp");
+    }
+
+
+//[문제] string을 거꾸로 출력
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        std::string s{ "1357924680" };
+        // [문제] 거꾸로 출력하라.
+        for (auto i = s.rbegin(); i != s.rend(); ++i)
+            cout << *i << ' ';
+        cout << endl; 
+
+
+        save("STL.cpp");
+    }
+
+    //span사용
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <span>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        std::string s{ "1357924680" };
+        // [문제] 거꾸로 출력하라.
+        //A: 이걸 span으로 고급스럽게 풀 ㅅ ㅜ있다.
+        span<char> sp{ s.begin(), s.end() };
+        for (auto i = sp.rbegin(); i != sp.rend(); ++i)
+            cout << *i << ' ';
+        cout << endl;
+        save("STL.cpp");
+    }
+
+    //sort 사용해서
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+
+    #include <algorithm>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        String s{ "1357924680" };
+        
+        sort(s.begin(), s.end(), [](char a, char b) {
+            return a > b;
+            });
+        
+        cout << s << endl;
+
+        save("STL.cpp");
+    }
+
+11-2
+
+//[문제] 반복자를 써서 String 내에 사용자가 찾는 글자가 s에 있는지 알려주자.
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+
+    #include <algorithm>
+    #include <vector>
+
+    template <class 반복자, class 값>
+    반복자 my_find(반복자 b, 반복자 e, 값 val) {
+        while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+            if (*b == val)
+                return b;
+            ++b;
+        }
+    }
+
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        save("STL.cpp");
+
+        String s{ "20240514 - stl, container iterator algorithm" };
+
+        //[문제] 사용자가 찾는 글자가 s에 있는지 알려주자.
+
+        while (true) {
+            cout << "찾을 문자는? ";
+            char ch;
+            cin >> ch;
+
+            auto p = my_find(s.begin(), s.end(), ch);
+            if (p != s.end())
+                cout << ch << "는 s의" << distance(s.begin(), p) + 1
+                <<"번째 문자입니다." << endl;
+            else
+                cout << ch << "는 s에 없는 글자입니다." << endl;
+        }
+
+    }
+
+
+//[문제] 홀수 찾기 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+
+    #include <algorithm>
+    #include <vector>
+
+    template <class 반복자, class 값>
+    반복자 my_find(반복자 b, 반복자 e, 값 val) {
+        while (b != e) {//검색할 데이터가 있는 동안, end에 도달하지 않았다면
+            if (*b == val)
+                return b;
+            ++b;
+        }
+        return b;
+    }
+
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        save("STL.cpp");
+
+        String s{ "stl algorithm - 2024년 5월 14일" };
+
+        //[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+        //왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+        auto p = find_if(s.begin(), s.end(), [](char c) {
+            if (isdigit(c))
+                if (c & 1) // %2보다 좋은 문장이다
+                    return true;
+            return false;
+            });
+        if (p != s.end())
+            cout << *p << "는 s의" << distance(s.begin(), p) + 1
+            << "번째 문자입니다." << endl;
+        else
+            cout << "s에 찾는 것이 없다." << endl;
+
+
+    }
+
+    //my_find_if
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+
+    #include <algorithm>
+    #include <vector>
+
+    //세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+    //특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+    //f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+    template <class 반복자, class 조건자>
+    반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+        while (b != e) {
+            if (f(*b))
+                return b;
+            ++b;
+        }
+        return e;		//b == e 
+    }
+
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        save("STL.cpp");
+
+        String s{ "stl algorithm - 2024년 5월 14일" };
+
+        //[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+        //왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+        auto p = my_find_if(s.begin(), s.end(), [](char c) {
+            if (isdigit(c))
+                if (c & 1) // %2보다 좋은 문장이다
+                    return true;
+            return false;
+            });
+        if (p != s.end())
+            cout << *p << "는 s의" << distance(s.begin(), p) + 1
+            << "번째 문자입니다." << endl;
+        else
+            cout << "s에 찾는 것이 없다." << endl;
+
+
+    }
+
+    //홀수판단 bool값 넣기
+    //세번째 인자는 callable type인데 이 중에서 boolean 값을 리턴하는 것을
+    //특별히 predicate이라고 부른다.(조건자, 서술자, 판단자)
+    //f에 조건이 들어간다 가정하고 f(*b)를 넣어 검사한다. 교수님 답변
+    template <class 반복자, class 조건자>
+    반복자 my_find_if(반복자 b, 반복자 e, 조건자 f) {
+        while (b != e) {
+            if (f(*b))
+                return b;
+            ++b;
+        }
+        return e;		//b == e 
+    }
+    bool 홀수판단(char c) {
+        if (isdigit(c))
+            if (c & 1)
+                return true;
+        return false;
+    }
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        save("STL.cpp");
+
+        String s{ "stl algorithm - 2024년 5월 14일" };
+
+        //[문제] 사용자가 찾는 조건(홀수 찾기)에 맞는 글자가 s에 있는지 알려주자.
+        //왜 ()에 char c가 들어가는지에 대해 공부하는거다.
+        auto p = my_find_if(s.begin(), s.end(), 홀수판단);//람다 대신에 이런 식으로 짤 수 있다.
+        if (p != s.end())
+            cout << *p << "는 s의" << distance(s.begin(), p) + 1
+            << "번째 문자입니다." << endl;
+        else
+            cout << "s에 찾는 것이 없다." << endl;
+
+
+    }
+
+//[문제] copy
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+
+    using namespace std;
+    extern bool 관찰;
+
+    template<class 반복자, class 조건자>
+
+    void my_copy(반복자 b, 반복자 e, 조건자 f) {
+        while (b != e) {
+            cout << *b;
+            ++b;
+        }
+    }
+    int main()
+    {
+        save("STL.cpp");
+
+        String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+        my_copy(s.begin(), s.end(), ostream_iterator<char>{cout});
+    }
+
+    //my copy
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+
+    using namespace std;
+    extern bool 관찰;
+
+    template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+    void my_copy(InIter b, InIter e, OutIter d) {
+        while (b != e) {
+            d = *b;
+            ++b;
+            ++d;
+        }
+    }
+
+
+
+    int main()
+    {
+        save("STL.cpp");
+
+        String s{ "20240514 기말시험 6월 15일 15주 2일" };
+
+        my_copy(s.begin(), s.end(), ostream_iterator<char>{cout});
+    }
+
+    //벡터에 복사
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <vector>
+    using namespace std;
+    extern bool 관찰;
+
+    template<class InIter, class OutIter>// 반복자, 다른 반복자
+
+    void my_copy(InIter b, InIter e, OutIter d) {
+        while (b != e) {
+            *d = *b;//d는 cout인데 출력할 위치를 한칸씩 밀기 위해서 d도 ++하고 있다.
+            ++b;
+            ++d;
+        }
+    }
+
+
+
+    int main()
+    {
+        save("STL.cpp");
+
+        String s{ "20240514 기말시험 6월 15일 15주 2일" };
+        vector<char> v;
+        v.reserve(100);//벡터에 자리 100칸을 준다. 자리를 안주니까 터졌었다.
+        my_copy(s.begin(), s.end(), back_inserter(v));
+        for (char c : v) {
+            cout << c;
+        }
+        //벡터에 데이터는 100% 들어갔는데 왜 출력을 못해? 
+        //데이터는 들어갔는데 벡터가 데이터가 들어간걸 모르니까 begin과 end가 가리키는 위치가 같다.
+        //그래서 아무 것도 출력하지 못하고 있는 거다.
+        //벡터가 우리에게 알려준게 아니라 우리가 무식하게 벡터 위치에다가 넣은거니까
+        //벡터는 사이즈 관리와 원소관리를 따로 한다
+    }
+
+
+12-1
+
+//[문제] 유니크단어 - 2900개// 이상한 나라의 앨리스.txt" 파일에 있는 단어를 set에 읽어 와라.
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <set>
+    #include <fstream>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        //[문제] "이상한 나라의 앨리스.txt" 파일에 있는 단어를 set에 읽어 와라.
+        set<String> s;
+
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (!in) return 0;
+        
+        s = {istream_iterator<String>{in}, {}};
+        cout << "unique한 단어 - " << s.size() << endl;
+        save("STL.cpp");
+    }
+
+    //출력, 사전 정렬
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <set>
+    #include <fstream>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        //[문제] "이상한 나라의 앨리스.txt" 파일에 있는 단어를 set에 읽어 와라.
+        set<String, std::less<String>> s;
+        //이게 디폴트 정렬기준 왜 영사전 단어 기준 정렬을 했냐의 답이다.
+
+
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (!in) return 0;
+        
+        //1번쨰 방법
+        String str;
+        while (in >> str)
+            s.insert(str);
+
+        //2번째 방법
+        //s = {istream_iterator<String>{in}, {}};
+        
+        for (const String& str : s)
+            cout << str<< endl;
+        
+        cout << "unique한 단어 - " << s.size() << endl;//2948개 단어
+        save("STL.cpp");
+    }
+
+//[문제] multiset
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <set>
+    #include <fstream>
+    #include <cctype>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        //[문제] "이상한 나라의 앨리스.txt" 파일에 있는 단어를 multiset에 읽어 왔다.
+        
+        multiset<String> s;
+
+            
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (!in) return 0;
+        
+        String str;
+        while (in >> str)
+            s.insert(str);
+        
+        cout << endl << "읽은 multiset의 단어 - " << s.size() << endl;
+        save("STL.cpp");
+    }
+
+//[문제] 단어길이순 오름차순 정렬
+//set은 단어길이기준 오름차순으로 정렬해야 한다.
+//set은 대문자로 시작하는 단어가 먼저 나와야 한다. //+
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <set>
+    #include <fstream>
+    using namespace std;
+    extern bool 관찰;
+
+
+    struct 람다 {
+        bool operator()(const String& a, const String& b) const {//predicate
+            return a.getLen() < b.getLen();
+        }
+    };
+
+
+    int main()
+    {
+        //[문제] "이상한 나라의 앨리스.txt" 파일에 있는 단어를 set에 읽어 와라.
+        //set은 단어길이기준 오름차순으로 정렬해야 한다.
+
+        //+ 이런 타입이고, 실제 함수는 저거야s{길이}
+        //set<String, bool(*)(const String&, const String&)> s{ 길이 };
+
+        //+ 람다로 바꿔볼께
+        multiset<String, 람다> s;
+
+        //+민수 람다
+        //set <String, bool(*)(const String& l, const String& r)> s{ [](const String& l, const String& r) {
+        //return l.getLen() < r.getLen();
+        //} };
+        
+
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (!in) return 0;
+        
+        //1번쨰 방법
+        String str;
+        while (in >> str)
+            s.insert(str);
+
+        //2번째 방법
+        //s = {istream_iterator<String>{in}, {}};
+        
+        for (const String& str : s)
+            cout << str<< endl;
+        
+        //+바뀜 읽은 단어 수
+        cout << "읽은 multiset의 단어 - " << s.size() << endl;
+        save("STL.cpp");
+    }
+
+    //대문자 먼저까지
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <set>
+    #include <fstream>
+    #include <cctype>
+    using namespace std;
+    extern bool 관찰;
+
+
+    struct 람다 {
+        bool operator()(const String& a, const String& b) const {//predicate
+            //대문자 먼저
+            if (islower(*a.begin()) && isupper(*b.begin()))
+                return false;
+            return true;
+        }
+    };
+
+
+    int main()
+    {
+        //[문제] "이상한 나라의 앨리스.txt" 파일에 있는 단어를 set에 읽어 와라.
+        //set은 대문자로 시작하는 단어가 먼저 나와야 한다. //+
+
+        // 이런 타입이고, 실제 함수는 저거야s{길이}
+        //set<String, bool(*)(const String&, const String&)> s{ 길이 };
+
+        // 람다로 바꿔볼께
+        multiset<String, 람다> s;
+
+        //민수 람다
+        //set <String, bool(*)(const String& l, const String& r)> s{ [](const String& l, const String& r) {
+        //return l.getLen() < r.getLen();
+        //} };
+        
+
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (!in) return 0;
+        
+        //1번쨰 방법
+        String str;
+        while (in >> str)
+            s.insert(str);
+
+        //2번째 방법
+        //s = {istream_iterator<String>{in}, {}};
+        
+        for (const String& str : s)
+            cout << str<< endl;
+        
+        //바뀜 읽은 단어 수
+        cout << "읽은 multiset의 단어 - " << s.size() << endl;
+        save("STL.cpp");
+    }
+
+
+12-2
+//map, key:value 연애인 출력
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <map>
+    #include <fstream>
+    #include <list>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        //그룹과 멤버
+        map<String, list<String>>m{ {"아이브", {"안유진", "가을", "레이", "장원영", "리즈", "이서"}}};
+        m.insert(pair<String, list<String>> {"블랙핑크", {"지수", "제니", "로제", "리사"}});
+        m.insert(make_pair("아이유", list<String>{ "아이유" }));
+        m["르세라핌"] = { "사쿠라","김채원","허윤진","허윤진","카즈하","홍은채"};
+
+        //전체 출력
+        for (const auto& [그룹, 멤버들] : m) {
+            cout << 그룹 << " - " << 멤버들.size() << "명, ";
+            for (const auto& 멤버 : 멤버들)
+                cout << 멤버 << " ";
+            cout << endl;
+        }
+        save("STL.cpp");
+    }
+
+
+
+13-1
+//문제1 소문자와 출현 횟수를 다음과 같이 출력하라 대문자는 모두 소문자로.
+//문제2 개수 내림차수으로 출력하라.
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <map>
+    #include <fstream>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        save("STL.cpp");
+        
+        //[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+        //소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+        //a - 333개, b - 454개... z - 52개
+
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (not in)return 0;
+        
+        map<char, int> m;
+        char c;
+        while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+            if (isalpha(c))
+                m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+        }
+        for (auto [소문자, 개수] : m) // 구조화한 binding
+            cout << 소문자 << " - " << 개수 << endl;
+
+        // [문제] 개수 내림차수으로 출력하라.
+        // 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+        // 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+        map<int, char> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+        //greater이라고 하면 내림차순으로 정렬될 것이다.
+        for (auto [소문자, 개수] : m)
+            icm[개수] = 소문자;
+
+        cout << "개수 기준으로 정렬한 결과" << endl;
+        
+        //+ 이번엔 역방향으로 출력한다.
+        for (auto p = icm.rbegin(); p != icm.rend(); ++p)
+            cout << p->second << " - " << p->first << endl;//
+
+        
+    }
+    //편하게 역방향 출력
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <map>
+    #include <fstream>
+    #include<ranges>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        save("STL.cpp");
+        
+        //[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+        //소문자와 출현 횟수를 다음과 같이 출력하라. 대문자는 모두 소문자로.
+        //a - 333개, b - 454개... z - 52개
+
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (not in)return 0;
+        
+        map<char, int> m;
+        char c;
+        while (in >> c) {//파일 내용 저장하기 맵을 이용해서
+            if (isalpha(c))
+                m[tolower(c)]++;	//c를 key값으로 넣는다. 해당 소문자 key값을 계속 ++해줌
+        }
+        for (auto [소문자, 개수] : m) // 구조화한 binding
+            cout << 소문자 << " - " << 개수 << endl;
+
+        // [문제] 개수 내림차수으로 출력하라.
+        // 1. 벡터에다가 옮겨서 sort하는 방법도 있다.
+        // 2. 지금하는거 개수를 key값으로 map을 하나 만들어 보자
+        map<int, char> icm;//less<int>가 디폴트로 숨어있기 때문에 오름차순으로 정렬되고 있었다.
+        //greater이라고 하면 내림차순으로 정렬될 것이다.
+        for (auto [소문자, 개수] : m)
+            icm[개수] = 소문자;
+
+        cout << "개수 기준으로 정렬한 결과" << endl;
+        for (auto [개수, 문자] : icm | views::reverse )// | 라는 필터를 써도 내림차순을 오름차순으로 가능 #include<ranges> 필요
+            cout << 문자 << " - " << 개수 << endl;
+    }
+
+//파일 읽어서 단어와 출현횟수 출력 내림차순으로
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <map>
+    #include <fstream>
+    #include<ranges>
+    using namespace std;
+    extern bool 관찰;
+
+
+    int main()
+    {
+        save("STL.cpp");
+        
+        //[문제] : "이상한 나라의 앨리스.txt" 파일을 한 번 읽어서 
+        //단어와 출현횟수를 출력하라 //+
+
+        ifstream in{ "이상한 나라의 앨리스.txt" };
+        if (not in)return 0;
+        
+        //몇줄 안되는 코딩으로 되죠?
+        //key값이 단어라서 뭐가 제일 많이 쓰였는지 인간이 찾기 어렵다.
+        map<String, int> Sim;
+        String s;
+        while (in >> s)
+            Sim[s]++;
+        
+        //for (const auto& [단어, 개수] : Sim)
+            //cout << 단어 << " - " << 개수 << endl;
+
+        //[문제] 많이 사용된 단어 순으로 출력하라.
+        //교수ver, 근데 이건 0점짜리같지? 답지에 이렇게 쓰면 0점이다.
+        //겹칠 수 있으니 multi를 써라 +
+        //근데 multi를 쓰는 순간 iSm같은 연산자를 제공하지 않는다.
+        //그랫 insert make_pair 아래와 같이 써야한다.
+        multimap<int, String> iSm;
+        for (const auto& [단어, 개수] : Sim)
+            iSm.insert(make_pair(개수, 단어));//++ 이거 시험에 나올듯
+
+        cout << "많이 사용된 단어 순" << endl;
+        for (const auto& [개수, 단어] : iSm | views::reverse)//String은 const auto& 넣는듯
+            cout << 단어 << " - " << 개수 << endl;
+    }
+
+
+//노말 분포는 정말 노말한가?
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <map>
+    #include <random>
+
+    using namespace std;
+    extern bool 관찰;
+
+    default_random_engine dre;
+    normal_distribution nd;
+
+    int main()
+    {
+        // 노말분포는 정말 노말한가?
+        // 값을 10등분해서 출현횟수를 출력하라.
+        //노말분포를 일단 알아보자
+        //+int값이 아니네 평균이 0이 되는 것 같네?
+        //+이번엔 50000을 곱해서 분포를 넓혀볼까?
+        map<int, int> m;
+
+        for (int i = 0; i < 100; ++i)
+            cout << nd(dre) * 50000 << endl;
+
+        for (auto [구간, 개수] : m)
+            cout << 구간 << " - " << 개수 << endl;
+
+
+        save("STL.cpp");
+    }
+
+
+//unordered_set?, 핸드폰번호 넣는것처럼 O(1)
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <unordered_set>
+    #include <print>
+
+    using namespace std;
+    extern bool 관찰;
+    struct 해쉬 {
+        size_t operator()(const String& s) const {
+            // String s를 std::string으로 변환
+            // 그러면 std::string의 hash 값을 알려주는 함수를 사용할 수 있다.
+            hash<std::string>()(std::string{ s.begin(), s.end() });
+        }
+    };
+
+    void print_us(const unordered_multiset<String, 해쉬>& us) {
+        // 언오더드 셋의 메모리를 화면에 출력한다
+        for (int i = 0; i < us.bucket_count(); ++i) {
+            print("[{:3}]", i);
+            for (auto p = us.begin(i); p != us.end(i); ++p) {
+                cout << " - " << *p;
+            }
+            cout << endl;
+        }
+    }
+
+    int main()
+    {
+        save("STL.cpp");
+
+        unordered_multiset<String, 해쉬> us{ "2024년", "5월", "24일", "재미있는STL" };
+
+        while (true) {
+
+            cout << endl;
+            print_us(us);
+            cout << endl;
+
+            cout << "추가할 데이터? ";
+            String s;
+            cin >> s;
+            us.insert(s);
+        }
+    }
+
+
+
+// 컨테이너의 찾기 성능 비교 - 1000만개에서 10만개를 찾아본다.
+    // 0. 벡터               걸린시간 - 124285ms 2분정도 걸린듯   63170개를 찾음
+    // 1. 정렬한 벡터        걸린시간 - 39ms                     63170개를 찾음 - flat_set
+    // 2. multiset          걸린시간 - 141ms                    63170개를 찾음
+    // 3. unordered set     걸린시간 - 3ms                      63170개를 찾음
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+
+    #include <array>
+    #include <vector>
+    #include <set>
+    #include <unordered_set>
+    #include <random>
+    #include <algorithm>
+    #include <chrono>
+
+
+    using namespace std;
+    extern bool 관찰;
+
+    const int NUM = 1000'0000;
+    const int FNUM = 10'0000;
+
+    array<int, NUM> a;
+    array<int, FNUM> fa;
+
+    default_random_engine dre;
+    uniform_int_distribution uid{ 1, NUM };
+
+    int main()
+    {
+        save("STL.cpp");
+
+        for (int& num : a)
+            num = uid(dre);
+        for (int& num : fa)
+            num = uid(dre);
+
+
+        {//정렬한 벡터에서 찾기
+            cout << "정렬한 벡터 준비중...";
+            vector<int> v{ a.begin(), a.end() };
+            v.reserve(NUM);
+            v = { a.begin(), a.end() };
+            sort(v.begin(), v.end());
+            cout << endl;
+
+            int cnt{};
+            
+            auto start = chrono::high_resolution_clock::now();
+            for (int num : fa) {
+                bool b = binary_search(v.begin(), v.end(), num);
+                if (b)
+                    ++cnt;
+            }
+            auto end = chrono::high_resolution_clock::now();
+            auto elapsed = end - start;//duration
+            auto 걸린시간 = chrono::duration_cast<chrono::milliseconds>(elapsed);
+
+            cout << "걸린시간 - " << 걸린시간 << endl;
+            cout << FNUM << " 에서 " << cnt << " 개를 찾음" << endl;
+            cout << endl;
+        }
+
+        for (int& num : a)
+            num = uid(dre);
+        for (int& num : fa)
+            num = uid(dre);
+
+        {//셋에서 찾기
+            cout << "멀티set 준비중...";
+            multiset<int> s{ a.begin(), a.end() };
+            cout << endl;
+
+            int cnt{};
+
+            auto start = chrono::high_resolution_clock::now();
+            for (int num : fa) {
+                bool b = s.contains(num);
+                if (b)
+                    ++cnt;
+            }
+            auto end = chrono::high_resolution_clock::now();
+            auto elapsed = end - start;//duration
+            auto 걸린시간 = chrono::duration_cast<chrono::milliseconds>(elapsed);
+
+            cout << "걸린시간 - " << 걸린시간 << endl;
+            cout << FNUM << " 에서 " << cnt << " 개를 찾음" << endl;
+            cout << endl;
+        }
+
+        {//언오더드셋에서 찾기
+            cout << "언오더드 멀티set 준비중...";
+            unordered_multiset<int> us{ a.begin(), a.end() };
+            us.reserve(NUM);
+            us = { a.begin(), a.end() };
+        
+            cout << endl;
+
+            int cnt{};
+
+            auto start = chrono::high_resolution_clock::now();
+            for (int num : fa) {
+                bool b = us.contains(num);
+                if (b)
+                    ++cnt;
+            }
+            auto end = chrono::high_resolution_clock::now();
+            auto elapsed = end - start;//duration
+            auto 걸린시간 = chrono::duration_cast<chrono::milliseconds>(elapsed);
+
+            cout << "걸린시간 - " << 걸린시간 << endl;
+            cout << FNUM << " 에서 " << cnt << " 개를 찾음" << endl;
+            cout << endl;
+        }
+    }
+
+14-1
+
+//모두 홀수임?
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <array>
+    #include <algorithm>
+
+    using namespace std;
+    extern bool 관찰;
+
+    template<class 반복자, class 단항조건자>
+    bool my_all_of(반복자 b, 반복자 e, 단항조건자 p) {
+        while (b != e) {//+ 이게 제일 중요함 p를 몇번 돌려야 이 함수가 끝나냐
+            if (not p(*b))
+                return false;
+            ++b;
+        }
+        return true;
+    }
+
+    int main()
+    {
+        array<int, 5> a{2,4,6,8,10};
+        //[문제] a의 원소가 모두 홀수인가? 검사하고 출력하자.
+        bool b = my_all_of(a.begin(), a.end(), [](int n) {return n & 1; });
+        
+        if (b)
+            cout << "모두 홀수다" << endl;
+        else
+            cout << "모두가 홀수는 아님" << endl;
+
+
+        save("STL.cpp");
+
+    }
+
+//dre - 진짜 찾기 힘든 랜덤
+    // C++에서 소트는 뭘로 하는지 모른다. 원소 개수따라서 알고리즘이 달라진다.
+    // 머지 퀵소트 등등 다 섞는다. 가장 효율적으로 돌리기 위해.
+    // 니가 암만 재수 없어도 sort 이상으로 복잡한건 곤란해라는 문구가 있다.
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <array>
+    #include <algorithm>
+    #include <numeric>
+    #include <random>
+    #include <print>
+    #include <thread>
+
+    using namespace std;
+    extern bool 관찰;
+
+    default_random_engine dre{ random_device{}() };
+    //+ cpu의 온도, 팬의 속도, 마우스의 랜덤한 위치등을 적절히 조합해 값을 뽑는다.
+
+    int main()
+    {
+        array<int, 100> a;
+        iota(a.begin(), a.end(), 1);
+
+        for (int num : a)
+            print("{:4}", num);
+        cout << endl;
+
+
+        save("STL.cpp");
+    }
+
+
+//홀짝분리, 30등까지분류
+    #include <iostream>
+    #include "save.h"
+    #include "string.h"
+    #include <array>
+    #include <algorithm>
+    #include <numeric>
+    #include <random>
+    #include <print>
+    #include <thread>
+
+    using namespace std;
+    extern bool 관찰;
+
+    random_device rd;
+    default_random_engine dre{ rd() };
+
+    int main()
+    {
+        array<int, 100> a;
+        iota(a.begin(), a.end(), 1);
+        
+        {
+            // 홀짝으로 분리 - partition
+            shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+            cout << "홀짝으로 분리하기 전" << endl;
+            for (int num : a)
+                print("{:4}", num);
+            cout << endl;
+
+            auto p = partition(a.begin(), a.end(), [](int n) {return n & 1; });
+            cout << endl;
+            cout << "홀수" << endl;
+            for (auto i = a.begin(); i != p; ++i)
+                print("{:4}", *i);
+
+            cout << endl;
+            cout << "짝수" << endl;
+            for (auto i = p; i != a.end(); ++i)
+                print("{:4}", *i);
+            cout << endl << endl;
+        }
+        {
+            // 30등까지와 나머지로 분리 - nth_element
+            shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+            cout << "30등까지와 나머지로 분리하기 전" << endl;
+            for (int num : a)
+                print("{:4}", num);
+            cout << endl;
+
+            auto nth = a.begin() + 30;
+            nth_element (a.begin(), nth, a.end());
+            cout << endl;
+            cout << "30등까지" << endl;
+            for (auto i = a.begin(); i != nth; ++i)
+                print("{:4}", *i);
+
+            cout << endl;
+            cout << "나머지" << endl;
+            for (auto i = nth; i != a.end(); ++i)
+                print("{:4}", *i);
+            cout << endl << endl;
+        }
+
+        {
+            // 30등까지만 정렬 - partial_sort
+            shuffle(a.begin(), a.end(), dre);//+ dre에 따라 셔플
+
+            cout << "30등까지와 나머지로 분리하기 전" << endl;
+            for (int num : a)
+                print("{:4}", num);
+            cout << endl;
+
+            auto nth = a.begin() + 30;
+            partial_sort(a.begin(), nth, a.end());
+            cout << endl;
+            cout << "30등까지는 정렬됨" << endl;
+            for (auto i = a.begin(); i != nth; ++i)
+                print("{:4}", *i);
+
+            cout << endl;
+            cout << "나머지" << endl;
+            for (auto i = nth; i != a.end(); ++i)
+                print("{:4}", *i);
+            cout << endl << endl;
+        }
+        save("STL.cpp");
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

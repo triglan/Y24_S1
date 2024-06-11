@@ -95,7 +95,7 @@ class TexasHoldemPoker:
     def pressedBx2(self):
         if self.playerMoney >= self.betMoney * 2:
             self.playerMoney -= self.betMoney * 2
-            self.LplayerMoney.configure(text="You have $" + str(self.playerMoney))
+            self.LplayerMoney. configure(text="You have $" + str(self.playerMoney))
             self.betMoney *= 3
             self.LbetMoney.configure(text="$" + str(self.betMoney))
             self.Check["state"] = "disabled"
