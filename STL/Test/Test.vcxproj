@@ -131,6 +131,7 @@
     <ClCompile Include="save.cpp" />
     <ClCompile Include="STL.cpp" />
     <ClCompile Include="String.cpp" />
+    <ClCompile Include="Test.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="save.h" />

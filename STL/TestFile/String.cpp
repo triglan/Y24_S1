@@ -11,7 +11,7 @@
 // 관찰용 변수 추가 - 2024.04.02
 bool 관찰{ false };			// 관찰을 원하면 true로 바꾸자
 
-size_t String::uid{ };		// class static 변수 초기화Q
+size_t String::uid{ };		// class static 변수 초기화
 
 // 디폴트 생성자 - 2024.04.02
 String::String()

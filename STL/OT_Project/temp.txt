@@ -1,0 +1,40 @@
+//---------------------------------------------------------
+// 2024 1학기 STL 5월 13일 화요일
+// 
+// 알고리즘 함수는 반복자를 인자로 받는다.
+//---------------------------------------------------------
+#include <iostream>
+#include "save.h"
+#include "string.h"
+#include <fstream>
+#include <algorithm>
+#include <map>
+#include <list>
+#include <ranges>
+using namespace std;
+extern bool 관찰;
+
+
+int main(){
+    save("STL.cpp");
+    ifstream in{ "이상한 나라의 앨리스.txt" };
+    if (not in)
+        return 0;
+    map<char, int> m;
+    char c;
+    while (in >> c) {
+        if (isalpha(c)) {
+            ++m[tolower(c)];
+        }
+        
+    }
+    map<String, int>Sim;
+    String s;
+
+    while (in >> s)
+        Sim[s]++;
+    for (const auto& [단어, 개수] : Sim)
+        cout << 단어 << "-" << 개수 << endl;
+
+
+}

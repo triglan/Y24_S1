@@ -3,6 +3,7 @@
 // 
 // 2024.04.02	시작 
 // 2024.04.15 예외를 던지지 않음을 보장 noexcept
+// 2024.04.30 연산자 operator <
 //-----------------------------------------------------------------------------------
 #include <algorithm>//2024.04.16 equal
 #include "String.h"
@@ -40,7 +41,7 @@ String::~String()
 
 // 복사생성과 복사할당 - 2024.04.02
 String::String(const String& other)
-	: len(other.len), id{ ++uid }	
+	: len(other.len), id{ ++uid }
 {
 	p = std::make_unique<char[]>(len);
 	memcpy(p.get(), other.p.get(), len);
@@ -94,11 +95,17 @@ String& String::operator=(String&& other) noexcept
 
 //연산자 오버로딩
 //2024.04.16 ==, string은 글자수, 내용이 같아야 한다.
-bool String::operator==(const String& rhs) {
+bool String::operator==(const String& rhs) const {
 	if (len != rhs.len)
 		return false;
 	// 비교x
 	return std::equal(p.get(), p.get() + len, rhs.p.get());
+}
+
+//2024.04.30 < 비교 하고 싶을때 쓸 수 있는 함수
+bool String::operator<(const String& rhs)const {
+	return std::lexicographical_compare(p.get(), p.get() + len,
+		rhs.p.get(), rhs.p.get() + rhs.len);
 }
 
 // sort에서 사용하기 위한 getLen - 2024.04.02
