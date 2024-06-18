@@ -38,6 +38,9 @@ void CScene::BuildObjects(ID3D12Device* pd3dDevice, ID3D12GraphicsCommandList* p
 	CMesh* pStartMenuMesh = new CMesh(pd3dDevice, pd3dCommandList, "Models//start_menu.txt", true);
 #endif
 
+	//CMesh* pApacheModel = CMesh::LoadGeometryFromFile(pd3dDevice, pd3dCommandList, m_pd3dGraphicsRootSignature, "Model/Apache.bin");
+	//CApacheObject* pApacheObject = NULL;
+
 	m_nObjects = 4;
 	m_ppObjects = new CGameObject * [m_nObjects];
 
